@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<link rel="stylesheet" href="../css/public.css">
+		<script>
+//			입력
+			var n1 = prompt("첫 번째 사람의 가위 바위 보를 입력하세요.", "가위 / 바위 / 보");
+			var n2 = prompt("두 번째 사람의 가위 바위 보를 입력하세요.", "가위 / 바위 / 보");
+			var res = "";
+			res += "첫 번째 사람 : " + n1 + "<br>";
+			res += "두 번째 사람 : " + n2 + "<br>";
+			res += "<br>결  과 : "
+			
+//			비교
+			if(n1 == "가위" && n2 == "가위" || n1 == "바위" && n2 == "바위" || n1 == "보" && n2 == "보"){
+				res += "비김"
+			} else if(n1 == "가위" && n2 == "보" || n1 == "바위" && n2 == "가위" || n1 == "보" && n2 == "바위"){
+				res += "첫 번째 사람 승!!!"
+			} else if(n1 == "보" && n2 == "가위" || n1 == "가위" && n2 == "바위" || n1 == "바위" && n2 == "보"){
+				res += "두 번째 사람 승!!!"
+			} else {
+				res += "유효한 입력이 아닙니다."
+			}
+			
+//			출력
+			window.onload = function(){
+				var result = document.getElementById("result");
+				result.innerHTML = res;
+			}
+			
+		</script>
+	</head>
+	<body>
+		<pre>
+두 사람의 가위 바위 보를 입력한다.
+	: prompt 함수 이용
+		var n1 = prompt("첫 번째 사람의 가위 바위 보를 입력하세요.", "가위 / 바위 / 보");
+		var n2 = prompt("두 번째 사람의 가위 바위 보를 입력하세요.", "가위 / 바위 / 보");
+
+결과를 담을 res를 만든다.
+	var res = "";
+	res += "첫 번째 사람 : " + n1 + "&lt;br>";
+	res += "두 번째 사람 : " + n2 + "&lt;br>";
+	res += "&lt;br>결  과 : "
+
+두 입력을 비교하여 이긴 사람의 결과를 담는다.
+	: 비교문 if 이용
+		if(n1 == "가위" && n2 == "가위" || n1 == "바위" && n2 == "바위" || n1 == "보" && n2 == "보"){
+			res += "비김"
+		} else if(n1 == "가위" && n2 == "보" || n1 == "바위" && n2 == "가위" || n1 == "보" && n2 == "바위"){
+			res += "첫 번째 사람 승!!!"
+		} else if(n1 == "보" && n2 == "가위" || n1 == "가위" && n2 == "바위" || n1 == "바위" && n2 == "보"){
+			res += "두 번째 사람 승!!!"
+		} else {
+			res += "유효한 입력이 아닙니다."
+		}
+
+페이지가 모두 로드된 후 출력한다.
+	: id가 result인 div에 innerHTML 이용
+		window.onload = function(){
+			var result = document.getElementById("result");
+			result.innerHTML = res;
+		}
+		</pre>
+		<div id="result">
+			
+		</div>
+	</body>
+</html>

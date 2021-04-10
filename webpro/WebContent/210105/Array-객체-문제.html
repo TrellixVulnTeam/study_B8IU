@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<link rel="stylesheet" href="../css/public.css">
+		<script type="text/javascript">
+			function print(res, id){
+				document.getElementById(id).innerHTML = res;
+			}
+			
+			function proc1(){
+				let input;
+				let arr = [];
+				while(true) {
+					input = prompt("사람 이름을 입력하세요.","");
+					if(input == null || input == ""){
+						break;
+					}
+					arr.push(input);
+				}
+				let res = "입력된 사람 이름 : " + arr;
+				print(res, "result1");
+			}
+			
+			function proc2(){
+				let arr = [];
+				let input;
+				while (arr.length < 5) {
+					input = prompt("중복되지 않은 " + (arr.length + 1) + "번째 정수를 입력해주세요.");
+					if (isNaN(input)){
+						alert("숫자가 아닙니다.");
+						continue;
+					} else if (input == null){
+						alert("null은 들어갈 수 없습니다.");
+						continue;
+					} else if (input == ""){
+						alert("공백은 들어갈 수 없습니다.");
+						continue;
+					} else if (arr.indexOf(input) != -1){
+						alert("중복된 번호입니다.");
+						continue;
+					} else {
+						arr.push(input);
+					}
+				}
+				let res = "입력된 번호 : " + arr;
+				print(res, "result2");
+			}
+		</script>
+	</head>
+	<body>
+		<pre>
+사람 이름을 계속 입력 받아 배열에 저장하고 그 저장된 이름을 출력하는 프로그램을 작성하시오.
+ 단, 입력은 prompt 명령을 이용하고,
+ 입력의 마지막은 공백문자를 입력하거나 "취소" 버튼을 눌렀을 때로 한다.
+"취소 " 버튼은 null 이 입력될 때이다.
+		</pre>
+		<input type="button" id="btn1" value="확인" onclick="proc1()">
+		<div id="result1">
+			
+		</div>
+		<pre>
+서로 중복되지 않은 정수 5 개를 입력 받아 출력하는 프로그램을 작성하시오.
+Js_array 객체
+		</pre>
+		<input type="button" id="btn2" value="확인" onclick="proc2()">
+		<div id="result2">
+			
+		</div>
+	</body>
+</html>

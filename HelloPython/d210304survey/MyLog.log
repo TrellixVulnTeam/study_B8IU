@@ -1,0 +1,871 @@
+2021-03-04 15:13:10,504 - MyLog - DEBUG - 
+SELECT SURVEY_ID,
+       S_SEQ,
+       QUESTION,
+       A1,
+       A2,
+       A3,
+       A4,
+       IN_DATE,
+       IN_USER_ID,
+       UP_DATE,
+       UP_USER_ID
+FROM SDETAIL
+ORDER BY SURVEY_ID,
+         S_SEQ
+2021-03-04 15:13:11,115 - MyLog - DEBUG - 
+SELECT SURVEY_ID,
+       S_SEQ,
+       QUESTION,
+       A1,
+       A2,
+       A3,
+       A4,
+       IN_DATE,
+       IN_USER_ID,
+       UP_DATE,
+       UP_USER_ID
+FROM SDETAIL
+ORDER BY SURVEY_ID,
+         S_SEQ
+2021-03-04 15:13:11,612 - MyLog - DEBUG - 
+SELECT SURVEY_ID,
+       S_SEQ,
+       QUESTION,
+       A1,
+       A2,
+       A3,
+       A4,
+       IN_DATE,
+       IN_USER_ID,
+       UP_DATE,
+       UP_USER_ID
+FROM SDETAIL
+ORDER BY SURVEY_ID,
+         S_SEQ
+2021-03-04 15:13:29,713 - MyLog - DEBUG - 
+SELECT SURVEY_ID,
+       S_SEQ,
+       QUESTION,
+       A1,
+       A2,
+       A3,
+       A4,
+       IN_DATE,
+       IN_USER_ID,
+       UP_DATE,
+       UP_USER_ID
+FROM SDETAIL
+ORDER BY SURVEY_ID,
+         S_SEQ
+2021-03-04 15:13:29,896 - MyLog - DEBUG - 
+SELECT SURVEY_ID,
+       S_SEQ,
+       QUESTION,
+       A1,
+       A2,
+       A3,
+       A4,
+       IN_DATE,
+       IN_USER_ID,
+       UP_DATE,
+       UP_USER_ID
+FROM SDETAIL
+ORDER BY SURVEY_ID,
+         S_SEQ
+2021-03-04 15:13:30,331 - MyLog - DEBUG - 
+SELECT SURVEY_ID,
+       S_SEQ,
+       QUESTION,
+       A1,
+       A2,
+       A3,
+       A4,
+       IN_DATE,
+       IN_USER_ID,
+       UP_DATE,
+       UP_USER_ID
+FROM SDETAIL
+ORDER BY SURVEY_ID,
+         S_SEQ
+2021-03-04 15:13:30,481 - MyLog - DEBUG - 
+SELECT SURVEY_ID,
+       S_SEQ,
+       QUESTION,
+       A1,
+       A2,
+       A3,
+       A4,
+       IN_DATE,
+       IN_USER_ID,
+       UP_DATE,
+       UP_USER_ID
+FROM SDETAIL
+ORDER BY SURVEY_ID,
+         S_SEQ
+2021-03-04 15:13:36,417 - MyLog - DEBUG - 
+SELECT S_ID,
+       TITLE,
+       CONTENT,
+       INTERVIEW_CNT,
+       DEADLINE,
+       IN_DATE,
+       IN_USER_ID,
+       UP_DATE,
+       UP_USER_ID
+FROM SURVEY
+ORDER BY S_ID
+2021-03-04 15:20:49,928 - MyLog - DEBUG - 
+SELECT S_ID,
+       TITLE,
+       CONTENT,
+       INTERVIEW_CNT,
+       DEADLINE,
+       IN_DATE,
+       IN_USER_ID,
+       UP_DATE,
+       UP_USER_ID
+FROM SURVEY
+ORDER BY S_ID
+2021-03-04 15:20:50,707 - MyLog - DEBUG - 
+SELECT S_ID,
+       TITLE,
+       CONTENT,
+       INTERVIEW_CNT,
+       DEADLINE,
+       IN_DATE,
+       IN_USER_ID,
+       UP_DATE,
+       UP_USER_ID
+FROM SURVEY
+ORDER BY S_ID
+2021-03-04 15:20:54,154 - MyLog - DEBUG - 
+SELECT SURVEY_ID,
+       S_SEQ,
+       QUESTION,
+       A1,
+       A2,
+       A3,
+       A4,
+       IN_DATE,
+       IN_USER_ID,
+       UP_DATE,
+       UP_USER_ID
+FROM SDETAIL
+ORDER BY SURVEY_ID,
+         S_SEQ
+2021-03-04 15:20:58,882 - MyLog - DEBUG - 
+SELECT SURVEY_ID,
+       S_SEQ,
+       QUESTION,
+       A1,
+       A2,
+       A3,
+       A4,
+       IN_DATE,
+       IN_USER_ID,
+       UP_DATE,
+       UP_USER_ID
+FROM SDETAIL
+ORDER BY SURVEY_ID,
+         S_SEQ
+2021-03-04 15:22:03,294 - MyLog - DEBUG - 
+SELECT SURVEY_ID,
+       S_SEQ,
+       QUESTION,
+       A1,
+       A2,
+       A3,
+       A4,
+       IN_DATE,
+       IN_USER_ID,
+       UP_DATE,
+       UP_USER_ID
+FROM SDETAIL
+ORDER BY SURVEY_ID,
+         S_SEQ
+2021-03-04 15:24:58,198 - MyLog - DEBUG - 
+SELECT SURVEY_ID,
+       S_SEQ,
+       QUESTION,
+       A1,
+       A2,
+       A3,
+       A4,
+       IN_DATE,
+       IN_USER_ID,
+       UP_DATE,
+       UP_USER_ID
+FROM SDETAIL
+ORDER BY SURVEY_ID,
+         S_SEQ
+2021-03-04 15:25:03,281 - MyLog - DEBUG - 
+SELECT USER_ID,
+       PWD,
+       USER_NAME,
+       MOBILE,
+       EMAIL,
+       BIRTH,
+       IN_DATE,
+       IN_USER_ID,
+       UP_DATE,
+       UP_USER_ID
+FROM SUSER
+ORDER BY USER_ID
+2021-03-04 15:25:06,683 - MyLog - DEBUG - 
+SELECT S_ID,
+       TITLE,
+       CONTENT,
+       INTERVIEW_CNT,
+       DEADLINE,
+       IN_DATE,
+       IN_USER_ID,
+       UP_DATE,
+       UP_USER_ID
+FROM SURVEY
+ORDER BY S_ID
+2021-03-04 15:25:07,229 - MyLog - DEBUG - 
+SELECT SURVEY_ID,
+       S_SEQ,
+       QUESTION,
+       A1,
+       A2,
+       A3,
+       A4,
+       IN_DATE,
+       IN_USER_ID,
+       UP_DATE,
+       UP_USER_ID
+FROM SDETAIL
+ORDER BY SURVEY_ID,
+         S_SEQ
+2021-03-04 15:25:08,020 - MyLog - DEBUG - 
+SELECT USER_ID,
+       PWD,
+       USER_NAME,
+       MOBILE,
+       EMAIL,
+       BIRTH,
+       IN_DATE,
+       IN_USER_ID,
+       UP_DATE,
+       UP_USER_ID
+FROM SUSER
+ORDER BY USER_ID
+2021-03-04 15:25:09,341 - MyLog - DEBUG - 
+SELECT S_ID,
+       TITLE,
+       CONTENT,
+       INTERVIEW_CNT,
+       DEADLINE,
+       IN_DATE,
+       IN_USER_ID,
+       UP_DATE,
+       UP_USER_ID
+FROM SURVEY
+ORDER BY S_ID
+2021-03-04 15:25:09,804 - MyLog - DEBUG - 
+SELECT SURVEY_ID,
+       S_SEQ,
+       QUESTION,
+       A1,
+       A2,
+       A3,
+       A4,
+       IN_DATE,
+       IN_USER_ID,
+       UP_DATE,
+       UP_USER_ID
+FROM SDETAIL
+ORDER BY SURVEY_ID,
+         S_SEQ
+2021-03-04 15:25:10,526 - MyLog - DEBUG - 
+SELECT S_ID,
+       TITLE,
+       CONTENT,
+       INTERVIEW_CNT,
+       DEADLINE,
+       IN_DATE,
+       IN_USER_ID,
+       UP_DATE,
+       UP_USER_ID
+FROM SURVEY
+ORDER BY S_ID
+2021-03-04 15:27:50,603 - MyLog - DEBUG - 
+SELECT S_ID,
+       TITLE,
+       CONTENT,
+       INTERVIEW_CNT,
+       DEADLINE,
+       IN_DATE,
+       IN_USER_ID,
+       UP_DATE,
+       UP_USER_ID
+FROM SURVEY
+ORDER BY S_ID
+2021-03-04 15:27:52,502 - MyLog - DEBUG - 
+DELETE
+FROM SURVEY
+WHERE S_ID = :V_S_ID
+2021-03-04 15:27:52,541 - MyLog - DEBUG - 
+SELECT S_ID,
+       TITLE,
+       CONTENT,
+       INTERVIEW_CNT,
+       DEADLINE,
+       IN_DATE,
+       IN_USER_ID,
+       UP_DATE,
+       UP_USER_ID
+FROM SURVEY
+ORDER BY S_ID
+2021-03-04 15:27:54,721 - MyLog - DEBUG - 
+DELETE
+FROM SURVEY
+WHERE S_ID = :V_S_ID
+2021-03-04 15:27:54,757 - MyLog - DEBUG - 
+SELECT S_ID,
+       TITLE,
+       CONTENT,
+       INTERVIEW_CNT,
+       DEADLINE,
+       IN_DATE,
+       IN_USER_ID,
+       UP_DATE,
+       UP_USER_ID
+FROM SURVEY
+ORDER BY S_ID
+2021-03-04 15:27:56,699 - MyLog - DEBUG - 
+DELETE
+FROM SURVEY
+WHERE S_ID = :V_S_ID
+2021-03-04 15:27:56,735 - MyLog - DEBUG - 
+SELECT S_ID,
+       TITLE,
+       CONTENT,
+       INTERVIEW_CNT,
+       DEADLINE,
+       IN_DATE,
+       IN_USER_ID,
+       UP_DATE,
+       UP_USER_ID
+FROM SURVEY
+ORDER BY S_ID
+2021-03-04 15:27:58,757 - MyLog - DEBUG - 
+DELETE
+FROM SURVEY
+WHERE S_ID = :V_S_ID
+2021-03-04 15:27:58,791 - MyLog - DEBUG - 
+SELECT S_ID,
+       TITLE,
+       CONTENT,
+       INTERVIEW_CNT,
+       DEADLINE,
+       IN_DATE,
+       IN_USER_ID,
+       UP_DATE,
+       UP_USER_ID
+FROM SURVEY
+ORDER BY S_ID
+2021-03-04 15:28:03,230 - MyLog - DEBUG - 
+INSERT INTO SURVEY(S_ID, TITLE, CONTENT, INTERVIEW_CNT, DEADLINE, IN_DATE, IN_USER_ID, UP_DATE, UP_USER_ID)
+VALUES (:V_S_ID, :V_TITLE, :V_CONTENT, :V_INTERVIEW_CNT, :V_DEADLINE, TO_CHAR(SYSDATE, 'YYYYMMDD.HH24MISS'), :V_IN_USER_ID, TO_CHAR(SYSDATE, 'YYYYMMDD.HH24MISS'), :V_UP_USER_ID)
+2021-03-04 15:28:03,271 - MyLog - DEBUG - 
+SELECT S_ID,
+       TITLE,
+       CONTENT,
+       INTERVIEW_CNT,
+       DEADLINE,
+       IN_DATE,
+       IN_USER_ID,
+       UP_DATE,
+       UP_USER_ID
+FROM SURVEY
+ORDER BY S_ID
+2021-03-04 15:36:42,381 - MyLog - DEBUG - 
+SELECT USER_ID,
+       PWD,
+       USER_NAME,
+       MOBILE,
+       EMAIL,
+       BIRTH,
+       IN_DATE,
+       IN_USER_ID,
+       UP_DATE,
+       UP_USER_ID
+FROM SUSER
+ORDER BY USER_ID
+2021-03-04 15:36:44,110 - MyLog - DEBUG - 
+SELECT USER_ID,
+       PWD,
+       USER_NAME,
+       MOBILE,
+       EMAIL,
+       BIRTH,
+       IN_DATE,
+       IN_USER_ID,
+       UP_DATE,
+       UP_USER_ID
+FROM SUSER
+ORDER BY USER_ID
+2021-03-04 15:36:44,557 - MyLog - DEBUG - 
+SELECT SURVEY_ID,
+       S_SEQ,
+       QUESTION,
+       A1,
+       A2,
+       A3,
+       A4,
+       IN_DATE,
+       IN_USER_ID,
+       UP_DATE,
+       UP_USER_ID
+FROM SDETAIL
+ORDER BY SURVEY_ID,
+         S_SEQ
+2021-03-04 15:36:45,038 - MyLog - DEBUG - 
+SELECT S_ID,
+       TITLE,
+       CONTENT,
+       INTERVIEW_CNT,
+       DEADLINE,
+       IN_DATE,
+       IN_USER_ID,
+       UP_DATE,
+       UP_USER_ID
+FROM SURVEY
+ORDER BY S_ID
+2021-03-04 15:36:45,495 - MyLog - DEBUG - 
+SELECT SURVEY_ID,
+       S_SEQ,
+       QUESTION,
+       A1,
+       A2,
+       A3,
+       A4,
+       IN_DATE,
+       IN_USER_ID,
+       UP_DATE,
+       UP_USER_ID
+FROM SDETAIL
+ORDER BY SURVEY_ID,
+         S_SEQ
+2021-03-04 15:36:46,009 - MyLog - DEBUG - 
+SELECT S_ID,
+       TITLE,
+       CONTENT,
+       INTERVIEW_CNT,
+       DEADLINE,
+       IN_DATE,
+       IN_USER_ID,
+       UP_DATE,
+       UP_USER_ID
+FROM SURVEY
+ORDER BY S_ID
+2021-03-04 15:36:46,482 - MyLog - DEBUG - 
+SELECT SURVEY_ID,
+       S_SEQ,
+       QUESTION,
+       A1,
+       A2,
+       A3,
+       A4,
+       IN_DATE,
+       IN_USER_ID,
+       UP_DATE,
+       UP_USER_ID
+FROM SDETAIL
+ORDER BY SURVEY_ID,
+         S_SEQ
+2021-03-04 15:36:47,281 - MyLog - DEBUG - 
+SELECT USER_ID,
+       PWD,
+       USER_NAME,
+       MOBILE,
+       EMAIL,
+       BIRTH,
+       IN_DATE,
+       IN_USER_ID,
+       UP_DATE,
+       UP_USER_ID
+FROM SUSER
+ORDER BY USER_ID
+2021-03-04 15:36:47,860 - MyLog - DEBUG - 
+SELECT USER_ID,
+       PWD,
+       USER_NAME,
+       MOBILE,
+       EMAIL,
+       BIRTH,
+       IN_DATE,
+       IN_USER_ID,
+       UP_DATE,
+       UP_USER_ID
+FROM SUSER
+ORDER BY USER_ID
+2021-03-04 15:36:48,968 - MyLog - DEBUG - 
+SELECT SURVEY_ID,
+       S_SEQ,
+       QUESTION,
+       A1,
+       A2,
+       A3,
+       A4,
+       IN_DATE,
+       IN_USER_ID,
+       UP_DATE,
+       UP_USER_ID
+FROM SDETAIL
+ORDER BY SURVEY_ID,
+         S_SEQ
+2021-03-04 15:36:49,420 - MyLog - DEBUG - 
+SELECT S_ID,
+       TITLE,
+       CONTENT,
+       INTERVIEW_CNT,
+       DEADLINE,
+       IN_DATE,
+       IN_USER_ID,
+       UP_DATE,
+       UP_USER_ID
+FROM SURVEY
+ORDER BY S_ID
+2021-03-04 15:36:50,063 - MyLog - DEBUG - 
+SELECT USER_ID,
+       PWD,
+       USER_NAME,
+       MOBILE,
+       EMAIL,
+       BIRTH,
+       IN_DATE,
+       IN_USER_ID,
+       UP_DATE,
+       UP_USER_ID
+FROM SUSER
+ORDER BY USER_ID
+2021-03-04 15:36:51,300 - MyLog - DEBUG - 
+SELECT S_ID,
+       TITLE,
+       CONTENT,
+       INTERVIEW_CNT,
+       DEADLINE,
+       IN_DATE,
+       IN_USER_ID,
+       UP_DATE,
+       UP_USER_ID
+FROM SURVEY
+ORDER BY S_ID
+2021-03-04 15:36:51,799 - MyLog - DEBUG - 
+SELECT SURVEY_ID,
+       S_SEQ,
+       QUESTION,
+       A1,
+       A2,
+       A3,
+       A4,
+       IN_DATE,
+       IN_USER_ID,
+       UP_DATE,
+       UP_USER_ID
+FROM SDETAIL
+ORDER BY SURVEY_ID,
+         S_SEQ
+2021-03-04 15:36:52,241 - MyLog - DEBUG - 
+SELECT S_ID,
+       TITLE,
+       CONTENT,
+       INTERVIEW_CNT,
+       DEADLINE,
+       IN_DATE,
+       IN_USER_ID,
+       UP_DATE,
+       UP_USER_ID
+FROM SURVEY
+ORDER BY S_ID
+2021-03-04 15:36:52,793 - MyLog - DEBUG - 
+SELECT USER_ID,
+       PWD,
+       USER_NAME,
+       MOBILE,
+       EMAIL,
+       BIRTH,
+       IN_DATE,
+       IN_USER_ID,
+       UP_DATE,
+       UP_USER_ID
+FROM SUSER
+ORDER BY USER_ID
+2021-03-04 15:36:53,972 - MyLog - DEBUG - 
+SELECT S_ID,
+       TITLE,
+       CONTENT,
+       INTERVIEW_CNT,
+       DEADLINE,
+       IN_DATE,
+       IN_USER_ID,
+       UP_DATE,
+       UP_USER_ID
+FROM SURVEY
+ORDER BY S_ID
+2021-03-04 15:36:55,119 - MyLog - DEBUG - 
+SELECT S_ID,
+       TITLE,
+       CONTENT,
+       INTERVIEW_CNT,
+       DEADLINE,
+       IN_DATE,
+       IN_USER_ID,
+       UP_DATE,
+       UP_USER_ID
+FROM SURVEY
+ORDER BY S_ID
+2021-03-04 15:36:55,634 - MyLog - DEBUG - 
+SELECT USER_ID,
+       PWD,
+       USER_NAME,
+       MOBILE,
+       EMAIL,
+       BIRTH,
+       IN_DATE,
+       IN_USER_ID,
+       UP_DATE,
+       UP_USER_ID
+FROM SUSER
+ORDER BY USER_ID
+2021-03-04 15:36:57,467 - MyLog - DEBUG - 
+SELECT SURVEY_ID,
+       S_SEQ,
+       QUESTION,
+       A1,
+       A2,
+       A3,
+       A4,
+       IN_DATE,
+       IN_USER_ID,
+       UP_DATE,
+       UP_USER_ID
+FROM SDETAIL
+ORDER BY SURVEY_ID,
+         S_SEQ
+2021-03-04 15:36:58,084 - MyLog - DEBUG - 
+SELECT USER_ID,
+       PWD,
+       USER_NAME,
+       MOBILE,
+       EMAIL,
+       BIRTH,
+       IN_DATE,
+       IN_USER_ID,
+       UP_DATE,
+       UP_USER_ID
+FROM SUSER
+ORDER BY USER_ID
+2021-03-04 15:37:00,485 - MyLog - DEBUG - 
+DELETE
+FROM SUSER
+WHERE USER_ID = :V_USER_ID
+2021-03-04 15:37:00,524 - MyLog - DEBUG - 
+SELECT USER_ID,
+       PWD,
+       USER_NAME,
+       MOBILE,
+       EMAIL,
+       BIRTH,
+       IN_DATE,
+       IN_USER_ID,
+       UP_DATE,
+       UP_USER_ID
+FROM SUSER
+ORDER BY USER_ID
+2021-03-04 15:37:01,416 - MyLog - DEBUG - 
+SELECT USER_ID,
+       PWD,
+       USER_NAME,
+       MOBILE,
+       EMAIL,
+       BIRTH,
+       IN_DATE,
+       IN_USER_ID,
+       UP_DATE,
+       UP_USER_ID
+FROM SUSER
+ORDER BY USER_ID
+2021-03-04 15:44:22,564 - MyLog - DEBUG - 
+SELECT USER_ID,
+       PWD,
+       USER_NAME,
+       MOBILE,
+       EMAIL,
+       BIRTH,
+       IN_DATE,
+       IN_USER_ID,
+       UP_DATE,
+       UP_USER_ID
+FROM SUSER
+ORDER BY USER_ID
+2021-03-04 16:59:12,138 - MyLog - DEBUG - 
+SELECT USER_ID,
+       PWD,
+       USER_NAME,
+       MOBILE,
+       EMAIL,
+       BIRTH,
+       IN_DATE,
+       IN_USER_ID,
+       UP_DATE,
+       UP_USER_ID
+FROM SUSER
+WHERE USER_ID = :V_USER_ID
+  AND PWD = :V_PWD
+ORDER BY USER_ID
+2021-03-04 16:59:16,885 - MyLog - DEBUG - 
+SELECT USER_ID,
+       PWD,
+       USER_NAME,
+       MOBILE,
+       EMAIL,
+       BIRTH,
+       IN_DATE,
+       IN_USER_ID,
+       UP_DATE,
+       UP_USER_ID
+FROM SUSER
+ORDER BY USER_ID
+2021-03-04 16:59:20,931 - MyLog - DEBUG - 
+SELECT USER_ID,
+       PWD,
+       USER_NAME,
+       MOBILE,
+       EMAIL,
+       BIRTH,
+       IN_DATE,
+       IN_USER_ID,
+       UP_DATE,
+       UP_USER_ID
+FROM SUSER
+WHERE USER_ID = :V_USER_ID
+  AND PWD = :V_PWD
+ORDER BY USER_ID
+2021-03-04 17:00:42,582 - MyLog - DEBUG - 
+SELECT USER_ID,
+       PWD,
+       USER_NAME,
+       MOBILE,
+       EMAIL,
+       BIRTH,
+       IN_DATE,
+       IN_USER_ID,
+       UP_DATE,
+       UP_USER_ID
+FROM SUSER
+WHERE USER_ID = :V_USER_ID
+  AND PWD = :V_PWD
+ORDER BY USER_ID
+2021-03-04 17:00:46,036 - MyLog - DEBUG - 
+SELECT USER_ID,
+       PWD,
+       USER_NAME,
+       MOBILE,
+       EMAIL,
+       BIRTH,
+       IN_DATE,
+       IN_USER_ID,
+       UP_DATE,
+       UP_USER_ID
+FROM SUSER
+ORDER BY USER_ID
+2021-03-04 17:00:47,251 - MyLog - DEBUG - 
+SELECT S_ID,
+       TITLE,
+       CONTENT,
+       INTERVIEW_CNT,
+       DEADLINE,
+       IN_DATE,
+       IN_USER_ID,
+       UP_DATE,
+       UP_USER_ID
+FROM SURVEY
+ORDER BY S_ID
+2021-03-04 17:00:47,770 - MyLog - DEBUG - 
+SELECT SURVEY_ID,
+       S_SEQ,
+       QUESTION,
+       A1,
+       A2,
+       A3,
+       A4,
+       IN_DATE,
+       IN_USER_ID,
+       UP_DATE,
+       UP_USER_ID
+FROM SDETAIL
+ORDER BY SURVEY_ID,
+         S_SEQ
+2021-03-04 17:10:59,348 - MyLog - DEBUG - 
+SELECT USER_ID,
+       PWD,
+       USER_NAME,
+       MOBILE,
+       EMAIL,
+       BIRTH,
+       IN_DATE,
+       IN_USER_ID,
+       UP_DATE,
+       UP_USER_ID
+FROM SUSER
+ORDER BY USER_ID
+2021-03-04 17:13:44,365 - MyLog - DEBUG - 
+SELECT SURVEY_ID,
+       S_SEQ,
+       QUESTION,
+       A1,
+       A2,
+       A3,
+       A4,
+       IN_DATE,
+       IN_USER_ID,
+       UP_DATE,
+       UP_USER_ID
+FROM SDETAIL
+ORDER BY SURVEY_ID,
+         S_SEQ
+2021-03-04 19:10:53,532 - MyLog - DEBUG - 
+SELECT USER_ID,
+       PWD,
+       USER_NAME,
+       MOBILE,
+       EMAIL,
+       BIRTH,
+       IN_DATE,
+       IN_USER_ID,
+       UP_DATE,
+       UP_USER_ID
+FROM SUSER
+ORDER BY USER_ID
+2021-03-04 19:11:28,017 - MyLog - DEBUG - 
+SELECT S_ID,
+       TITLE,
+       CONTENT,
+       INTERVIEW_CNT,
+       DEADLINE,
+       IN_DATE,
+       IN_USER_ID,
+       UP_DATE,
+       UP_USER_ID
+FROM SURVEY
+ORDER BY S_ID
+2021-03-04 19:11:29,313 - MyLog - DEBUG - 
+SELECT SURVEY_ID,
+       S_SEQ,
+       QUESTION,
+       A1,
+       A2,
+       A3,
+       A4,
+       IN_DATE,
+       IN_USER_ID,
+       UP_DATE,
+       UP_USER_ID
+FROM SDETAIL
+ORDER BY SURVEY_ID,
+         S_SEQ

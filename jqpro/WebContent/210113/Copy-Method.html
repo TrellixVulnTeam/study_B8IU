@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<link rel="stylesheet" href="../css/public.css">
+		<style type="text/css">
+			
+		</style>
+		<script type="text/javascript" src="../js/jquery-3.5.1.min.js"></script>
+		<script type="text/javascript">
+			$(function() {
+				$('.pp').on('click', function() {
+					$(this).css({
+						'font-size' : "+=5px"
+					});
+				});
+				
+				$('#btn1').on('click', function() {
+					$('#p1').clone().appendTo('#result2');
+				});
+				
+				$('#btn2').on('click', function() {
+					$('#p2').clone(true).appendTo('#result2');
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<pre>
+
+		</pre>
+		<input type="button" id="btn1" value="clone">
+		<input type="button" id="btn2" value="clone(true)">
+		<div id="result1">
+			<p class="pp" id="p1">햇살이 따뜻한 오후. 교실에서 열심히 공부 하고 있어요.</p>
+			<p class="pp" id="p2">정말로 ??? 잘 될거야</p>
+		</div>
+		<div id="result2"></div>
+	</body>
+</html>

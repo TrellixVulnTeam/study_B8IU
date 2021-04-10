@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<link rel="stylesheet" href="../css/public.css">
+		<style type="text/css">
+			div {
+				margin: 2px;
+				padding: 2px;
+			}
+			div.msg {
+				font-size: 12px;
+				width: 50%;
+				height: 20px;
+				border: none;
+				overflow: hidden;
+			}
+			div.result{
+				margin: 20px;
+				padding: 20px;
+			}
+			label {
+				width: 100px;
+				display: inline-block;
+			}
+		</style>
+		<script type="text/javascript" src="../js/jquery-3.5.1.min.js"></script>
+		<script type="text/javascript">
+			let nameReg = /^[가-힣]{2,10}$/;
+			let idReg = /^[a-z][\.0-9a-zA-Z]{3,11}$/;
+			let telReg = /^0\d{1,2}-\d{3,4}-\d{4}$/;
+			let pwReg = /^(?=.*[A-Z])(?=.*[0-9])(?=.*[a-z])(?=.*[!@#$%^&()+]).{8,20}$/;
+			let emailReg = /^([\.0-9a-zA-Z_-]+)@([a-z0-9A-Z_-]+)(\.[0-9a-zA-Z_-]+){1,2}$/;
+			
+			function nopro(object) {
+				$(object).next().html("올바른 형식이 아닙니다.");
+				$(object).next().css({
+					"color" : "red"
+				});
+				$(object).prev().find('span').empty();
+			};
+			
+			function okpro(object) {
+				$(object).next().html("형식이 올바릅니다.");
+				$(object).next().css({
+					"color" : "blue"
+				});
+				$(object).prev().find('span').empty();
+				$('<img>', {
+					'src' : '../images/Yes_Check_Circle.svg',
+					'alt' : 'Yes_Check_Circle',
+					'width' : '10px',
+					'height' : '10px'
+				}).appendTo($(object).prev().find('span'));
+			};
+			
+			$(function() {
+				$('#name').on('keyup', function() {
+					$("#result1").empty();
+					if (nameReg.test($('#name').val().trim())) {
+						okpro(this);
+					} else {
+						nopro(this);
+					}
+				});
+				
+				$('#id').on('keyup', function() {
+					$("#result1").empty();
+					if (idReg.test($('#id').val())) {
+						okpro(this);
+					} else {
+						nopro(this);
+					}
+				});
+				
+				$('#tel').on('keyup', function() {
+					$("#result1").empty();
+					if (telReg.test($("#tel").val())) {
+						okpro(this);
+					} else {
+						nopro(this);
+					}
+				});
+				
+				$('#pw').on('keyup', function() {
+					$("#result1").empty();
+					if (pwReg.test($("#pw").val())) {
+						okpro(this);
+					} else {
+						nopro(this);
+					}
+				});z
+				
+				$('#email').on('keyup', function() {
+					$("#result1").empty();
+					if (emailReg.test($("#email").val())) {
+						okpro(this);
+					} else {
+						nopro(this);
+					}
+				});
+				
+				$('#name').focusout(function() {
+					if (nameReg.test($('#name').val().trim())) {
+						$(this).next().empty();
+					}
+				});
+				
+				$('#id').focusout(function() {
+					if (idReg.test($('#id').val().trim())) {
+						$(this).next().empty();
+					}
+				});
+				
+				$('#tel').focusout(function() {
+					if (telReg.test($('#tel').val().trim())) {
+						$(this).next().empty();
+					}
+				});
+				
+				$('#pw').focusout(function() {
+					if (pwReg.test($('#pw').val().trim())) {
+						$(this).next().empty();
+					}
+				});
+				
+				$('#email').focusout(function() {
+					if (emailReg.test($('#email').val().trim())) {
+						$(this).next().empty();
+					}
+				});
+				
+				$('#btn1').on('click', function() {
+					if($("#name").val().length == 0) {
+						$("#result1").html("이름이 입력되지 않았습니다.");
+						$("#result1").css({
+							"color" : "red"
+						});
+						return false;
+					}
+					if($("#id").val().length == 0) {
+						$("#result1").html("아이디가 입력되지 않았습니다.");
+						$("#result1").css({
+							"color" : "red"
+						});
+						return false;
+					}
+					if($("#pw").val().length == 0) {
+						$("#result1").html("비밀번호가 입력되지 않았습니다.");
+						$("#result1").css({
+							"color" : "red"
+						});
+						return false;
+					}
+					if($("#tel").val().length == 0) {
+						$("#result1").html("전화번호가 입력되지 않았습니다.");
+						$("#result1").css({
+							"color" : "red"
+						});
+						return false;
+					}
+					if($("#email").val().length == 0) {
+						$("#result1").html("이메일이 입력되지 않았습니다.");
+						$("#result1").css({
+							"color" : "red"
+						});
+						return false;
+					}
+					if (!nameReg.test($('#name').val().trim())) {
+						$("#result1").html("이름의 형식이 올바르지 않습니다.");
+						$("#result1").css({
+							"color" : "red"
+						});
+						return false;
+					}
+					if (!idReg.test($('#id').val().trim())) {
+						$("#result1").html("아이디의 형식이 올바르지 않습니다.");
+						$("#result1").css({
+							"color" : "red"
+						});
+						return false;
+					}
+					if (!pwReg.test($('#pw').val().trim())) {
+						$("#result1").html("비밀번호의 형식이 올바르지 않습니다.");
+						$("#result1").css({
+							"color" : "red"
+						});
+						return false;
+					}
+					if (!telReg.test($('#tel').val().trim())) {
+						$("#result1").html("전화번호의 형식이 올바르지 않습니다.");
+						$("#result1").css({
+							"color" : "red"
+						});
+						return false;
+					}
+					if (!emailReg.test($('#email').val().trim())) {
+						$("#result1").html("이메일의 형식이 올바르지 않습니다.");
+						$("#result1").css({
+							"color" : "red"
+						});
+						return false;
+					}
+					let res = `이름 : ${$("#name").val()}<br>`;
+					res += `아이디 : ${$("#id").val()}<br>`;
+					res += `비밀번호 : ${$("#pw").val()}<br>`;
+					res += `전화번호 : ${$("#tel").val()}<br>`;
+					res += `이메일 : ${$("#email").val()}`;
+					$("#result1").html(res);
+					$("#result1").css({
+						"color" : "black"
+					});
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<pre>
+
+		</pre>
+		<form action="" method="post">
+			<label for="name" >이름 <span></span></label><input type="text" id="name">
+			<div class="msg" id="namemsg"></div>
+			<br>
+			<label for="id">아이디 <span></span></label><input type="text" id="id">
+			<div class="msg" id="idmsg"></div>
+			<br>
+			<label for="pw">비밀번호 <span></span></label><input type="password" id="pw">
+			<div class="msg" id="pwmsg"></div>
+			<br>
+			<label for="tel">전화번호 <span></span></label><input type="tel" id="tel">
+			<div class="msg" id="telmsg"></div>
+			<br>
+			<label for="email">이메일 <span></span></label><input type="email" id="email">
+			<div class="msg" id="emailmsg"></div>
+			<br>
+			<input type="button" id="btn1" value="확인">
+		</form>
+		<div class="result" id="result1"></div>
+	</body>
+</html>

@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<link rel="stylesheet" href="../css/public.css">
+		<script type="text/javascript">
+			let arr = ["사과", "복숭아", "참외", "포도", "바나나", "사과", "멜론", "파인애플", "사과"];
+			
+			function print(res, id){
+				document.getElementById(id).innerHTML = res;
+			}
+			
+			function proc1(){
+				let res = "원래 배열<br>" + arr + "<br><br>";
+				arr.push(prompt("추가 할 과일 이름 입력"));
+				res += "추가된 배열<br>" + arr + "<br>";
+				print(res, "result1");
+			}
+			
+			function proc2(){
+				let res = "원래 배열<br>" + arr + "<br><br>";
+				res += "배열에서 하나 출력<br>" + arr.pop() + "<br><br>";
+				res += "삭제된 배열<br>" + arr + "<br><br>";
+				print(res, "result2");
+			}
+			
+			function proc3(){
+				let res = "원래 배열<br>" + arr + "<br><br>";
+				arr.reverse();
+				res += "reverse 실행 후 바뀐 배열<br>" + arr;
+				
+				print(res, "result3")
+			}
+			
+			function proc4(){
+				let res = "원래 배열<br>" + arr + "<br><br>";
+				arr.sort();
+				res += "sort 실행 후 바뀐 배열<br>" + arr;
+				
+				print(res, "result4")
+			}
+			
+			function proc5(){
+//				사과의 위치
+				idx1 = arr.indexOf("사과");
+				
+//				바나나의 위치
+				idx2 = arr.indexOf("바나나");
+				
+				let newarr = arr.slice(idx1 + 1, idx2)
+				let res = "원래 배열<br>" + arr + "<br><br>";
+				res += "slice(2, 7)<br>" + newarr;
+
+				print(res, "result5")
+			}
+			
+			function proc6(){
+				
+			}
+			
+			function proc7() {
+				let res = "원래 배열<br>";
+				res += arr + "<br><br>";
+				arr.splice(3, 2, "딸기", "감자", "고구마");
+				res += 'splice(3, 2, "딸기", "감자", "고구마")<br>';
+				res += arr;
+				
+				print(res, "result7");
+			}
+			
+			function proc8() {
+				let res = "원래 배열<br>";
+				res += arr + "<br><br>";
+				
+//				배열 수정
+				arr.splice(2, 0, "진달래", "개나리", "수선화");
+				res += 'splice(2, 0, "진달래", "개나리", "수선화")<br>';
+				res += arr;
+				
+				print(res, "result8")
+			}
+			
+			function proc9() {
+				let res = "원래 배열<br>";
+				res += arr + "<br><br>";
+				arr.splice(4, 1);
+				res += 'splice(4, 1)<br>';
+				res += arr;
+				
+				print(res, "result9")
+			}
+			
+			function proc10() {
+				let su = [122, 200, 34, 59, 100, 67, 343];
+				
+				let res = "arr : " + arr + "<br>";
+				res += "arr.length : " + arr.length + "<br>";
+				res += "su : " + su + "<br>"
+				res += "su의 길이 : " + su.length + "<br><br>";
+				
+				let suarr = su.concat(arr);
+				res += "suarr : " + suarr + "<br>";
+				res += "suarr.length : " + suarr.length;
+				print(res, "result10");
+			}
+			
+			function proc11() {
+				let res = 'arr : ["' + arr[0] +'"';
+                for (let i = 1; i < arr.length; i++) {
+					res += ', "' + arr[i] + '"';
+				}
+                res += "]<br>";
+				res += "arr.legnth : " + arr.length + "<br><br>";
+				
+//				문자열로 변환
+				let vjoin = arr.join(", ");
+				res += "vjoin : " + vjoin + "<br>";
+				
+				res += "vjoin.length: " + vjoin.length;
+				
+				print(res, "result11");
+			}
+		</script>
+		<style type="text/css">
+			div{
+				height: auto;
+				padding : 5px;
+			}
+		</style>
+	</head>
+	<body>
+		<pre>
+let arr = ["사과", "복숭아", "참외", "포도", "바나나", "사과", "멜론", "파인애플", "사과"];
+arr.push(data);
+	: 배열의 마지막 요소로 추가
+arr.pop();
+	: 배열의 마지막 요소를 꺼내기
+arr.reverse();
+arr.sort();
+arr.slice(start, end);
+	: start부터 end - 1까지의 문자열을 잘라내어 새로운 배열을 만든다.ㅇ
+		</pre>
+		<input type="button" value="push" onclick="proc1()">
+		<input type="button" value="pop" onclick="proc2()">
+		
+		<div id="result1">
+			
+		</div>
+		<div id="result2">
+			
+		</div>
+		<input type="button" value="reverse" onclick="proc3()">
+		<input type="button" value="sort" onclick="proc4()">
+		<div id="result3">
+			
+		</div>
+		<div id="result4">
+			
+		</div>
+		<input type="button" value="slice" onclick="proc5()">
+		<input type="button" value="slice" onclick="proc6()">
+		<div id="result5">
+			
+		</div>
+		<div id="result6">
+			
+		</div>
+		<pre>
+splice(index, n, a, b, c ···.)
+	: 배열을 수정, 삭제
+splice(3, 2, 'A', 'B', 'C' ···.)
+	: 3번째 위치에서 2개를 삭제하고, 3번째 위치에 'A', 'B', 'C'를 삽입.
+splice(2, 0, 'A', 'B', 'C')
+	: 2번째 위치에 'A', 'B', 'C'를 삽입.
+splice(4, 1)
+	: 4번째 위치에서 1개 삭제.
+		</pre>
+		<input type="button" value="splice" onclick="proc7()">
+		<input type="button" value="splice" onclick="proc8()">
+		<input type="button" value="splice" onclick="proc9()">
+		<div id="result7">
+			
+		</div>
+		<div id="result8">
+			
+		</div>
+		<div id="result9">
+			
+		</div>
+		<pre>
+배열1.concat(배열2);
+	: 여러 개의 배열을 하나의 배열로 합친다.
+배열.join(구분자);
+	: 하나의 배열을 하나의 문자열로 변환한다.
+		</pre>
+		<input type="button" value="concat" onclick="proc10()">
+		<input type="button" value="join" onclick="proc11()">
+		<div id="result10">
+			
+		</div>
+		<div id="result11">
+			
+		</div>
+	</body>
+</html>

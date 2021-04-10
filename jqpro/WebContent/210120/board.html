@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="../js/board.js"></script>
+		<style>
+			div {
+				
+			}
+			p {
+				box-sizing: border-box;
+			}
+			
+			p.p1 {
+				float: left;
+				width: calc(75% - 1%);
+				height: 20px;
+			}
+			
+			p.p2 {
+				float: right;
+				width: calc(24% - 1%);
+				height: 20px;
+			}
+			
+			p.p3 {
+				clear: both;
+			}
+			textarea {
+				vertical-align: middle;
+			}
+			input[name=reply] {
+				height: 45px;
+				vertical-align: middle;
+			}
+			label {
+				width: 100px;
+				display: inline-block;
+				text-align: center;
+			}
+			#modifyForm{
+				display: none;
+			}
+		</style>
+		<script>
+		$(function() {
+			let modifycont;
+			let i = 3;
+			let idx;
+			let clicked;
+			// 객체 생성
+			let board = {
+					// board.writer[0]
+					writer : ["홍길동",
+					          "개나리",
+					          "진달래"],
+					
+					// board.title[0]
+					title : ["게시판 만들기",
+					         "질문있어요",
+					         "어려워요"],
+					
+					content : ["안녕하세요.<br>게시판 폼입니다.<br>데이터가 없어서 아쉬워요.",
+					           "게시판은<br>어떻게 만들어요?<br>궁금합니다.",
+			        		   "천천히 집중해서 잘 보아요.<br>어렵지 않아요."],
+			        		   
+					date : ["2020. 03. 18.",
+					        "2021. 01. 12.",
+					        "2019. 06. 20."],
+					        
+			        email : ["a123@aaa.com",
+			                 "bbbb@bbb.co.kr",
+			                 "ccc@ccc.com"]
+			};
+			
+			// 함수 호출
+			listPro(board);
+			
+			// 이벤트
+			// bind 방식
+			// 동적으로 실행된 요소는 불가
+			/*
+			$('.action').on('click', function() {
+				let cname = $(this).attr('name');
+				let idx = $(this).attr('idx');
+				
+				if (cname == "delete") {
+					alert(idx + "번을 삭제합니다.");
+					$(this).parents('.panel.panel-default').remove();
+				} else if (cname == "modify") {
+					alert(idx + "번을 수정합니다.");
+				} else if (cname == "reply") {
+					//입력한 내용을 가져온다.
+			
+					if($(this).parent().find('textarea').val()==""){
+						alert("본문을 입력해주세요.");
+						return false;
+					}
+					
+					let txt = $(this).parent().find('textarea').val();
+					txt = txt.replace(/\r/g, "").replace(/\n/g,"<br>");
+					
+					let rname = String.fromCharCode(Math.random()*26+65);
+					let rname2 = String.fromCharCode(Math.random() *26+97);
+					let today = (new Date()).toLocaleDateString();
+					reply = {}
+					reply.text = txt;
+					reply.name = rname + rname2;
+					reply.today = today;
+					
+					//alert(idx + "번의 댓글을 등록합니다.");
+					replyPro(this,reply);
+					$(this).parent().find('textarea').val("");
+					//replyPro($(this).parents('.panel.panel-default'), idx);
+				}
+			});
+			*/
+			// 이벤트
+			// delegate 방식
+			// 동적으로 실행된 요소도 가능
+			
+			$("div.container").on("click", ".action", function() {
+				let cname = $(this).attr('name');
+				idx = $(this).attr('idx');
+				
+				if (cname == "delete") {
+					alert("글을 삭제합니다.");
+					$(this).parents('.panel.panel-default').remove();
+				} else if (cname == "modify") {
+					idx = $(this).attr('idx');
+					clicked = $(this)
+					
+					$('#modModal').find('#mname').val(board.writer[idx]);
+					$('#modModal').find('#mtitle').val(board.title[idx]);
+					$('#modModal').find('#mcontent').val(board.content[idx].replace("<br>", "\n"));
+					$('#modModal').find('#memail').val(board.email[idx]);
+					
+					
+					//alert("글을 수정합니다.");
+				} else if (cname == "reply") {
+					//입력한 내용을 가져온다.
+			
+					if($(this).parent().find('textarea').val()==""){
+						alert("본문을 입력해주세요.");
+						return false;
+					}
+					
+					let txt = $(this).parent().find('textarea').val();
+					txt = txt.replace(/\r/g, "").replace(/\n/g,"<br>");
+					
+					let rname = String.fromCharCode(Math.random()*26+65);
+					let rname2 = String.fromCharCode(Math.random() *26+97);
+					let today = (new Date()).toLocaleDateString();
+					reply = {}
+					reply.text = txt;
+					reply.name = rname + rname2;
+					reply.today = today;
+					
+					//alert(idx + "번의 댓글을 등록합니다.");
+					replyPro(this,reply);
+					$(this).parent().find('textarea').val("");
+					//replyPro($(this).parents('.panel.panel-default'), idx);
+				} else if (cname == "r_modify") {
+					//$(this).parents('.pannel-reply').find('.p3')의 내용을
+					//가져와서 저장해놓는다. <br>을 \n으로 변경.
+					modifycont = $(this).parents('.panel-reply').find('.p3').html();
+					modifycont = modifycont.replace("<br>","\n");
+					
+					//$(this).parents('.panel-reply').find('.p3') - empty (지운다)
+					$(this).parents('.panel-reply').find('.p3').empty();
+					
+					//저장한 원래 내용을 #modifyForm #testdp 출력
+					$(this).parents('.panel-reply').find('.p3').append($('#modifyForm'))
+					$('#modifyForm #test').val(modifycont);
+					
+					$("#modifyForm").show();
+				} else if (cname == "r_delete") {
+					
+// 					board.writer.remove($(this).attr(idx));
+// 					board.title.remove($(this).attr(idx));
+// 					board.content.remove($(this).attr(idx));
+// 					board.date.remove($(this).attr(idx));
+// 					board.email.remove($(this).attr(idx));
+					$(this).parents(".panel-reply").remove();
+				} else if (cname == "list") {
+					let vclass = $(this).parents('.panel').find('.in').attr('class');
+					if (typeof vclass == 'undefined') {
+						let h = $(this).parents('.panel-default').find('span.h');
+						let count = parseInt($(h).text()) + 1
+						$(h).text(count);
+					}
+				}
+			});
+			$('#send').on('click', function() {
+				if ($('#name').val() == "" | $('#title').val() == "" | $('#content').val() == "" | $('#content').val("") == "" | $("#email").val() == "") {
+					alert("작성되지 않은 항목이 있습니다.");
+					return false;
+				}
+				/*
+				data = {};
+				data.name = $('#name').val();
+				data.title = $('#title').val();
+				data.content = $('#content').val().replace("\r","").replace("\n","<br>");
+				data.email = $("#email").val();
+				data.i = i++;
+				$("#name").val("");
+				$("#title").val("");
+				$('#content').val("");
+				$("#email").val("");
+				writePro(data);
+				$("#myModal").modal('hide');
+				*/
+				
+				board.writer.unshift($('#name').val());
+				board.title.unshift($('#title').val());
+				board.content.unshift($('#myModal').find('#contents').val().replace("\r", "").replace("\n", "<br>"));
+				board.date.unshift((new Date()).toLocaleDateString());
+				board.email.unshift($('#email').val());
+				$("#name").val("");
+				$("#title").val("");
+				$('#contents').val("");
+				$("#email").val("");
+				$("#myModal").modal('hide');
+				listPro(board);
+			});
+			$('#btnOk').on('click', function() {
+				//alert("댓글을 수정합니다.");
+				
+				//#modifyForm #test에 수정된 내용을 가져온다.
+				//엔터(\r\n)를 <br>로ㅓ 변경
+				let aa = $("#modifyForm #test").val();
+				aa = aa.replace(/\r/g, "").replace(/\n/g, "<br>");
+				
+				//p 태그에 출력\
+				let pp3 = $('#modifyForm').parent();
+				
+				
+				//#modifyForm을 닫는다
+				$('body').append($('#modifyForm'));
+				$('#modifyForm').hide();
+				
+				$(pp3).html(aa);
+			});
+			$('#btnReset').on('click', function() {
+				modifycont = modifycont.replace(/\r/g, "").replace(/\n/g, "<br>");
+				
+				let pp3 = $('#modifyForm').parent();
+				
+				$('body').append($('#modifyForm'));
+				$('#modifyForm').hide();
+				
+				$(pp3).html(modifycont);
+				//수정폼을 닫기
+				
+				//원래 [p3에 있었던 내용을 그대로 출력]
+				
+				//수정품을 다시 body로 보내기
+				// 수정폼을 안보이게 ㅏ멫처
+			});
+			$('#msend').on('click', function() {
+				let pbody = $(clicked).parents('.panel-default');
+				
+				board.writer[idx] = $('#modModal').find('#mname').val();
+				board.title[idx] = $('#modModal').find('#mtitle').val();
+				board.content[idx] = $('#modModal').find('#mcontent').val().replace("\r", "").replace("\n", "<br>");
+				board.email[idx] = $('#modModal').find('#memail').val();
+				$('#modModal').modal('hide');
+				listPro(board);
+			});
+		});
+		</script>
+	</head>
+	<body>
+		<div id="modifyForm">
+			<textarea id="test" rows="5" cols="30"></textarea>
+			<input type="button" class="action" name="btnOk" value="확인" id="btnOk">
+			<input type="button" class="action" name="btnReset" value="취소" id="btnReset">
+		</div>
+	
+	
+		<div class="container">
+			<h2>Accordion Example</h2>
+			<button type="button" data-toggle="modal" data-target="#myModal">글쓰기</button>
+			<!-- Modal -->
+			<div class="modal fade" id="myModal" role="dialog">
+				<div class="modal-dialog">
+				
+					<!-- Modal content-->
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal">&times;</button>
+							<h4 class="modal-title">Modal Header</h4>
+						</div>
+						<div class="modal-body">
+							<form action="" method="post">
+								<label for="name">이름</label><input type="text" id="name">
+								<br>
+								<label for="title">제목</label><input type="text" id="title">
+								<br>
+								<label for="contents">내용</label><textarea id="contents"></textarea>
+								<br>
+								<label for="email">이메일</label><input type="email" id="email">
+								<br>
+								<input type="button" class="btn btn-default" id="send" value="확인">
+							</form>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			 
+			 <!-- 글 수정 Modal -->
+			<div class="modal fade" id="modModal" role="dialog">
+				<div class="modal-dialog">
+				
+					<!-- Modal content-->
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal">&times;</button>
+							<h4 class="modal-title">Modal Header</h4>
+						</div>
+						<div class="modal-body">
+							<form action="" method="post">
+								<label for="mname">이름</label><input type="text" id="mname">
+								<br>
+								<label for="mtitle">제목</label><input type="text" id="mtitle">
+								<br>
+								<label for="mcontent">내용</label><textarea rows="10" cols="50" id="mcontent"></textarea>
+								<br>
+								<label for="memail">이메일</label><input type="email" id="memail">
+								<br>
+								<input type="mbutton" class="btn btn-default" id="msend" value="확인">
+							</form>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

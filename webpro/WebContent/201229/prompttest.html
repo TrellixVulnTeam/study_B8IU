@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<link rel="stylesheet" href="../css/public.css">
+		<script>
+			function input1(){
+				var vname = prompt("이름을 입력하세요.", "한글로 입력"); 
+//				document.write(vname)
+				
+//				id가 d1인 요소를 변수 vd1에 저장한다.
+				var vd1 = document.getElementById('d1');
+				
+//				출력 : innerHTML, textContent
+				vd1.textContent = "<strong>" + vname + "</storng>";
+				vd1.style.fontSize = "2.0em";
+				vd1.style.color = "blue";
+			}
+		</script>
+	</head>
+	<body>
+		<pre>
+1. 입력하기 - prompt를 이용. return 값은 문자열 ( String ) 이다.
+	var vname = prompt("이름을 입력하세요.", "한글로 입력");
+	
+2. div 요소에 출력하기 - id가 d1인 요소.
+	var vd1 = document.getElementById('d1');
+	
+3. innerHTML or textContent를 이용하여 출력.
+	내용 중 html 태그가 포함되어 있을 때는 innerHTML로 출력
+	vd1.innerHTML = vname;
+	내용 중 html 태그가 포함되어 있지 않을 때는 innerHTML 또는 textContent로 출력. 
+	vd1.textContent = vname;
+		</pre>
+		<button type="button" onclick="input1();">확인</button>
+		<h1>출력</h1>
+		<div id="d1">
+			
+		</div>
+	</body>
+</html>

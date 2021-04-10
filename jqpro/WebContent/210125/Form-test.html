@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<link rel="stylesheet" href="../css/public.css">
+		<style type="text/css">
+			
+		</style>
+		<script type="text/javascript" src="../js/jquery-3.5.1.min.js"></script>
+		<script type="text/javascript">
+			$(function() {
+				$('#btn2').on('click', function() {
+					$.ajax({
+						url : "first.jsp",
+						type : "post",
+						data : "name=" + $("#name").val() + "&addr=" + $("#addr").val(),
+						success : function(res) {
+							$("#result1").html(res);
+						},
+						error : function(xhr) {
+							alert("상태 : " + xhr.status);
+						},
+						dataType : "text"
+					});
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<pre>
+동기방식으로 submit 수행하면
+수행 결과를 새로운 page로 보여준다.
+		</pre>
+		<form action="first.jsp" method="post">
+			이름<input type="text" name="name"><br>
+			주소<input type="text" name="addr"><br>
+			<input type="submit" id="btn1" value="확인">
+		</form>
+		<br>
+		<pre>
+비동기방식으로 전송하면
+수행결과가 result1에 출력된다.
+		</pre>
+		<form action="first.jsp" method="post">
+			이름<input type="text" id="name"><br>
+			주소<input type="text" id="addr"><br>
+			<input type="button" id="btn2" value="확인">
+		</form>
+		<br>
+		<div id="result1">
+			
+		</div>
+	</body>
+</html>

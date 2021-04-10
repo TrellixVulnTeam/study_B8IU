@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            text-align: center;
+            margin: 5px;
+        }
+
+        table table th {
+            width: 100px;
+        }
+
+        label {
+            display: inline-block;
+            width: 100px;
+        }
+
+        input {
+            margin: 5px;
+        }
+    </style>
+    <script src="./js/jquery-3.5.1.js"></script>
+    <script>
+        function setData(col01, col02, col03) {
+            $('#col01').val(col01);
+            $('#col02').val(col02);
+            $('#col03').val(col03);
+        }
+
+        function fn_add() {
+            var col01 = $('#col01').val();
+            var col02 = $('#col02').val();
+            var col03 = $('#col03').val();
+
+            var param = "";
+            param += "dummy=" + Math.random();
+            param += "&col01=" + col01;
+            param += "&col02=" + col02;
+            param += "&col03=" + col03;
+            console.log(param)
+            $.ajax({
+                url: "sampleinsert.ajax",
+                data: param,
+                dataType: "json",
+                type: "post",
+                async: false,
+                statusCode: {
+                    404: function () {
+                        alert("네트워크가 불안정합니다. 다시 시도부탁드립니다.");
+                    }
+                },
+                success: function (data) {
+                    fn_add_callback(data);
+                }
+            });
+        }
+
+        function fn_add_callback(data) {
+            if (data == null) {
+                return;
+            }
+
+            if (data["response"] == "ok") {
+                alert("정상적으로 추가되었습니다.");
+                location.reload()
+            } else {
+                alert("추가 중 문제가 발생하였습니다.");
+            }
+        }
+
+        function fn_upd() {
+            var col01 = $('#col01').val();
+            var col02 = $('#col02').val();
+            var col03 = $('#col03').val();
+
+            var param = "";
+            param += "dummy=" + Math.random();
+            param += "&col01=" + col01;
+            param += "&col02=" + col02;
+            param += "&col03=" + col03;
+
+            $.ajax({
+                url: "sampleupdate.ajax",
+                data: param,
+                dataType: "json",
+                type: "post",
+                async: false,
+                statusCode: {
+                    404: function () {
+                        alert("네트워크가 불안정합니다. 다시 시도부탁드립니다.");
+                    }
+                },
+                success: function (data) {
+                    fn_upd_callback(data);
+                }
+            });
+        }
+
+        function fn_upd_callback(data) {
+            if (data == null) {
+                return;
+            }
+
+            if (data["response"] == "ok") {
+                alert("정상적으로 수정되었습니다.");
+                location.reload()
+            } else {
+                alert("수정 중 문제가 발생하였습니다.");
+            }
+        }
+
+        function fn_del() {
+            var col01 = $('#col01').val();
+            var col02 = $('#col02').val();
+            var col03 = $('#col03').val();
+
+            var param = "";
+            param += "dummy=" + Math.random();
+            param += "&col01=" + col01;
+            param += "&col02=" + col02;
+            param += "&col03=" + col03;
+
+            $.ajax({
+                url: "sampledelete.ajax",
+                data: param,
+                dataType: "json",
+                type: "post",
+                async: false,
+                statusCode: {
+                    404: function () {
+                        alert("네트워크가 불안정합니다. 다시 시도부탁드립니다.");
+                    }
+                },
+                success: function (data) {
+                    fn_del_callback(data);
+                }
+            });
+        }
+
+        function fn_del_callback(data) {
+            if (data == null) {
+                return;
+            }
+
+            if (data["response"] == "ok") {
+                alert("정상적으로 삭제되었습니다.");
+                location.reload()
+            } else {
+                alert("삭제 중 문제가 발생하였습니다.");
+            }
+        }
+    </script>
+</head>
+<body>
+<table border="1">
+    <tr>
+        <td>
+            <table border="1">
+                <tr>
+                    <th>col01</th>
+                    <th>col02</th>
+                    <th>col03</th>
+                </tr>
+                {% for sample in samples %}
+                <tr>
+                    <td><a href="javascript:setData({{sample.get('col01')}}, {{sample.get('col02')}}, {{sample.get('col03')}})">{{sample.get('col01')}}</a></td>
+                    <td>{{sample.get('col02')}}</td>
+                    <td>{{sample.get('col03')}}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </td>
+        <td>
+            <table>
+                <tr>
+                    <td><label>col01</label><input type="text" name="col01" id="col01"></td>
+                </tr>
+                <tr>
+                    <td><label>col02</label><input type="text" name="col02" id="col02"></td>
+                </tr>
+                <tr>
+                    <td><label>col03</label><input type="text" name="col03" id="col03"></td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="button" value="추가" onclick="fn_add()">
+                        <input type="button" value="수정" onclick="fn_upd()">
+                        <input type="button" value="삭제" onclick="fn_del()">
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

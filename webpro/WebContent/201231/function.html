@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<link rel="stylesheet" href="../css/public.css">
+		<style type="text/css">
+			label{
+				width: 100px;
+				display: inline-block;
+				text-align: center;
+			}
+		</style>
+		<script>
+			function proc1(op) {
+				var xValue = parseInt(document.querySelector("#ix").value);
+				var yValue = parseInt(document.querySelector("#iy").value);
+				var res = "";
+				var ret = "";
+				
+				switch(op){
+					case '+' :
+//						함수 호출
+						res += xValue + " " + op +" " + yValue + " = " + add(xValue, yValue);;
+						break;
+					case '*' :
+//						함수 호출
+						res += xValue + " " + op +" " + yValue + " = " + multi(xValue, yValue);; 
+						break;
+					case '-' :
+//						함수 호출
+						res += xValue + " " + op +" " + yValue + " = " + sub(xValue, yValue);;
+						break;
+					case '/' :
+//						함수 호출
+						res += xValue + " " + op +" " + yValue + " = " + divide(xValue, yValue);; 
+						break;
+				}
+				
+				document.querySelector("#result1").innerHTML = res;
+			}
+			
+			function proc2(op){
+				var xValue = parseInt(document.querySelector("#ix").value);
+				var yValue = parseInt(document.querySelector("#iy").value);
+				
+				switch(op){
+					case '+' :
+//						함수 호출
+						print(xValue, yValue, op, add(xValue, yValue));
+						break;
+					case '*' :
+//						함수 호출
+						print(xValue, yValue, op, multi(xValue, yValue));
+						break;
+					case '-' :
+//						함수 호출
+						print(xValue, yValue, op, sub(xValue, yValue));
+						break;
+					case '/' :
+//						함수 호출
+						print(xValue, yValue, op, divide(xValue, yValue));
+						break;
+				}
+			}
+			
+			function print(xValue, yValue, op, ret){
+//				var res = xValue + " " + op +" " + yValue + " = " + ret;
+//				var result = document.querySelector("#result1")
+//				result.innerHTML = res;
+				
+				document.querySelector("#result1").innerHTML = xValue + " " + op +" " + yValue + " = " + ret;
+			}
+			
+			function add(xValue, yValue){	a
+				return xValue + yValue;
+			}
+			
+			function sub(xValue, yValue){
+				return xValue - yValue;
+			}
+			
+			function multi(xValue, yValue){
+				return xValue * yValue;
+			}
+			
+			function divide(xValue, yValue){
+				if(yValue != 0){
+					return xValue / yValue;
+				} else {
+					return "0으로 나눌 수 없습니다.";
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<pre>
+input tag에 입력한 값을 script에서 사용하기 위해 value 사용.
+		</pre>
+		<p><label>x</label><input type="text" id="ix" value="10"></p>
+		<p><label>y</label><input type="text" id="iy" value="20"></p>
+		<p>
+			<input type="button" value="확인 +" onclick="proc1('+')")>
+			<input type="button" value="확인 *" onclick="proc1('*')">
+			<input type="button" value="확인 -" onclick="proc1('-')">
+			<input type="button" value="확인 /" onclick="proc1('/')">
+		</p>
+		
+			<input type="button" value="확인 +" onclick="proc1('+')")>
+			<input type="button" value="확인 *" onclick="proc1('*')">
+			<input type="button" value="확인 -" onclick="proc1('-')">
+			<input type="button" value="확인 /" onclick="proc1('/')">
+		</p>
+		<div id="result1">
+			
+		</div>
+	</body>
+</html>

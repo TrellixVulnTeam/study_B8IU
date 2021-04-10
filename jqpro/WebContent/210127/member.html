@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<link rel="stylesheet" href="../css/public.css">
+		<style type="text/css">
+			
+		</style>
+		<script type="text/javascript" src="../js/jquery-3.5.1.min.js"></script>
+		<script type="text/javascript">
+			$(function() {
+				$("#btn1").on('click', function() {
+					$.ajax({
+						url : "member.jsp",
+						type : 'get',
+						success : function(res) {
+							let code = "";
+							
+							$.each(res, function() {
+								code += "아이디 : " + this.id + "<br>";
+								code += "이름 : " + this.name + "<br><br>";
+							})
+							
+							$("#result1").html(code);
+						}, error : function(res) {
+							alert("상태 : " + res.status)
+						}, dataType : 'json'
+					});
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<pre>
+
+		</pre>
+		<input type="button" id="btn1" value="확인">
+		<div id="result1">
+			
+		</div>
+	</body>
+</html>

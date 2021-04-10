@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<link rel="stylesheet" href="../css/public.css">
+		<style type="text/css">
+			
+		</style>
+		<script type="text/javascript" src="../js/jquery-3.5.1.min.js"></script>
+		<script type="text/javascript">
+			$(function() {
+				$('#show').on('click', function() {
+					$('img').show(600, function() {
+						alert("코알라다~~!")
+					});
+				});
+				
+				$('#hide').on('click', function() {
+					$('img').hide(600);
+				});
+				
+				$('#toggle').on('click', function() {
+					$('img').toggle(2000, 'swing');
+				});
+				
+				$('#slideUp').on('click', function() {
+					$('img').slideUp();
+				});
+				
+				$('#slideDown').on('click', function() {
+					$('img').slideDown();
+				});
+				
+				$('#slideToggle').on('click', function() {
+					$('img').slideToggle();
+				});
+				
+				$('#fadeIn').on('click', function() {
+					$('img').fadeIn();
+				});
+				
+				$('#fadeOut').on('click', function() {
+					$('img').fadeOut();
+				});
+				
+				$('#fadeToggle').on('click', function() {
+					$('img').fadeToggle();
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<pre>
+
+		</pre>
+		<input type="button" id="show" value="show">
+		<input type="button" id="hide" value="hide">
+		<input type="button" id="toggle" value="toggle">
+		<input type="button" id="slideUp" value="slideUp">
+		<input type="button" id="slideDown" value="slideDown">
+		<input type="button" id="slideToggle" value="slideToggle">
+		<input type="button" id="fadeIn" value="fadeIn">
+		<input type="button" id="fadeOut" value="fadeOut">
+		<input type="button" id="fadeToggle" value="fadeToggle">
+		<br>
+		<img src="../images/Koala.jpg" alt="코알라">
+	</body>
+</html>

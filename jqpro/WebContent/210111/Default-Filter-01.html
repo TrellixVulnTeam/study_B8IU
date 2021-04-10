@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<link rel="stylesheet" href="../css/public.css">
+		<style type="text/css">
+			div{
+				height: auto;
+			}
+		</style>
+		<script type="text/javascript" src="../js/jquery-3.5.1.min.js"></script>
+		<script type="text/javascript">
+//			준비되면
+			$(function() {
+//				버튼 클릭
+				$('#btn1').on('click', function(){
+					$('li:first, li:last').css({
+						"background-color" : "yellow"
+					});
+					
+					$('li:lt(4)').css({
+						"font-size" : "2.0em",
+						"font-weight" : "bold"
+					});
+					
+					$('li:eq(5)').css({
+						"background-color" : "red"
+					});
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<pre>
+//준비되면
+$(function() {
+//	버튼 클릭
+	$('#btn1').on('click', function(){
+//		첫 번째, 마지막 요소 선택
+		$('li:first, li:last').css({
+			"background-color" : "yellow"
+		});
+		
+//		4보다 작은 요소 선택
+		$('li:lt(4)').css({
+			"font-size" : "2.0em",
+			"font-weight" : "bold"
+		});
+		
+//		5번째 요소 선택
+		$('li:eq(5)').css({
+			"background-color" : "red"
+		});
+	});
+});
+		</pre>
+		<input type="button" id="btn1" value="확인">
+		<div id="result1">
+			<ul>
+				<li>one</li>
+				<li>two</li>
+				<li>three</li>
+				<li>four</li>
+				<li>five</li>
+				<li>six</li>
+				<li>seven</li>
+				<li>eight</li>
+				<li>nine</li>
+			</ul>
+		</div>
+	</body>
+</html>

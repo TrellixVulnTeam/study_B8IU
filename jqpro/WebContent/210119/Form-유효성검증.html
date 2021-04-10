@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<link rel="stylesheet" href="../css/public.css">
+		<style type="text/css">
+			label {
+				width: 100px;
+				display: inline-block;
+				text-align: center;
+			}
+		</style>
+		<script type="text/javascript" src="../js/jquery-3.5.1.min.js"></script>
+		<script type="text/javascript" src="../js/formreg.js"></script>
+		<script type="text/javascript">
+			$(function() {
+				$('#btn1').on('click', function() {
+					if (nameCheck($("#name").val().trim())
+							&& idCheck($("#id").val().trim())
+							&& telCheck($("#tel").val().trim())
+							&& pwCheck($("#pw").val())
+							&& emailCheck($("#email").val())) {
+						res = `이름 : ${$("#name").val()}<br>`
+						res += `id : ${$("#id").val()}<br>`
+						res += `pw : ${$("#pw").val()}<br>`
+						res += `tel : ${$("#tel").val()}<br>`
+						res += `email : ${$("#email").val()}<br>`
+					}
+					$('#result1').html(res);
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<pre>
+이름 입력
+	- 2 ~ 10까지의 한글로 입력.
+아이디
+	- 영문 소문자로 시작하여 4 ~ 12의 길이를 가지며, 영문과 숫자를 조합.
+비밀번호
+	- 영문 대소문자 숫자 특수문자가 각각 하나 이상 입력된 8 ~ 20 자리의 조합.
+전화번호
+	- 2 ~ 3자리 - 3 ~ 4자리 - 4자리의 숫자 형태.
+이메일
+	- 이메일 형식에 맞춰 입력.
+	- 영문과 소문자로 시작할 수 있고, @문자가 오고.영문소문자
+		: ririnto@kakao.com
+		: ririnto.game@gmail.com
+		</pre>
+		<form action="" method="post">
+			<label for="name">이름</label><input type="text" id="name">
+			<br>
+			<label for="id">아이디</label><input type="text" id="id">
+			<br>
+			<label for="pw">비밀번호</label><input type="password" id="pw">
+			<br>
+			<label for="tel">전화번호</label><input type="tel" id="tel">
+			<br>
+			<label for="email">이메일</label><input type="email" id="email">
+			<br>
+			<input type="button" id="btn1" value="확인">
+		</form>
+		<div id="result1"></div>
+	</body>
+</html>

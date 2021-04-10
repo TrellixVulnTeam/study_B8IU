@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<link rel="stylesheet" href="../css/public.css">
+		<script type="text/javascript">
+			function proc1() {
+				let arr = ["가위", "바위", "보"]
+				let random = arr[parseInt(Math.random()*3)]
+				let userInput = prompt("가위, 바위, 보 중 하나를 선택하세요.", "가위, 바위, 보");
+				let res = "";
+				if (userInput != "가위" && userInput != "바위" && userInput != "보"){
+					alert("올바른 입력이 아닙니다!");
+				} else {
+					if (userInput == random) {
+						res += "컴퓨터 : "+ random + "<br>사용자 : " + userInput + "<br>결과 : 비겼습니다.";
+					} else if (userInput == "가위" && random == "바위"
+							|| userInput == "바위" && random == "보"
+							|| userInput == "보" && random=="가위") {
+						res += "컴퓨터 : "+ random + "<br>사용자 : " + userInput + "<br>결과 : 당신은 졌습니다.";
+					} else {
+						res += "컴퓨터 : "+ random + "<br>사용자 : " + userInput + "<br>결과 : 이겼습니다.";
+					}
+					document.getElementById("result1").innerHTML = res;
+				}
+			}
+			
+			function proc2() {
+				let lottoArr = [];
+				while (lottoArr.length < 6){
+					let random = parseInt(Math.random() * 45 + 1);
+					if (lottoArr.indexOf(random) == -1){
+						lottoArr.push(random);
+					}
+				}
+				lottoArr = lottoArr.sort(function(a, b) {
+					  return a - b;
+				});
+				let res = "추첨 결과 : " + lottoArr;
+				document.getElementById("result2").innerHTML = res;
+			}
+		</script>
+	</head>
+	<body>
+		<pre>
+가위 바위 보 게임을 할 수 있는 프로그램을 작성하시오 .
+(단 , 컴퓨터는 랜덤을 이용하고 , 사용자는 prompt 로 입력받아서 처리)
+		</pre>
+		<input type="button" id="btn1" value="확인" onclick="proc1()">
+		<div id="result1">
+			
+		</div>
+		<pre>
+로또 번호를 생성하는 프로그램을 작성하시오. ( 1 번 ~ 45 번 중 6 개의 번호를 추첨 )
+		</pre>
+		<input type="button" id="btn2" value="확인" onclick="proc2()">
+		<div id="result2">
+			
+		</div>
+	</body>
+</html>

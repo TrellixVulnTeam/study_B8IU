@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<link rel="stylesheet" href="../css/public.css">
+		<style type="text/css">
+			img {
+				width: 200px;
+				height: 300px;
+			}
+		</style>
+		<script type="text/javascript" src="../js/jquery-3.5.1.min.js"></script>
+		<script type="text/javascript">
+			$(function() {
+				$('a').on('click', function() {
+					event.preventDefault();
+					
+					let href = $(this).attr('href')
+//					$('img').attr('src', href);
+					
+//					이미지가 사라지고 난 후 새로운 이미지를 보여준다.
+					
+//					현재 이미지가 사라짐
+					$('img').fadeOut(1000, function() {
+//						이미지 변경
+						$('img').attr('src', href);
+						
+//						이미지가 나타난다.
+						$('img').show(600);
+					});
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<pre>
+a-Tag
+	- 페이지 이동을 수행한다.
+	- 페이지 이동을 수행하지 않도록 설정
+		: event.preventDefault();
+			→ 해당 요소의 기본 이벤트를 실행하지 않도록 방지
+		</pre>
+		<ul>
+			<li><a href="../images/jQuery.jpg">jQuery</a></li>
+			<li><a href="../images/JSP2_1.jpg">JSP</a></li>
+			<li><a href="../images/UML.jpg">UML</a></li>
+			<li><a href="../images/ajaxin.jpg">AJAX</a></li>
+		</ul>
+		<hr>
+		<img src="../images/noImage.png" alt="">
+	</body>
+</html>

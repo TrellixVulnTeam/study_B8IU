@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<link rel="stylesheet" href="../css/public.css">
+		<style type="text/css">
+			.siblings * { 
+				display: block;
+				border: 2px solid lightgrey;
+				color: lightgrey;
+				padding: 5px;
+				margin: 15px;
+			}
+			
+			.ancestors * { 
+				display: block;
+				border: 2px solid lightgrey;
+				color: lightgrey;
+				padding: 5px;
+				margin: 15px;
+			}
+		</style>
+		<script type="text/javascript" src="../js/jquery-3.5.1.min.js"></script>
+		<script type="text/javascript">
+			$(function() {
+				$('#btn1').on('click', function() {
+					$('#result1 li').css({
+						"border" : "2px solid lightgrey",
+						"color" : "lightgrey"
+					});
+					$('#result1 li.start').next().css({
+						'color' : 'red',
+						'border' : '2px solid red'
+					});
+				});
+				
+				$('#btn2').on('click', function() {
+					$('#result1 li').css({ 
+						"border" : "2px solid lightgrey",
+						"color" : "lightgrey"
+					});
+					$('#result1 li.start').nextAll().css({
+						'color' : 'blue',
+						'border' : '2px solid blue'
+					});
+				});
+				
+				$('#btn3').on('click', function() {
+					$('#result1 li').css({
+						"border" : "2px solid lightgrey",
+						"color" : "lightgrey"
+					});
+					$('#result1 li.start').nextUntil('#result1 li.stop').css({
+						'color' : 'green',
+						'border' : '2px solid green'
+					});
+				});
+				
+				$('#btn4').on('click', function() {
+					$('#result2 li').css({
+						"border" : "2px solid lightgrey",
+						"color" : "lightgrey"
+					});
+					$('#result2 li.start').prev().css({
+						'color' : 'red',
+						'border' : '2px solid red'
+					});
+				});
+				
+				$('#btn5').on('click', function() {
+					$('#result2 li').css({
+						"border" : "2px solid lightgrey",
+						"color" : "lightgrey"
+					});
+					$('#result2 li.start').prevAll().css({
+						'color' : 'blue',
+						'border' : '2px solid blue'
+					});
+				});
+				
+				$('#btn6').on('click', function() {
+					$('#result2 li').css({
+						"border" : "2px solid lightgrey",
+						"color" : "lightgrey"
+					});
+					$('#result2 li.start').prevUntil('#result2 li.stop').css({
+						'color' : 'green',
+						'border' : '2px solid green'
+					});
+				});
+				
+				$('#btn7').on('click', function() {
+					$('#result3 span').parents().css({
+						"border" : "2px solid lightgrey",
+						"color" : "lightgrey"
+					});
+//					result3 span의 부모
+					$('#result3 span').parent().css({
+						"color": "red",
+						"border": "2px solid red"
+					});
+				});
+				
+				$('#btn8').on('click', function() {
+					$('#result3 span').parents().css({
+						"border" : "2px solid lightgrey",
+						"color" : "lightgrey"
+					});
+//					result3 span의 모든 조상을 검색
+					$('#result3 span').parents().css({
+						"color": "blue",
+						"border": "2px solid blue"
+					});
+				});
+				
+				$('#btn9').on('click', function() {
+					$('#result3 span').parents().css({
+						"border" : "2px solid lightgrey",
+						"color" : "lightgrey"
+					});
+//					result3 span의 조상들 중 ul을 검색
+					$('#result3 span').parents('ul').css({
+						"color": "green",
+						"border": "2px solid green"
+					});
+				});
+				
+				$('#btn10').on('click', function() {
+					$('#result3 span').parents().css({
+						"border" : "2px solid lightgrey",
+						"color" : "lightgrey"
+					});
+//					result3 span의 조상들 중 result3 사이의 조상을 검색
+					$('#result3 span').parentsUntil('#result3').css({
+						"color": "purple",
+						"border" : "2px solid purple"
+					});
+				});
+				
+				$('#btn11').on('click', function() {
+					$('#result').find('*').css({
+						"border" : "2px solid lightgrey",
+						"color" : "lightgrey"
+					});
+//					result4를 기준으로 후손 span을 검색
+					$('#result4').find('span').css({
+						"color" : "red",
+						"border" : "2px solid red"
+					});
+				});
+				
+				$('#btn12').on('click', function() {
+					$('#result').find('*').css({
+						"border" : "2px solid lightgrey",
+						"color" : "lightgrey"
+					});
+//					#btn12를 기준으로 후손 span을 검색
+					$(this).parent().find('span').css({
+						"color" : "blue",
+						"border" : "2px solid blue"
+					});
+				});
+				
+				$('#btn13').on('click', function() {
+					$('#result').find('*').css({
+						"border" : "2px solid lightgrey",
+						"color" : "lightgrey"
+					});
+//					#btn13을 기준으로 후손 span을 검색
+					$(this).parents('#result4').find('span').css({
+						"color" : "green",
+						"border" : "2px solid green"
+					})
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<pre>
+
+		</pre>
+		<div id="result1">
+			<input type="button" id="btn1" value="next">
+			<input type="button" id="btn2" value="nextAll">
+			<input type="button" id="btn3" value="nextUntil">
+			<div style="width:500px;" class="siblings">
+				<ul>ul (parent)  
+					<li>li (sibling)</li>
+					<li>li (sibling)</li>
+					<li class="start">li (sibling with class name "start")</li>
+					<li>li (the next sibling of li with class name "start")</li>
+					<li>li (the next sibling of li with class name "start")</li>
+					<li>li (the next sibling of li with class name "start")</li>
+					<li class="stop">li (sibling with class name "stop")</li>
+				</ul>   
+			</div>
+		</div>
+		
+		<div id="result2">
+			<input type="button" id="btn4" value="prev">
+			<input type="button" id="btn5" value="prevAll">
+			<input type="button" id="btn6" value="prevUntil">
+			<div style="width:500px;" class="siblings">
+				<ul>ul (parent)  
+					<li>li (sibling)</li>
+					<li>li (sibling)</li>
+					<li class="stop">li (sibling with class name "stop")</li>
+					<li>li (the prev sibling of li with class name "start")</li>
+					<li>li (the prev sibling of li with class name "start")</li>
+					<li>li (the prev sibling of li with class name "start")</li>
+					<li class="start">li (sibling with class name "start")</li>
+				</ul>   
+			</div>
+		</div>
+		<div id="result3">
+			<input type="button" id="btn7" value="parent">
+			<input type="button" id="btn8" value="parents">
+			<input type="button" id="btn9" value="parents(selector)">
+			<input type="button" id="btn10" value="parentsUntil">
+			<div class="ancestors">
+				<div style="width:500px;">div (great-grandparent)
+					<ul>ul (grandparent)  
+						<li>li (direct parent)
+							<span>span</span>
+						</li>
+					</ul>   
+				</div>
+			</div>
+		</div>
+		
+		<div id="result4">
+			<input type="button" id="btn11" value="find">
+			<input type="button" id="btn12" value="thisfind">
+			<div class="ancestors">
+				<div style="width:500px;">div (great-grandparent)
+					<ul>ul (grandparent)  
+						<li>li (direct parent)
+							<span>span
+								<input type="button" id="btn13" value="thisfind">
+							</span>
+						</li>
+					</ul>   
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,30 @@
+@CHARSET "UTF-8";
+pre{
+	background: #EDC1E9;
+	font-size: 1.2em;
+	border: 1px dotted green;
+	padding: 10px;
+}
+img{
+	width: 200px;
+	height: 150px;
+}
+div{
+	height: auto;
+	background: #87ceeb;
+	border: 2px inset blue;
+	margin: 20px;
+	padding: 20px;
+	overflow: auto;
+}
+input[type=button]{
+	background: blue;
+	color: white;
+	width: 80px;
+	height: 30px;
+	padding: 5px;
+	border-radius: 10px;
+}
+div.dd{
+	height: auto;
+}

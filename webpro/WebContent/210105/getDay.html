@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<link rel="stylesheet" href="../css/public.css">
+		<script type="text/javascript">
+			function proc1(){
+				let now = new Date();
+				let res = now.toLocaleString() + " ";
+				let day = now.getDay();
+				let days = ["일요일", "월요일", "화요일", "수요일", "목요일", "금요일", "토요일"];
+				
+				switch(day){
+					case 0:
+						res += "일요일";
+						break;
+					case 1:
+						res += "월요일";
+						break;
+					case 2:
+						res += "화요일";
+						break;
+					case 3:
+						res += "수요일";
+						break;
+					case 4:
+						res += "목요일";
+						break;
+					case 5:
+						res += "금요일";
+						break;
+					case 6:
+						res += "토요일";
+						break;
+				}
+				res += "입니다.";
+				document.getElementById("result1").innerHTML = res;
+			}
+			
+			function proc2(){
+				let now = new Date();
+				let day = now.getDay();
+				let days = ["일요일", "월요일", "화요일", "수요일", "목요일", "금요일", "토요일"];
+				let res = now.toLocaleString() + " " + days[day] + "입니다.";
+				document.getElementById("result2").innerHTML = res;
+			}
+		</script>
+	</head>
+	<body>
+		<pre>
+let now = new Date();
+let res = now.toLocaleString();
+let a = now.getDay();
+
+switch-case문을 이용한 요일 구하기. 
+	switch(a){
+		case 0:
+			res += "일요일";
+			break;
+		case 1:
+			res += "월요일";
+			break;
+		case 2:
+			res += "화요일";
+			break;
+		case 3:
+			res += "수요일";
+			break;
+		case 4:
+			res += "목요일";
+			break;
+		case 5:
+			res += "금요일";
+			break;
+		case 6:
+			res += "토요일";
+			break;
+	}
+
+배열을 이용한 요일 구하기
+	let days = ["일요일", "월요일", "화요일", "수요일", "목요일", "금요일", "토요일"];
+		</pre>
+		<input type="button" id="btn1" value="확인" onclick="proc1()">
+		<input type="button" id="btn2" value="확인" onclick="proc2()">
+		<div id="result1">
+			
+		</div>
+		<div id="result2">
+			
+		</div>
+	</body>
+</html>

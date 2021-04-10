@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<link rel="stylesheet" href="../css/public.css">
+		<style type="text/css">
+			
+		</style>
+		<script type="text/javascript" src="../js/jquery-3.5.1.min.js"></script>
+		<script type="text/javascript">
+			$(function() {
+				xhr = new XMLHttpRequest;
+				
+				$('#btn1').on('click', function() {
+					xhr.open("get", "text.jsp", true);
+					xhr.send();
+					
+					xhr.onreadystatechange = function () {
+						if (this.readyState == 4 & this.status == 200) {
+							code = this.responseText;
+							code = code.split("/");
+							res = "<ul>";
+							$.each(code, function() {
+								res += "<li>" + this + "</li>";
+							});
+							res += "<ul>";
+							
+							$("#result1").html(res);
+						}
+					}
+				});
+				
+				$('#btn2').on('click', function() {
+					xhr.open("get", "json.jsp", true);
+					xhr.send();
+					
+					xhr.onreadystatechange = function () {
+						if (this.readyState == 4 & this.status == 200) {
+// 							응답 데이터를 json 형식으로 변환
+							jdata = JSON.parse(this.responseText);
+							
+// 							출력 모양
+							res = "이름 : " + jdata.name + "<br>";
+							res += "주소 : " + jdata.addr + "<br>";
+							res += "전화번호 : " + jdata.tel + "<br>";
+							
+							$("#result2").html(res);
+						}
+					}
+				});
+				
+				$('#btn3').on('click', function() {
+					xhr.open("get", "textArr.jsp", true);
+					xhr.send();
+					
+					xhr.onreadystatechange = function () {
+						jdata = JSON.parse(this.responseText);
+						
+						res = "<ol>";
+						$.each(jdata, function() {
+							res += "<li>" + this + "</li>";
+						});
+						res += "<ol>";
+						
+						$("#result3").html(res);
+					}
+				});
+				
+				$('#btn4').on('click', function() {
+					xhr.open("get", "jsonArr.jsp", true);
+					xhr.send();
+					
+					xhr.onreadystatechange = function () {
+						if (this.readyState == 4 & this.status == 200) {
+							jdata = JSON.parse(this.responseText);
+							
+							res = "";
+							$.each(jdata, function(i) {
+								res += (i + 1) + "번째 data 정보 <br>";
+								res += "이름 : " + this.name + "<br>";
+								res += "주소 : " + this.addr + "<br>";
+								res += "전화번호 : " + this.tel + "<br><br>";
+							});
+							$("#result4").html(res);
+						}
+					}
+					
+				});
+			})
+		</script>
+	</head>
+	<body>
+		<pre>
+
+		</pre>
+		<input type="button" id="btn1" value="text">
+		<input type="button" id="btn2" value="json">
+		<input type="button" id="btn3" value="textArr">
+		<input type="button" id="btn4" value="jsonArr">
+		<div id="result1">
+			
+		</div>
+		<div id="result2">
+			
+		</div>
+		<div id="result3">
+			
+		</div>
+		<div id="result4">
+			
+		</div>
+	</body>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<style>
+			h1{
+				margin-top: 40px;
+			}
+			header, nav, section, footer, article{
+				box-size: border-box; /*content-box;*/
+			}
+			header{
+				height: 150px;
+				background: rgb(250, 249, 7);
+				margin: 10px;
+				text-align: center;
+				border-radius: 50px;
+				border: 1px solid yellow;
+				text-align: center;
+			}
+			nav{
+				/*width: 20%;*/
+				width: calc(20% - 1%);
+				height: 400px;
+				background: rgb(227, 153, 153);
+				float: left;
+				border-radius: 30px;
+				margin: 10px;
+				padding-left: 20px;
+			}
+			section{
+				/*width: 78%;*/
+				width: calc(75% - 5%);
+				height: 400px;
+				background: rgb(154, 225, 226);
+				float: right;
+				margin: 10px 10px 10px 0px;
+				border-radius: 30px;
+			}
+			article{
+				height: 30%;
+				background: rgb(159, 212, 192);
+				margin: 20px;
+				border: 2px dotted rgb(34, 143, 47);
+				border-radius: 20px;
+				padding: 20px;
+			}
+			footer{
+				height: 50px;
+				background: rgb(153, 152, 227);
+				clear: both;
+				margin: 10px;
+				border-radius: 25px;
+				border: 1px solid rgb(153, 152, 227);
+				text-align: center;
+			}
+			a{
+				color: yellow;
+				font-weight: bold;
+				text-decoration: none;
+			}
+			a:visited{
+				color: white;
+			}
+			#img1{
+				margin-left: 50px;
+			}
+			#imgcaption{
+				margin-left: 50px;
+			}
+		</style>
+	</head>
+	<body>
+		<header>
+			<h1>My Blog Page</h1>
+			<p>시멘틱 태그로 만들어진 페이지 입니다.</p>
+		</header>
+		<nav>
+			<h2>Links</h2>
+			<ul>
+				<li><a href="https://www.w3schools.com/">w3schools</a></li>
+				<li><a href="https://www.naver.com">Naver</a></li>
+				<li><a href="https://www.daum.net">Daum</a></li>
+			</ul>
+			<img id="img1" width="150px" height="120px" src="../images/1.png">
+			<p id="imgcaption">스폰지밥</p>
+		</nav>
+		<section>
+			<article id="art1">
+				<h3>Semantic Tags</h3>
+				<p>시멘틱 요소(Semantic elements)들은 브라우저에게 요소의 의미나 목적을 명화하게 알려주는 요소이다. 레이아웃을 만들 때 쓰는 것. 의미가 있는 요소라면 div보다는 시멘틱 태그를 사용해준다.</p>
+			</article>
+			<article id="art2">
+				<h3>div와 span</h3>
+				<p>div은 "divide"의 약자로서 페이지를 논리적인 섹션으로 분리하는데 사용되는 태그이다. span요소는 인라인 요소로서 텍스트를 위한 컨테이너로 사용될 수 있다.</p>
+			</article>
+		</section>
+		<footer>
+			<p>Copyright (c)2019 Hong</p>
+		</footer>
+	
+	</body>
+</html>

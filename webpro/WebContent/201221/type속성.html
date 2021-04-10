@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<style>
+			input[type=image]{
+				width: 15px;
+				height: 15px;
+				border: 2px solid #2ca02c;
+				vertical-align: center;
+			}
+		</style>
+	</head>
+	<body>
+		<div>
+			<form action="typetest.jsp" method="post">
+				<p>ID<input name="id"></p>
+				<p>Name<input type="text" name="name"></p>
+				<p>Password<input type="password" name="password"></p>
+				<p><input type="hidden" name="check" value="1"></p>
+				<p>성별 
+					<label><input type="radio" name="gender" value="male" checked>Male</label>
+					<label><input type="radio" name="gender" value="female">Female</label>
+				</p>
+				<p>취미
+					<label><input type="checkbox" name="like" value="운동" checked>운동</label>
+					<label><input type="checkbox" name="like" value="독서">독서</label>
+					<label><input type="checkbox" name="like" value="영화보기">영화보기</label>
+					<label><input type="checkbox" name="like" value="그림그리기">그림그리기</label>
+					<label><input type="checkbox" name="like" value="수영하기">수영하기</label>
+				</p>
+				<p>첨부파일 : <input type="file" name="file"></p>
+				<input type="submit">
+				<input type="reset">
+				<input type="image" src="../images/Yes_Check_Circle.svg">
+			</form>
+		</div>
+	</body>
+</html>

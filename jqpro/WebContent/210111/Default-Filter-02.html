@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<link rel="stylesheet" href="../css/public.css">
+		<style type="text/css">
+			div{
+				height: auto;
+			}
+			
+			td{
+				width: 250px; 
+				height: 40px;
+				text-align: center;
+			}
+			
+			th{
+				height: 40px;
+			}
+		</style>
+		<script type="text/javascript" src="../js/jquery-3.5.1.min.js"></script>
+		<script type="text/javascript">
+//			준비되면
+			$(function(){
+//				버튼을 클릭하면
+				$('#btn1').on('click', function(){
+//					짝수 줄 선택
+					$('tr:even').css({
+						"background-color" : "lightgray"
+					});
+					
+					$('tr').filter(':even').css({
+						'background-color' : 'lightgreen'
+					});
+					
+//					홀수 줄 선택
+					$('tr:odd').css({
+						"background-color" : "lightblue"
+					});
+					
+					$('tr').filter(':odd').css({
+						'background-color' : 'orange'
+					});
+					
+					$('th').css({
+						"background-color" : 'black',
+						'color' : 'white'
+					});
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<pre>
+
+		</pre>
+		<input type="button" id="btn1" value="확인">
+		<div id="result1">
+			<table>
+				<tr>
+					<th>One</th>
+					<th>1</th>
+				</tr>
+				<tr>
+					<td>One</td>
+					<td>1</td>
+				</tr>
+				<tr>
+					<td>TWO</td>
+					<td>2</td>
+				</tr>
+				<tr>
+					<td>THREE</td>
+					<td>3</td>
+				</tr>
+				<tr>
+					<td>FOUR</td>
+					<td>4</td>
+				</tr>
+				<tr>
+					<td>FIVE</td>
+					<td>5</td>
+				</tr>
+				<tr>
+					<td>SIX</td>
+					<td>6</td>
+				</tr>
+				<tr>
+					<td>SEVEN</td>
+					<td>7</td>
+				</tr>
+				<tr>
+					<td>EIGHT</td>
+					<td>8</td>
+				</tr>
+				<tr>
+					<td>NINE</td>
+					<td>9</td>
+				</tr>
+				<tr>
+					<td>TEN</td>
+					<td>10</td>
+				</tr>
+				<tr>
+					<td>ELEVEN</td>
+					<td>11</td>
+				</tr>
+			</table>
+		</div>
+	</body>
+</html>

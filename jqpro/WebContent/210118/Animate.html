@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<link rel="stylesheet" href="../css/public.css">
+		<style type="text/css">
+			img {
+				width: 200px;
+				height: 200px;
+				position: relative;
+			}
+		</style>
+		<script type="text/javascript" src="../js/jquery-3.5.1.min.js"></script>
+		<script type="text/javascript">
+			$(function () {
+				$('#btn1').on('click', function() {
+					$('img').animate({
+						left : '+=100px'
+					}, 500);
+				});
+				
+				$('#btn2').on('click', function() {
+					$('img').animate({
+						left : '-=50px'
+					}, 500);
+				});
+				
+				$('#btn3').on('click', function() {
+					$('#p1').css({
+						'font-size' : "+=4px"
+					});
+					$('#p2').animate({
+						"font-size" : "+=4px"
+					});
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<pre>
+
+		</pre>
+		<input type="button" id="btn1" value=">>>">
+		<input type="button" id="btn2" value="<<<">
+		<br>
+		
+		<img src="../images/Penguins.jpg">
+		<br>
+		<br>
+		
+		<input type="button" id="btn3" value="css/animate">
+		<p id="p1">무궁화 꽃이 피었습니다-css</p>
+		<p id="p2">펄펄~ 눈이 옵니다 - animate</p>
+	</body>
+</html>

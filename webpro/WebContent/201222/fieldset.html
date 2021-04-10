@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<style>
+			fieldset{
+				width: 60%;
+				margin: 20px 50px 30px;
+				border: 5px solid blue;
+				border-top: 3px dotted green;
+				/*border-bottom-color: red;
+				border-width: 10px 5px;
+				border-color: red green;*/
+			}
+		</style>
+	</head>
+	<body>
+		<pre>
+테두리 설정
+	border : 5px solid blue;
+	border-top : 3px dotted green;
+		</pre>
+		<fieldset>
+			<legend>인적 사항 입력</legend>
+			<p>id : <input type="text" name="id"></p>
+			<p>name : <input type="text" name="name"></p>
+			<p>password : <input type="password" name="password"></p>
+			<p>tel : <input type="text" name="tel"></p>
+		</fieldset>
+		<fieldset>
+			<legend>경력 사항 입력</legend>
+			<textarea rows="5" cols="50" name="career"></textarea>
+		</fieldset>
+		<fieldset>
+			<legend>봉사 활동 입력</legend>
+			<textarea rows="5" cols="50" name="volunteer"></textarea>
+		</fieldset>
+		<fieldset>
+			<legend>수상 경력</legend>
+			<textarea rows="5" cols="50"></textarea>
+		</fieldset>
+		<fieldset>
+			<legend>자격증 정보</legend>
+			<select multiple size="5">
+				<option>정보처리산업기사</option>
+				<option>정보처리기사</option>
+				<option>SQLD</option>
+				<option>BigData</option>
+			</select>
+		</fieldset>
+	</body>
+</html>

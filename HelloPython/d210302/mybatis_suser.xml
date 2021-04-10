@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Test">
+    <select id="select">
+        SELECT col01, col02, col03 FROM SAMPLE ORDER BY COL01
+    </select>
+    <insert id="insert">
+        insert into sample(col01, col02, col03) values (:V_col01, :V_col02, :V_col03)
+    </insert>
+    <update id="update">
+        update sample set col02=:V_col02, col03=:V_col03 where col01=:V_col01
+    </update>
+    <delete id="delete">
+        delete from sample where col01=:V_col01
+    </delete>
+</mapper>

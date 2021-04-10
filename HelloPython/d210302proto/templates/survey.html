@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Suser</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            text-align: center;
+            margin: 5px;
+        }
+
+        table table th {
+            width: 100px;
+        }
+
+        label {
+            display: inline-block;
+            width: 100px;
+        }
+
+        input {
+            margin: 5px;
+        }
+    </style>
+    <script src="./js/jquery-3.5.1.js"></script>
+    <script>
+        function setData(s_id, title, content, interview_cnt, deadline) {
+            $('#s_id').val(s_id);
+            $('#title').val(title);
+            $('#content').val(content);
+            $('#interview_cnt').val(interview_cnt);
+            $('#deadline').val(deadline);
+        }
+
+        function fn_add() {
+            let s_id = $('#s_id').val();
+            let title = $('#title').val();
+            let content = $('#content').val();
+            let interview_cnt = $('#interview_cnt').val();
+            let deadline = $('#deadline').val();
+
+            let param = "";
+            param += "dummy=" + Math.random();
+            param += "&s_id=" + s_id;
+            param += "&title=" + title;
+            param += "&content=" + content;
+            param += "&interview_cnt=" + interview_cnt;
+            param += "&deadline=" + deadline;
+            console.log(param)
+
+            $.ajax({
+                url: "survey_ins.ajax",
+                data: param,
+                dataType: "json",
+                type: "post",
+                async: false,
+                statusCode: {
+                    404: function () {
+                        alert("네트워크가 불안정합니다. 다시 시도부탁드립니다.");
+                    }
+                },
+                success: function (data) {
+                    if (data["msg"] === "ok") {
+                        location.reload()
+                    } else {
+                        alert("추가 도중 문제가 발생하였습니다.");
+                    }
+                }
+            });
+        }
+
+        function fn_upd() {
+            let s_id = $('#s_id').val();
+            let title = $('#title').val();
+            let content = $('#content').val();
+            let interview_cnt = $('#interview_cnt').val();
+            let deadline = $('#deadline').val();
+
+            let param = "";
+            param += "dummy=" + Math.random();
+            param += "&s_id=" + s_id;
+            param += "&title=" + title;
+            param += "&content=" + content;
+            param += "&interview_cnt=" + interview_cnt;
+            param += "&deadline=" + deadline;
+            console.log(param)
+
+            $.ajax({
+                url: "survey_upd.ajax",
+                data: param,
+                dataType: "json",
+                type: "post",
+                async: false,
+                statusCode: {
+                    404: function () {
+                        alert("네트워크가 불안정합니다. 다시 시도부탁드립니다.");
+                    }
+                },
+                success: function (data) {
+                    if (data["msg"] === "ok") {
+                        location.reload()
+                    } else {
+                        alert("수정 중 문제가 발생하였습니다.");
+                    }
+                }
+            });
+        }
+
+        function fn_del() {
+            let s_id = $('#s_id').val();
+            let title = $('#title').val();
+            let content = $('#content').val();
+            let interview_cnt = $('#interview_cnt').val();
+            let deadline = $('#deadline').val();
+
+            let param = "";
+            param += "dummy=" + Math.random();
+            param += "&s_id=" + s_id;
+            param += "&title=" + title;
+            param += "&content=" + content;
+            param += "&interview_cnt=" + interview_cnt;
+            param += "&deadline=" + deadline;
+            console.log(param)
+
+            $.ajax({
+                url: "survey_del.ajax",
+                data: param,
+                dataType: "json",
+                type: "post",
+                async: false,
+                statusCode: {
+                    404: function () {
+                        alert("네트워크가 불안정합니다. 다시 시도부탁드립니다.");
+                    }
+                },
+                success: function (data) {
+                    if (data["msg"] === "ok") {
+                        location.reload()
+                    } else {
+                        alert("삭제 중 문제가 발생하였습니다.");
+                    }
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+<table border="1">
+    <tr>
+        <td>
+            <table border="1">
+                <tr>
+                    <th>s_id</th>
+                    <th>title</th>
+                    <th>content</th>
+                    <th>interview_cnt</th>
+                    <th>deadline</th>
+                    <th>in_date</th>
+                    <th>in_user_id</th>
+                    <th>up_date</th>
+                    <th>up_user_id</th>
+                </tr>
+                {% for survey in surveys %}
+                <tr>
+                    <td><a href="javascript:setData({{survey.get('s_id')}}, {{survey.get('title')}}, {{survey.get('content')}}, {{survey.get('interview_cnt')}}, {{survey.get('deadline')}})">{{survey.get('s_id')}}</a></td>
+                    <td>{{survey.get('title')}}</td>
+                    <td>{{survey.get('content')}}</td>
+                    <td>{{survey.get('interview_cnt')}}</td>
+                    <td>{{survey.get('deadline')}}</td>
+                    <td>{{survey.get('in_date')}}</td>
+                    <td>{{survey.get('in_user_id')}}</td>
+                    <td>{{survey.get('up_date')}}</td>
+                    <td>{{survey.get('up_user_id')}}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </td>
+        <td>
+            <table>
+                <tr>
+                    <td><label>s_id</label><input type="text" name="s_id" id="s_id"></td>
+                </tr>
+                <tr>
+                    <td><label>title</label><input type="text" name="title" id="title"></td>
+                </tr>
+                <tr>
+                    <td><label>content</label><input type="text" name="content" id="content"></td>
+                </tr>
+                <tr>
+                    <td><label>interview_cnt</label><input type="text" name="interview_cnt" id="interview_cnt"></td>
+                </tr>
+                <tr>
+                    <td><label>deadline</label><input type="text" name="deadline" id="deadline"></td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="button" value="추가" onclick="fn_add()">
+                        <input type="button" value="수정" onclick="fn_upd()">
+                        <input type="button" value="삭제" onclick="fn_del()">
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

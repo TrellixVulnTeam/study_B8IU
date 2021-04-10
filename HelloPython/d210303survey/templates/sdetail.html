@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Suser</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            text-align: center;
+            margin: 5px;
+        }
+
+        table table th {
+            width: 100px;
+        }
+
+        label {
+            display: inline-block;
+            width: 100px;
+        }
+
+        input {
+            margin: 5px;
+        }
+    </style>
+    <script src="./js/jquery-3.5.1.js"></script>
+    <script>
+        function setData(survey_id, s_seq, question, a1, a2, a3, a4) {
+            $('#survey_id').val(survey_id);
+            $('#s_seq').val(s_seq);
+            $('#question').val(question);
+            $('#a1').val(a1);
+            $('#a2').val(a2);
+            $('#a3').val(a3);
+            $('#a4').val(a4);
+        }
+
+        function fn_add() {
+            let survey_id = $('#survey_id').val();
+            let s_seq = $('#s_seq').val();
+            let question = $('#question').val();
+            let a1 = $('#a1').val();
+            let a2 = $('#a2').val();
+            let a3 = $('#a3').val();
+            let a4 = $('#a4').val();
+
+            let param = "";
+            param += "dummy=" + Math.random();
+            param += "&survey_id=" + survey_id;
+            param += "&s_seq=" + s_seq;
+            param += "&question=" + question;
+            param += "&a1=" + a1;
+            param += "&a2=" + a2;
+            param += "&a3=" + a3;
+            param += "&a4=" + a4;
+            console.log(param)
+
+            $.ajax({
+                url: "sdetail_ins.ajax",
+                data: param,
+                dataType: "json",
+                type: "post",
+                async: false,
+                statusCode: {
+                    404: function () {
+                        alert("네트워크가 불안정합니다. 다시 시도부탁드립니다.");
+                    }
+                },
+                success: function (data) {
+                    if (data["msg"] === "ok") {
+                        location.reload()
+                    } else {
+                        alert("추가 도중 문제가 발생하였습니다.");
+                    }
+                }
+            });
+        }
+
+        function fn_upd() {
+            let survey_id = $('#survey_id').val();
+            let s_seq = $('#s_seq').val();
+            let question = $('#question').val();
+            let a1 = $('#a1').val();
+            let a2 = $('#a2').val();
+            let a3 = $('#a3').val();
+            let a4 = $('#a4').val();
+
+            let param = "";
+            param += "dummy=" + Math.random();
+            param += "&survey_id=" + survey_id;
+            param += "&s_seq=" + s_seq;
+            param += "&question=" + question;
+            param += "&a1=" + a1;
+            param += "&a2=" + a2;
+            param += "&a3=" + a3;
+            param += "&a4=" + a4;
+            console.log(param)
+
+            $.ajax({
+                url: "sdetail_upd.ajax",
+                data: param,
+                dataType: "json",
+                type: "post",
+                async: false,
+                statusCode: {
+                    404: function () {
+                        alert("네트워크가 불안정합니다. 다시 시도부탁드립니다.");
+                    }
+                },
+                success: function (data) {
+                    if (data["msg"] === "ok") {
+                        location.reload()
+                    } else {
+                        alert("수정 중 문제가 발생하였습니다.");
+                    }
+                }
+            });
+        }
+
+        function fn_del() {
+            let survey_id = $('#survey_id').val();
+            let s_seq = $('#s_seq').val();
+            let question = $('#question').val();
+            let a1 = $('#a1').val();
+            let a2 = $('#a2').val();
+            let a3 = $('#a3').val();
+            let a4 = $('#a4').val();
+
+            let param = "";
+            param += "dummy=" + Math.random();
+            param += "&survey_id=" + survey_id;
+            param += "&s_seq=" + s_seq;
+            param += "&question=" + question;
+            param += "&a1=" + a1;
+            param += "&a2=" + a2;
+            param += "&a3=" + a3;
+            param += "&a4=" + a4;
+            console.log(param)
+
+            $.ajax({
+                url: "sdetail_del.ajax",
+                data: param,
+                dataType: "json",
+                type: "post",
+                async: false,
+                statusCode: {
+                    404: function () {
+                        alert("네트워크가 불안정합니다. 다시 시도부탁드립니다.");
+                    }
+                },
+                success: function (data) {
+                    if (data["msg"] === "ok") {
+                        location.reload()
+                    } else {
+                        alert("삭제 중 문제가 발생하였습니다.");
+                    }
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+<table border="1">
+    <tr>
+        <td>
+            <table border="1">
+                <tr>
+                    <th>survey_id</th>
+                    <th>s_seq</th>
+                    <th>question</th>
+                    <th>a1</th>
+                    <th>a2</th>
+                    <th>a3</th>
+                    <th>a4</th>
+                    <th>in_date</th>
+                    <th>in_user_id</th>
+                    <th>up_date</th>
+                    <th>up_user_id</th>
+
+                </tr>
+                {% for sdetail in sdetails %}
+                <tr>
+                    <td><a href="javascript:setData({{sdetail.get('survey_id')}}, {{sdetail.get('s_seq')}}, {{sdetail.get('question')}}, {{sdetail.get('a1')}}, {{sdetail.get('a2')}}, {{sdetail.get('a3')}}, {{sdetail.get('a4')}})">{{sdetail.get('survey_id')}}</a></td>
+                    <td>{{sdetail.get('s_seq')}}</td>
+                    <td>{{sdetail.get('question')}}</td>
+                    <td>{{sdetail.get('a1')}}</td>
+                    <td>{{sdetail.get('a2')}}</td>
+                    <td>{{sdetail.get('a3')}}</td>
+                    <td>{{sdetail.get('a4')}}</td>
+                    <td>{{sdetail.get('in_date')}}</td>
+                    <td>{{sdetail.get('in_user_id')}}</td>
+                    <td>{{sdetail.get('up_date')}}</td>
+                    <td>{{sdetail.get('up_user_id')}}</td>
+
+                </tr>
+                {% endfor %}
+            </table>
+        </td>
+        <td>
+            <table>
+                <tr>
+                    <td><label>survey_id</label><input type="text" name="survey_id" id="survey_id"></td>
+                </tr><tr>
+                    <td><label>s_seq</label><input type="text" name="s_seq" id="s_seq"></td>
+                </tr><tr>
+                    <td><label>question</label><input type="text" name="question" id="question"></td>
+                </tr><tr>
+                    <td><label>a1</label><input type="text" name="a1" id="a1"></td>
+                </tr><tr>
+                    <td><label>a2</label><input type="text" name="a2" id="a2"></td>
+                </tr><tr>
+                    <td><label>a3</label><input type="text" name="a3" id="a3"></td>
+                </tr><tr>
+                    <td><label>a4</label><input type="text" name="a4" id="a4"></td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="button" value="추가" onclick="fn_add()">
+                        <input type="button" value="수정" onclick="fn_upd()">
+                        <input type="button" value="삭제" onclick="fn_del()">
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

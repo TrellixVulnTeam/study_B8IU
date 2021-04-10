@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <style>
+  </style>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script type="text/javascript">
+  	$(function() {
+  		$("#btnid").on('click', function() {
+  			let idValue = $("#mem_id").val().trim();
+  			if (idValue.length == 0) {
+  				alert("id를 입력하세요.");
+  				$("#mem_id").focus();
+  				return false;
+  			}
+  			
+  			$.ajax({
+  				url : "idcheck.jsp",
+  				type : "get",
+  				data : {"mem_id" : idValue},
+  				success : function(res) {
+  					if (res.isActivate == "true") {
+  						alert('사용 가능한 아이디입니다.');
+  					} else {
+  						alert('사용 불가능한 아이디입니다.');
+  					}
+  				}, error : function(res) {
+  					alert("상태 : " + res.status);
+  				}, dataType: 'json'
+  			});
+  		});
+  		
+  		$("#btndong").on('click', function() {
+  			let dongValue = $("#dong").val().trim();
+  			if (dongValue.length == 0) {
+  				alert("동을 입력하세요.");
+  				$("dong").focus();
+  				return false;
+  			}
+  			
+  			$.ajax({
+  				url : "dongSearch.jsp",
+  				type : "post",
+  				data : {
+  					"dong" : dongValue
+  				}, success : function(res) {
+  					code = "<table border='1' class='table table-hover'>";
+  					code += "<tr><td>우편번호</td><td>주소</td><td>번지</td></tr>";
+  					$.each(res, function() {
+  						code += "<tr class='ziptr'><td>" + this.zipcode + "</td><td>" + this.addr + "</td><td>" + this.bungi + "</td></tr>";
+  					});
+  					code += "</table>";
+  					$('#result').html(code);
+  				}, error : function(res) {
+  					alert("상태 : " + res.status);
+  				}, dataType : "json"
+			});
+  		});
+  		
+  		$('#result').on('click', ".ziptr", function() {
+  			let zipcode = $('td', this).eq(0).text();
+  			let address1 = $('td', this).eq(1).text();
+  			$("#mem_zipcode").val(zipcode);
+  			$("#mem_zipcode").attr("disabled", "true");
+  			$("#mem_address1").val(address1);
+  			$("#mem_address1").attr("disabled", "true");
+  			$("#myModal").modal('hide');
+  			$("#dong").val("");
+  			$("#result").empty();
+  			$("mem_address2").focus();
+  		});
+  		
+  		$("#send").on('click', function() {
+  			let idValue = $("#mem_id").val();
+  			let nameValue = $("#mem_name").val();
+  			let telValue = $("#mem_tel").val();
+  			let emailValue = $("#mem_email").val();
+  			let passwordValue = $("#mem_password").val();
+  			let zipCodeValue = $("#mem_zipcode").val();
+  			let address1Value = $("#mem_address1").val();
+  			let address2Value = $("#mem_address2").val();
+  			
+  			let dataValue = "mem_id=" + idValue
+  				+ "&mem_name=" + nameValue
+	  			+ "&mem_tel=" + telValue
+	  			+ "&mem_email=" + emailValue
+	  			+ "&mem_pw=" + passwordValue
+	  			+ "&mem_zipcode=" + zipCodeValue
+	  			+ "&mem_address1=" + address1Value
+	  			+ "&mem_address2=" + address2Value;
+  			dataValue = {
+  				"mem_id" : idValue,
+  				"mem_name" : nameValue,
+	  			"mem_tel" : telValue,
+	  			"mem_email" : emailValue,
+	  			"mem_pw" : passwordValue,
+	  			"mem_zipcode" : zipCodeValue,
+	  			"mem_address1" : address1Value,
+	  			"mem_address2" : address2Value
+  			}
+  			$.ajax({
+  				url : "insert.jsp",
+  				type : "post",
+  				data : dataValue,
+  				dataType : "json",
+  				success : function(res) {
+  					$("#subspan").html(res.sw).css({
+  						color : "red"
+  					});
+  				}, error : function(res) {
+  					alert("상태 : " + res.status);
+  				}
+  			});
+  		});
+  	});
+  </script>
+</head>
+<body>
+<div class="container">
+	<h2>회원가입</h2>
+	<form class="form-horizontal" action="/action_page.php">
+		<div class="form-group">
+			<label class="control-label col-sm-2" for="mem_id">아이디</label>
+			<div class="col-sm-3" >
+				<input type="text" class="form-control" id="mem_id" placeholder="Enter id" name="mem_id">
+			</div>
+			<button id="btnid" type="button" class="btn btn-default">id 중복검사</button><span id="idspan"></span>
+		</div>
+		<div class="form-group">
+			<label class="control-label col-sm-2" for="mem_name">이름</label>
+			<div class="col-sm-3">          
+				<input type="text" class="form-control" id="mem_name" placeholder="Enter name" name="mem_name">
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="control-label col-sm-2" for="mem_email">이메일</label>
+			<div class="col-sm-3">          
+				<input type="email" class="form-control" id="mem_email" placeholder="Enter email" name="mem_email">
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="control-label col-sm-2" for="mem_password">비밀번호</label>
+			<div class="col-sm-3">          
+				<input type="password" class="form-control" id="mem_password" placeholder="Enter password" name="mem_password">
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="control-label col-sm-2" for="mem_tel">전화번호</label>
+			<div class="col-sm-3">          
+				<input type="tel" class="form-control" id="mem_tel" placeholder="Enter tel" name="mem_tel">
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="control-label col-sm-2" for="mem_zipcode">우편번호</label>
+			<div class="col-sm-3">          
+				<input type="text" class="form-control" id="mem_zipcode" placeholder="Enter zip" name="mem_zipcode">
+			</div>
+			<button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal">우편번호 검색</button><span id="idspan"></span>
+		</div>
+		<div class="form-group">
+			<label class="control-label col-sm-2" for="mem_address1">주소</label>
+			<div class="col-sm-5">          
+				<input type="text" class="form-control" id="mem_address1" placeholder="Enter address1" name="mem_address1">
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="control-label col-sm-2" for="mem_address2">상세주소</label>
+			<div class="col-sm-5">          
+				<input type="text" class="form-control" id="mem_address2" placeholder="Enter address1" name="mem_address2">
+			</div>
+		</div>
+		<div class="form-group">        
+			<div class="col-sm-offset-2 col-sm-5 ">
+				<div class="checkbox">
+					<label><input type="checkbox" name="remember"> Remember me</label>
+				</div>
+			</div>
+		</div>
+		<div class="form-group">        
+			<div class="col-sm-offset-2 col-sm-10">
+				<button type="button" class="btn btn-default" id="send">Submit</button>
+				<span id="subspan"></span>
+			</div>
+		</div>
+	</form>
+</div>
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+	<div class="modal-dialog">
+		
+		<!-- Modal content-->
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h4 class="modal-title">우편번호 검색</h4>
+			</div>
+			<div class="modal-body">
+				<p>찾고자 하는 동을 입력하세요.</p>
+				<input type="text" id="dong">
+				<input type="button" value="검색" id="btndong" class="btn btn-default">
+				<br><br>
+				<div id="result"></div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				
+			</div>
+		</div>
+	</div>
+</div>
+
+</body>
+</html>

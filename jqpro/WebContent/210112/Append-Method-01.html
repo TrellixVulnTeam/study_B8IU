@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<link rel="stylesheet" href="../css/public.css">
+		<style type="text/css">
+			img {
+				width: 100px;
+				height: 100px;
+			}
+		</style>
+		<script type="text/javascript" src="../js/jquery-3.5.1.min.js"></script>
+		<script type="text/javascript">
+			$(function(){
+				$('#btn1').on('click', function(){
+//					$('#result1 img').first().appendTo($('#result1'));
+					$('#result1').append($('#result1 img').first());
+					
+				});
+				$('#btn2').on('click', function(){
+//					$('#result1 img').last().prependTo($('#result1'));
+					$('#result2').prepend($('#result2 img').last());
+					
+				});
+				
+			});
+		</script>
+	</head>
+	<body>
+		<pre>
+//기존의 이미지를 append 또는 appendTo하면 기존의 이미지가 뒤로 이동한다.
+$(function(){
+	$('#btn1').on('click', function(){
+//		$('#result1 img').first().appendTo($('#result1'));
+		$('#result1').append($('#result1 img').first());
+	});
+});
+		</pre>
+		<input type="button" id="btn1" value="확인">
+		<div id="result1">
+			<img src="../images/image.1.jpg" alt="image.1.jpg">
+			<img src="../images/image.2.jpg" alt="image.2.jpg">
+			<img src="../images/image.3.jpg" alt="image.3.jpg">
+			<img src="../images/image.4.jpg" alt="image.4.jpg">
+			<img src="../images/image.5.jpg" alt="image.5.jpg">
+		</div>
+		<pre>
+//기존의 이미지를 prepend 또는 prependTo하면 기존의 이미지가 앞으로 이동한다.
+$(function(){
+	$('#btn2').on('click', function(){
+//		$('#result1 img').last().prependTo($('#result1'));
+		$('#result2').prepend($('#result2 img').last());
+	});
+});
+		</pre>
+		<input type="button" id="btn2" value="확인">
+		<div id="result2">
+			<img src="../images/image.1.jpg" alt="image.1.jpg">
+			<img src="../images/image.2.jpg" alt="image.2.jpg">
+			<img src="../images/image.3.jpg" alt="image.3.jpg">
+			<img src="../images/image.4.jpg" alt="image.4.jpg">
+			<img src="../images/image.5.jpg" alt="image.5.jpg">
+		</div>
+	</body>
+</html>

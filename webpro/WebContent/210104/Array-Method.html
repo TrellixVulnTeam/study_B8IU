@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<link rel="stylesheet" href="../css/public.css">
+		<script type="text/javascript">
+			let arr = ["사과", "복숭아", "참외", "포도", "바나나", "사과", "멜론", "파인애플", "사과"];
+			function proc1() {
+//				과일 이름 입력
+				let name = prompt("과일 이름을 입력하세요.");
+				
+//				입력한 과일이 배열에서 몇 번째에 위치해 있는가?
+//				없는 경우, -1를 리턴
+				let idx = arr.indexOf(name);
+				
+//				res = "입력한 과일 : " + a + "<br>";
+//				res += a + "는 " + idx + "번째에 있습니다.";
+
+				let res = `입력한 과일 : ${name}<br>`;
+				if (idx != -1){
+					res += `${name}는 ${idx}번째에 있습니다.`;
+				} else {
+					res += `${name}는 없습니다.`;
+				}
+				
+				document.querySelector("#result1").innerHTML = res;
+			}
+			
+			function proc2() {
+//				과일 이름 입력
+				let name = prompt("과일 이름을 입력하세요.");
+				
+//				입력한 과일이 배열에서 몇 번째에 위치해 있는가?
+//				없는 경우, -1를 리턴
+				let idx = arr.lastIndexOf(name);
+				
+//				res = "입력한 과일 : " + a + "<br>";
+//				res += a + "는 " + idx + "번째에 있습니다.";
+
+				let res = `입력한 과일 : ${name}<br>`;
+				if (idx != -1){
+					res += `${name}는 ${idx}번째에 있습니다.`;
+				} else {
+					res += `${name}는 없습니다.`;
+				}
+				
+				document.querySelector("#result2").innerHTML = res;
+			}
+			
+			function proc3() {
+//				과일 이름 입력
+				let name = prompt("과일 이름을 입력하세요.");
+				let idx = 0;
+				
+				let res = `입력한 과일 : ${name}<br>${name}는`;
+				
+				while (true){
+					idx = arr.indexOf(name, idx);
+					if(idx == -1){
+						break;
+					}
+					res += ` ${idx}번째`;
+					idx++;
+				}
+				res+=`에 있습니다.`
+				document.querySelector("#result3").innerHTML = res;
+			}
+		</script>
+		<style>
+			div{
+				height: 50px;
+			}
+		</style>
+	</head>
+	<body>
+		<pre>
+let arr = ["사과", "복숭아", "참외", "포도", "바나나", "사과", "멜론", "파인애플", "사과"];
+		</pre>
+		<input type="button" value="indexOf" id="btn1" onclick="proc1()">
+		<input type="button" value="lastIndexOf" id="btn2" onclick="proc2()">
+		<input type="button" value="여러 개 중복 찾기" id="btn3" onclick="proc3()">
+		<div id="result1">
+			
+		</div>
+		<div id="result2">
+			
+		</div>
+		<div id="result3">
+			
+		</div>
+	</body>
+</html>

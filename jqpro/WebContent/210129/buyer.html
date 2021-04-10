@@ -1,0 +1,141 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Bootstrap Example</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+		<style type="text/css">
+			table {
+				border-collapse: collapse;
+			}
+			td {
+				width: 200px;
+				height: 30px;
+				text-align: center;
+			}
+			td#details {
+				width: 1000px;
+				height: 100px;
+			}
+			p:hover {
+				background-color: lime;
+			}
+		</style>
+		<script type="text/javascript" src="../js/jquery-3.5.1.min.js"></script>
+		<script type="text/javascript">
+			$(function() {
+				$("#btn1").on('click', function() {
+					$.ajax({
+						url : "buyerNames.jsp",
+						type : "get",
+						dataType: "json",
+						success: function(res) {
+// 							$("#names").empty();
+// 							$.each(res, function() {
+// 								$('<p></p>', {
+// 									'id' : this.buyer_id,
+// 									'text' : this.buyer_name
+// 								}).appendTo("#names");
+// 							});
+							code = "";
+							$.each(res, function() {
+								code += "<p id='" + this.buyer_id + "'>" + this.buyer_name + "</p>";
+							});
+							$('#names').html(code);
+						}, error : function(res) {
+							alert("상태 : " + res.status);
+						}
+					});
+				});
+				
+				$("#names").on('click', 'p', function() {
+					$.ajax({
+						url : "details.jsp",
+						type : "get",
+						data : {
+							"id" : $(this).attr("id")
+						}, dataType : "json",
+						success: function(res) {
+// 							$("<table></table>", {
+// 								"border" : "1",
+// 								"class" : "table table-striped"
+// 							}).appendTo("#details");
+// 							$("#details").append("<table border='1' class='table table-striped' width='100%'>"
+// 									+ "<tr><td>BUYER_ID</td><td>" + res.BUYER_ID + "</td></tr>"
+// 									+ "</table>");
+// 							$("#details table").append("<tr><td>BUYER_NAME</td><td>" + res.BUYER_NAME + "</td></tr>");
+// 							$("#details table").append("<tr><td>BUYER_LGU</td><td>" + res.BUYER_LGU + "</td></tr>");
+// 							$("#details table").append("<tr><td>BUYER_BANK</td><td>" + res.BUYER_BANK + "</td></tr>");
+// 							$("#details table").append("<tr><td>BUYER_BANKNO</td><td>" + res.BUYER_BANKNO + "</td></tr>");
+// 							$("#details table").append("<tr><td>BUYER_BANKNAME</td><td>" + res.BUYER_BANKNAME + "</td></tr>");
+// 							$("#details table").append("<tr><td>BUYER_ZIP</td><td>" + res.BUYER_ZIP + "</td></tr>");
+// 							$("#details table").append("<tr><td>BUYER_ADD1</td><td>" + res.BUYER_ADD1 + "</td></tr>");
+// 							$("#details table").append("<tr><td>BUYER_ADD2</td><td>" + res.BUYER_ADD2 + "</td></tr>");
+// 							$("#details table").append("<tr><td>BUYER_COMTEL</td><td>" + res.BUYER_COMTEL + "</td></tr>");
+// 							$("#details table").append("<tr><td>BUYER_FAX</td><td>" + res.BUYER_FAX + "</td></tr>");
+// 							$("#details table").append("<tr><td>BUYER_MAIL</td><td>" + res.BUYER_MAIL + "</td></tr>");
+// 							$("#details table").append("<tr><td>BUYER_CHARGER</td><td>" + res.BUYER_CHARGER + "</td></tr>");
+// 							$("#details table").append("<tr><td>BUYER_TELEXT</td><td>" + res.BUYER_TELEXT + "</td></tr>");
+							
+// 							$("<table class='table table-striped' width='100%'></table>").appendTo("#details");
+// 							$("<tr><td>BUYER_ID</td><td>" + res.BUYER_ID + "</td></tr>").appendTo("#details table");
+// 							$("<tr><td>BUYER_NAME</td><td>" + res.BUYER_NAME + "</td></tr>").appendTo("#details table");
+// 							$("<tr><td>BUYER_LGU</td><td>" + res.BUYER_LGU + "</td></tr>").appendTo("#details table");
+// 							$("<tr><td>BUYER_BANK</td><td>" + res.BUYER_BANK + "</td></tr>").appendTo("#details table");
+// 							$("<tr><td>BUYER_BANKNO</td><td>" + res.BUYER_BANKNO + "</td></tr>").appendTo("#details table");
+// 							$("<tr><td>BUYER_BANKNAME</td><td>" + res.BUYER_BANKNAME + "</td></tr>").appendTo("#details table");
+// 							$("<tr><td>BUYER_ZIP</td><td>" + res.BUYER_ZIP + "</td></tr>").appendTo("#details table");
+// 							$("<tr><td>BUYER_ADD1</td><td>" + res.BUYER_ADD1 + "</td></tr>").appendTo("#details table");
+// 							$("<tr><td>BUYER_ADD2</td><td>" + res.BUYER_ADD2 + "</td></tr>").appendTo("#details table");
+// 							$("<tr><td>BUYER_COMTEL</td><td>" + res.BUYER_COMTEL + "</td></tr>").appendTo("#details table");
+// 							$("<tr><td>BUYER_FAX</td><td>" + res.BUYER_FAX + "</td></tr>").appendTo("#details table");
+// 							$("<tr><td>BUYER_MAIL</td><td>" + res.BUYER_MAIL + "</td></tr>").appendTo("#details table");
+// 							$("<tr><td>BUYER_CHARGER</td><td>" + res.BUYER_CHARGER + "</td></tr>").appendTo("#details table");
+// 							$("<tr><td>BUYER_TELEXT</td><td>" + res.BUYER_TELEXT + "</td></tr>").appendTo("#details table");
+							
+							$("#details").append("<table border='1' class='table table-striped table-bordered table-hover' width='100%'>"
+							+ "<tr><td>BUYER_ID</td><td>" + res.BUYER_ID + "</td></tr>"
+							+ "<tr><td>BUYER_NAME</td><td>" + res.BUYER_NAME + "</td></tr>"
+							+ "<tr><td>BUYER_LGU</td><td>" + res.BUYER_LGU + "</td></tr>"
+							+ "<tr><td>BUYER_BANK</td><td>" + res.BUYER_BANK + "</td></tr>"
+							+ "<tr><td>BUYER_BANKNO</td><td>" + res.BUYER_BANKNO + "</td></tr>"
+							+ "<tr><td>BUYER_BANKNAME</td><td>" + res.BUYER_BANKNAME + "</td></tr>"
+							+ "<tr><td>BUYER_ZIP</td><td>" + res.BUYER_ZIP + "</td></tr>"
+							+ "<tr><td>BUYER_ADD1</td><td>" + res.BUYER_ADD1 + "</td></tr>"
+							+ "<tr><td>BUYER_ADD2</td><td>" + res.BUYER_ADD2 + "</td></tr>"
+							+ "<tr><td>BUYER_COMTEL</td><td>" + res.BUYER_COMTEL + "</td></tr>"
+							+ "<tr><td>BUYER_FAX</td><td>" + res.BUYER_FAX + "</td></tr>"
+							+ "<tr><td>BUYER_MAIL</td><td>" + res.BUYER_MAIL + "</td></tr>"
+							+ "<tr><td>BUYER_CHARGER</td><td>" + res.BUYER_CHARGER + "</td></tr>"
+							+ "<tr><td>BUYER_TELEXT</td><td>" + res.BUYER_TELEXT + "</td></tr></table>");
+						}, error : function(res) {
+							alert("상태 : " + res.status);
+						}
+					});
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<pre>
+
+		</pre>
+		<input type="button" id="btn1" value="확인">
+		<div id="result1">
+			<table class="table table-bordered">
+				<tr>
+					<td>거래처이름</td>
+					<td>거래처상세정보</td>
+				</tr>
+				<tr>
+					<td id="names"></td>
+					<td id="details"></td>
+				</tr>
+			</table>
+		</div>
+	</body>
+</html>

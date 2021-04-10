@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<link rel="stylesheet" href="../css/public.css">
+		<script>
+			function proc1(){
+				var sum = 0; 
+				for (var i = 0; i <= 200; i++) {
+//				for (var i = 0; i <= 200; i += 2)
+					if (i % 2 != 0){
+						continue;
+					}
+					sum += i;
+				}
+				var res = "1 ~ 200 범위에 존재하는 모든 짝수의 합 : " + sum + "<br>";
+				var result1 = document.querySelector("#result1");
+				print(result1, res);
+			}
+			
+			function proc2(){
+				var input;
+//				입력
+				var sum = 0;
+//				입력값 더하기
+				var res = "입력된 숫자 : ";
+//				입력한 값 나열
+				while(true){
+					input = parseInt(prompt("정수를 입력하세요."));
+					if(input == 0){
+						break;
+					}
+					if(sum != 0){
+						res+= ", ";
+					}
+					sum += input;
+//					입력한 값 더하기
+					res += input;
+//					입력한 값 나열
+				}
+				res += "<br>결과 : " + sum;
+				var result2 = document.querySelector("#result2");
+				print(result2, res);
+			}
+			
+			function proc3(){
+				var res = "i와 k가 각각 1 ~ 10일 때, i + k가 3의 배수인 수<br>"
+				for (var i = 1; i < 11; i++) {
+					for (var k = 1; k < 11; k++) {
+						if ((i + k) % 3 != 0) {
+							continue;
+						}
+						res += "i : " + i + ", k : " + k + "<br>";
+					}
+				}
+				
+				var result3 = document.querySelector("#result3");
+				print(result3, res);
+			}
+			
+			function proc4(){
+				var res = "1 ~ 100까지 중 2의 배수이면서 3의 배수인 수<br>"
+				for (var num = 1; num < 101; num++) {
+					if(num%2 != 0 || num%3 != 0){
+						continue;
+					}
+					res += num + " "
+				}
+				
+				var result4 = document.querySelector("#result4");
+				print(result4, res);
+			}
+			
+			function proc5(){
+				var res1 = "";
+				var res2 = "";
+				while(true){
+					var input1 = parseInt(prompt("첫 번째 수를 입력하세요."));
+					var input2 = parseInt(prompt("두 번째 수를 입력하세요."));
+					
+					if(input1 == 0 && input2 == 0){
+						break;
+					}
+					if(input1 + input2 >= 100){
+						res1 += "input1 : " + input1 + ", input2 : " + input2 + "<br>";
+					}else{
+						res2 += "input1 : " + input1 + ", input2 : " + input2 + "<br>";
+					}
+				}
+				
+				var res = "";
+				if (res1 == "" && res2 == "") {
+					res += "입력된 두 수가 없네요.";
+				} else {
+					if(res1 != ""){
+						res += "두 수의 합이 100 이상인 수<br>";
+						res += res1;
+						if(res2 != ""){
+							res+="<br>";
+						}
+					}
+					if(res2 != ""){
+						res += "두 수의 합이 100 미만인 수<br>";
+						res += res2;
+					}
+				} 
+				
+				var result3 = document.querySelector("#result5");
+				print(result5, res);
+			}
+			
+			function print(result, res){
+				result.innerHTML = res;
+			}
+		</script>
+		<style>
+			div{
+				height: auto;
+			}
+		</style>
+	</head>
+	<body>
+		<pre>
+1 ~ 200 범위에 존재하는 모든 짝수의 합을 구하는 프로그램을 작성하시오.
+	: continue를 이용.
+		</pre>
+		<input type="button" value="확인" onclick="proc1()">
+		<div id="result1">
+			
+		</div>
+		<pre>
+사용자가 입력한 값을 계속 더하고, 사용자가 0을 입력하면 그때까지 누적된 값을 출력하는 프로그램을 작성하시오.
+		</pre>
+		<input type="button" value="확인" onclick="proc2()">
+		<div id="result2">
+			
+		</div>
+		<pre>
+3. 다중 for 문을 이용해서 i와 k가 각각 1 ~ 10일 때, i + k가 3의 배수일때만 출력 continue 를 이용
+		</pre>
+		<input type="button" value="확인" onclick="proc3()">
+		<div id="result3">
+			
+		</div>
+		<pre>
+4. 1~100 까지 중 2의 배수이면서 3의 배수인것만 출력
+		</pre>
+		<input type="button" value="확인" onclick="proc4()">
+		<div id="result4">
+			
+		</div>
+		<pre>
+5. 두 수를 입력 (prompt) (prompt)
+	두수의 합이 100 이상일이때 입력받 은 두수와 함께 출력
+	두수의 합이 100 미만일때 의 수는 별도로 다시 출력
+	ntinue 를 이용 , 두수 모두 0 이 입력되면 종료
+		</pre>
+		<input type="button" value="확인" onclick="proc5()">
+		<div id="result5">
+			
+		</div>
+	</body>
+</html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<link rel="stylesheet" href="../css/public.css">
+		<style type="text/css">
+			
+		</style>
+		<script type="text/javascript" src="../js/jquery-3.5.1.min.js"></script>
+		<script type="text/javascript">
+		$(function() {
+ 			$('#btn1').on('click', function() {
+				$.ajax({
+					url : "text.jsp",
+					type : "get",
+					success : function(aa) {
+						aa = aa.split("/");
+						res = "<ul>";
+						$.each(aa, function() {
+							res += "<li>" + this + "</li>";
+						});
+						res += "<ul>";
+						
+						$("#result1").html(res);
+					}, error : function(res) {
+						alert("상태 : " + res)
+					}, dataType : "text"
+				})
+			});
+			
+			$('#btn2').on('click', function() {
+				$.ajax({
+					url : "json.jsp",
+					type : "get",
+					success : function(jdata) {
+						res = "이름 : " + jdata.name + "<br>";
+						res += "주소 : " + jdata.addr + "<br>";
+						res += "전화번호 : " + jdata.tel + "<br>";
+						
+						$("#result2").html(res);
+					}, error : function(res) {
+						alert("상태 : " + res)
+					}, dataType : "json"
+				})
+			});
+			
+			$('#btn3').on('click', function() {
+				$.ajax({
+					url : "textArr.jsp",
+					type : "get",
+					success : function(jdata) {
+						res = "<ol>";
+						$.each(jdata, function() {
+							res += "<li>" + this + "</li>";
+						});
+						res += "<ol>";
+						
+						$("#result3").html(res);
+					}, error : function(res) {
+						alert("상태 : " + res)
+					}, dataType : "json"
+				})
+			});
+			
+			$('#btn4').on('click', function() {
+				$.ajax({
+					url : "jsonArr.jsp",
+					type : "get",
+					success : function(jdata) {
+						res = "";
+						$.each(jdata, function(i) {
+							res += (i + 1) + "번째 data 정보 <br>";
+							res += "이름 : " + this.name + "<br>";
+							res += "주소 : " + this.addr + "<br>";
+							res += "전화번호 : " + this.tel + "<br><br>";
+						});
+						$("#result4").html(res);
+					}, error : function(res) {
+						alert("상태 : " + res)
+					}, dataType : "json"
+				})
+			});
+		});
+		</script>
+	</head>
+	<body>
+		<pre>
+
+		</pre>
+		<input type="button" id="btn1" value="text">
+		<input type="button" id="btn2" value="json">
+		<input type="button" id="btn3" value="textArr">
+		<input type="button" id="btn4" value="jsonArr">
+		<div id="result1">
+			
+		</div>
+		<div id="result2">
+			
+		</div>
+		<div id="result3">
+			
+		</div>
+		<div id="result4">
+			
+		</div>
+	</body>
+</html>

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>sdetail</title>
+</head>
+<body>
+<a href="{{url_for('suser')}}">사용자관리</a>
+<a href="{{url_for('survey')}}">설문관리</a>
+<a href="{{url_for('sdetail')}}">문항관리</a>
+<br/>
+{% block content %}{% endblock %}
+<br/>
+all right reserved by aimaker.kr
+</body>
+</html>

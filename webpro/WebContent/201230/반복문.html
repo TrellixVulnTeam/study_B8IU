@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<link rel="stylesheet" href="../css/public.css">
+		<link rel="shortcut icon" type="image/x-icon" href="../images/aa.ico?1"/>
+		<script>
+			function gugu1(){
+//				단 수 입력
+				var dan = prompt("단 입력");
+				var res = dan + "단 ... <br>";
+				
+				for(var gob = 1; gob < 10; gob++){
+					res += dan + " × " + gob + " = " + dan * gob + "<br>";
+				}
+				
+				var result = document.querySelector("#result1");
+				result.innerHTML = res;
+			}
+			
+			function gugu2(){
+				res="";
+				for (var dan = 2; dan < 10; dan++) {
+					res += "<div class='aa'>";
+					res += dan + "단<br>";
+					for (var gob = 1; gob < 10; gob++) {
+						res += dan + " × " + gob + " = " + dan * gob + "<br>";
+					}
+					res+="</div>";
+				}
+//				출력
+				var result2 = document.querySelector("#result2");
+				result2.innerHTML = res;
+			}
+			
+			function gugu3(){
+				res="<table border='1'>";
+				for (var dan = 1; dan < 10; dan++) {
+					res += "<tr>";
+					for (var gob = 1; gob < 10; gob++) {
+						res += "<td>" + dan * gob + "</td>";
+					}
+					res+="</tr>"
+				}
+				res+="</table>"
+//				출력
+				var result3 = document.querySelector("#result3");
+				result3.innerHTML = res;
+			}
+		</script>
+		<style>
+			div{
+				height: auto;
+			}
+			#result2{
+				height: 230px;
+			}
+			.aa{
+				width: 100px;
+				height: auto;
+				border: 1px dotted orange;
+				margin: 3px;
+				padding: 10px;
+				float: left;
+			}
+			table{
+				border-spacing: 10px;
+				border : 2px solid blue;
+				background: white;
+			}
+			td{
+				width: 50px;
+				height: 40px;
+				text-align: center;
+			}
+			td:first-child{
+				font-weight: bold;
+			}
+			tr:first-child td{
+				font-weight: bold;
+			}
+		</style>
+	</head>
+	<body>
+		<pre>
+구구단 출력
+	: 버튼을 클릭하면 구구단 수를 입력
+	: 입력한 단의 구구단을 출력
+		</pre>
+		<input type="button" id="btn1" value="확인" onclick="gugu1()">
+		<div id="result1">
+			
+		</div>
+		<pre>
+다중 반복문을 이용한 구구단
+		</pre>
+		<input type="button" id="btn2" value="확인" onclick="gugu2()">
+		<div id="result2">
+			
+		</div>
+		<pre>
+Table을 이용한 구구단 출력
+	: 첫 번째 for문에서 tr을 구성
+	: 두 번째 for문에서 td를 구성
+		</pre>
+		<input type="button" id="btn3" value="확인" onclick="gugu3()">
+		<div id="result3">
+			
+		</div>
+	</body>
+</html>

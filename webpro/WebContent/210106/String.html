@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<link rel="stylesheet" href="../css/public.css">
+		<script type="text/javascript">
+			let str = "I Love Korea 대한 민국 만세 Korea 화이팅";
+			
+			function proc1() {
+				let len = str.length
+				let idx = prompt("인덱스를 입력하세요.", "0 ~ "+ (str.length - 1));
+				let code = str.charAt(parseInt(idx));
+				res = str + "<br>";
+				res += "charAt(" + idx + ") : " + code + "<br>";
+				print(res, "result1")
+			}
+			
+			function proc2() {
+				let len = str.length
+				let idx = prompt("인덱스를 입력하세요.", "0 ~ "+ (str.length - 1));
+				let code = str.charCodeAt(parseInt(idx));
+				res = str + "<br>";
+				res += "charCodeAt(" + idx + ") : " + code + "<br>";
+				print(res, "result2")
+			}
+			
+			function proc3() {
+//				입력한 name의 값을 가져온다.
+				let nameValue = document.getElementById("name").value;
+				console.log(nameValue.length);
+				let nValue = nameValue.trim();
+				console.log(nValue.length);
+				
+				/*
+				if(nValue.length == 0) {
+					alert("데이터를 입력하세요.");
+				} else {
+					alert("데이터가 입력되었습니다.");
+				}
+				*/
+				
+				let res = "공백 제거 전 : " + nameValue.length + " " + nameValue + "<br>";
+				res += "공백 제거 후 : " + nValue.length + " "  + nValue;
+				print(res, "result3")
+			}
+			
+			function proc4() {
+				let from = 0;
+				let to = 8;
+				let a1 = str.substring(from, to);
+				let res = "원래 문자열 : " + str + "<br>";
+				res += "substring(" + from + ", " + to + ") : " + a1;
+				
+				print(res, "result4")
+			}
+			
+			function proc5() {
+				let start = 8;
+				let end = 15;
+				let a1 = str.slice(start, end);
+				let res = "원래 문자열 : " + str + "<br>";
+				res += "slice(" + start + ", " + end + ") : " + a1;
+				
+				print(res, "result5")
+			}
+			
+			function proc6() {
+				let start = 3;
+				let length = 5;
+				let a1 = str.substr(start, length);
+				let res = "원래 문자열 : " + str + "<br>";
+				res += "substr(" + start + ", " + length + ") : " + a1;
+
+				print(res, "result6")
+			}
+			
+			function proc7() {
+				let aa = str.split(" ");
+				let res = "원래 문자열 : " + str + "<br>";
+				res += "생성된 배열 : " + aa;
+				
+				print(res, "result7");
+			}
+			
+			function proc8() {
+				let aValue = document.getElementById('area').value;
+				let res = aValue.replace(/\r/g, "").replace(/\n/g, "<br>")
+				print(res, "result8")
+			}
+			
+			function print(res, result) {
+				document.getElementById(result).innerHTML = res;
+//				document.getElementById(result).textContent = res;
+			}
+		</script>
+		<style>
+			div#result8{
+				height: auto;
+			}
+		</style>
+	</head>
+	<body>
+		<pre>
+charAt(index)
+	: 지정된 인덱스 위치의 문자 하나를 가져온다.
+charCodeAt(index)
+	: 지정된 인덱스 위치에 위치하는 문자 하나의 유니코드 값을 가져온다.
+		</pre>
+		<input type="button" value="charAt" onclick="proc1()">
+		<input type="button" value="charCodeAt" onclick="proc2()">
+		<div class="dd" id="result1">
+			
+		</div>
+		<div class="dd" id="result2">
+			
+		</div>
+		<pre>
+trim()
+	: DATA 앞뒤의 무효의 공백을 제거한다.
+		</pre>
+		<input type="text" id="name">
+		<input type="button" value="trim" onclick="proc3()">
+		<div class="dd" id="result3">
+			
+		</div>
+		<pre>
+substring(from, to)
+	: start ~ end 사이의 값을 추출한다.
+slice(start, end)
+	: start ~ end 사이의 값을 추출한다.
+substr(start, length)
+	: start부터 length의 갯수만큼 추출한다.
+		</pre>
+		<input type="button" value="substring" onclick="proc4()">
+		<input type="button" value="slice" onclick="proc5()">
+		<input type="button" value="substr" onclick="proc6()">
+		<div class="dd" id="result4">
+			
+		</div>
+		<div class="dd" id="result5">
+			
+		</div>
+		<div class="dd" id="result6">
+			
+		</div>
+		<pre>
+split("구분자", 갯수)
+	: 구분자를 기준으로 문자열을 분리하여 배열로 저장한다.
+		</pre>
+		<input type="button" value="split" onclick="proc7()">
+		<br>
+		<br>
+		<textarea rows="10" cols="50" id="area"></textarea>
+		<input type="button" value="replace" onclick="proc8()">
+		<div class="dd" id="result7">
+			
+		</div>
+		<div class="dd" id="result8">
+			
+		</div>
+	</body>
+</html>

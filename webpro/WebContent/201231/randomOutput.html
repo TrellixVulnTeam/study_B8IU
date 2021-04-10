@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<link rel="stylesheet" href="../css/public.css">
+		<script>
+			function proc1(self){
+//				랜덤 발생
+				self.style.display = "none";
+				a = setInterval(function(){
+					var res = "";
+					for (var i = 0; i < 5; i++) {
+						res += parseInt(Math.random()*46 + 1) + " ";					
+					}
+					res += "<br>";
+					print(res);
+					console.log(a);
+				}, 1000);
+			}
+			
+			function proc2(){
+				clearInterval(a);
+				시작버튼을 검색
+//				bs = document.getElementById(btn1);
+//				bs = document.getElementsByTagName('input')[0];
+//				bs = document.querySelector('input');
+				bs = document.querySelector("#btn1");
+				
+//				시작버튼을 보이게 한다 - display
+				bs.style.display = "inline";
+			}
+			
+			function print(res){
+				document.querySelector("#result1").innerHTML += res;
+			}
+		</script>
+		<style type="text/css">
+			div{
+				overflow: auto;
+			}
+		</style>
+	</head>
+	<body>
+		<pre>
+정해진 시간이 경과할 때 마다 함수를 실행하기.
+	setInterval(function(), 1000)
+		</pre>
+		<p>
+			<input id="btn1" type="button" value="시작" onclick="proc1(this)">
+			<input id="btn2" type="button" value="종료" onclick="proc2()">
+		</p>
+		<div id="result1">
+			
+		</div>
+	</body>
+</html>

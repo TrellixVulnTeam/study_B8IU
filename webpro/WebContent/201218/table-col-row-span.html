@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset='UTF-8'>
+		<title>html테스트</title>
+		<style>
+			#tab1{
+				border-collapse: collapse;
+				margin: 40px;
+				border: 2px solid blue;
+			}
+			#tab1 th{
+				width: 200px;
+				height: 40px;
+			}
+			#tab1 td{
+				width: 200px;
+				text-align: center;
+				height: 40px;
+			}
+			#tab1 caption{
+				font-size: 2.0em;
+				margin: 20px;
+				caption-side: bottom;
+			}
+			#tab2{
+				margin: 40px;
+				border: 3px solid purple;
+			}
+			#tab2 td{
+				width: 100px;
+				height: 75px;
+				text-align: center;
+			}
+			#tab3 {
+				border: 3px solid blue;
+				margin: 40px;
+			}
+			#tab3 th{
+				width: 100px;
+				height: 40px;
+			}
+			#tab3 td{
+				width: 100px;
+				height: 40px;
+				text-align: center;
+			}
+			#tab3 #intro{
+				width: 300px;
+			}
+			#tab3 .intro{
+				text-align: left;
+			}
+		</style>
+	</head>
+	<body>
+		<table id = "tab1" border="1">
+			<caption>재밌는 영화</caption>
+			<tr>
+				<th>1열</th>
+				<th>2열</th>
+				<th>3열</th>
+			</tr>
+			<tr>
+				<td rowspan="2">1행 1열</td>
+				<td>1행 2열</td>
+				<td>1행 3열</td>
+			</tr>
+			<tr>
+				<td>2행 2열</td>
+				<td>2행 3열</td>
+			</tr>
+			<tr><td colspan="3">3행 1열</td></tr>
+		</table>
+		<hr>
+		<table id="tab2" border="1">
+			<tr>
+				<td colspan="2">1</td>
+				<td colspan="2">2</td>
+				<td>3</td>
+				<td>4</td>
+			</tr>
+			<tr>
+				<td colspan="4">5</td>
+				<td colspan="2">6</td>
+			</tr>
+			<tr>
+				<td colspan="4">7</td>
+				<td colspan="2" rowspan="2">8</td>
+			</tr>
+			<tr>
+				<td>9</td>
+				<td>0</td>
+				<td>-</td>
+				<td>=</td>
+			</tr>
+		</table>
+		<hr>
+		<table id="tab3" border="1">
+			<tr>
+				<th colspan="5">평생교육원 강좌 소개 - 2019년도 1학기</th>
+			</tr>
+			<tr>
+				<th>강좌이름</th>
+				<th>강의자</th>
+				<th id="intro">소개</th>
+				<th>강좌코드</th>
+				<th>실습비</th>
+			</tr>
+			<tr>
+				<td>1</td>
+				<td>2</td>
+				<td class="intro">3</td>
+				<td>4</td>
+				<td>5</td>
+			</tr>
+			<tr>
+				<td>6</td>
+				<td>7</td>
+				<td class="intro">8</td>
+				<td>9</td>
+				<td>10</td>
+			</tr>
+			<tr>
+				<td>11</td>
+				<td>12</td>
+				<td class="intro">13</td>
+				<td>14</td>
+				<td>15</td>
+			</tr>
+		</table>
+	</body>
+</html>

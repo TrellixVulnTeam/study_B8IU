@@ -1,0 +1,234 @@
+@CHARSET "UTF-8";
+div.mainbody{
+	width: 1280px;
+	margin-left: auto;
+	margin-right: auto;
+}
+a#header{
+	text-decoration: none;
+}
+header{
+	text-align: center;
+	color: black;
+}
+nav{
+	background: black;
+	color: white;
+}
+nav a{
+	color:white;
+	text-decoration: none;
+}
+nav ul{
+	margin: 0px;
+}
+nav li{
+	display: inline-block;
+	text-align: center;
+	width: 200px;
+	margin: 15px;
+	font-weight: bold;
+}
+section{
+	height: 800px;
+	width: 736px;
+	display: inline-block;
+}
+section article{
+	height: 100%;
+}
+section iframe{
+	width: 100%;
+	height: 796px;
+	border: none;
+}
+aside{
+	width: 250px;
+	height: 800px;
+	padding: 10px;
+	background: black;
+	color: white;
+}
+#leftside{
+	float: left;
+}
+#rightside{
+	float: right;
+}
+aside a{
+	color:white;
+	text-decoration: none;
+}
+aside li{
+	list-style: none;
+	margin: 20px;
+	font-weight: bold;
+}
+footer{
+	height: 100px;
+	text-align: center;
+	background: black;
+	color: white;
+}
+footer p{
+	padding: 40px;
+}
+label{
+	width: 125px;
+	display: inline-block;
+}
+input#idcheckbtn{
+	margin: 0px 10px;
+}
+.submitReset{
+	width: 150px;
+	margin: 10px;
+}
+div.registerbody{
+	width: 475px;
+	margin-left: auto;
+	margin-right: auto;
+}
+form#register{
+	width: 475px;
+	margin-top: 50px;
+}
+div.shopcartbody{
+	width: 600px;
+	margin-left: auto;
+	margin-right: auto;
+}
+table{
+	width: 100%;
+	border-collapse: collapse;
+	border: 3px solid black;
+	text-align: center;
+}
+table input[type=text]{
+	width: 75px;
+}
+th, td{
+	padding: 10px;
+}
+td>input{
+	text-align: left;
+}
+form>input{
+	margin: 10px;
+}
+form#shopcart{
+	width: 600px;
+	margin-top: 50px;
+}
+div.audioitemdivbox{
+	display: inline-block;
+	width: 195px;
+	height: 385px;
+	padding : 10px;
+	margin: 4px;
+	border: 3px dashed black;
+}
+div.clothesitemdivbox{
+	display: inline-block;
+	width: 195px;
+	height: 330px;
+	padding : 10px;
+	margin: 4px;
+	border: 3px dashed black;
+}
+div.computeritemdivbox{
+	display: inline-block;
+	width: 195px;
+	height: 310px;
+	padding : 10px;
+	margin: 4px;
+	border: 3px dashed black;
+}
+div.fooditemdivbox{
+	display: inline-block;
+	width: 195px;
+	height: 310px;
+	padding : 10px;
+	margin: 4px;
+	border: 3px dashed black;
+}
+div.furniture-interioritemdivbox{
+	display: inline-block;
+	width: 195px;
+	height: 340px;
+	padding : 10px;
+	margin: 4px;
+	border: 3px dashed black;
+}
+div.sports-leisureitemdivbox{
+	display: inline-block;
+	width: 195px;
+	height: 360px;
+	padding : 10px;
+	margin: 4px;
+	border: 3px dashed black;
+}
+div.audioimgslot{
+	position: relative;
+	width: 100%;
+	padding-top: 100%;
+	overflow: hidden;
+}
+div.videoitemdivbox{
+	display: inline-block;
+	width: 310px;
+	height: 280px;
+	padding : 10px;
+	margin: 5px;
+	border: 3px dashed black;
+}
+img.thumbnail{
+	width: 100%;
+	height: auto;
+}
+.audioimgslot>img{
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	max-width: 100%;
+	height: auto;
+	border-radius: 100px;
+}
+audio{
+	margin-top: 10px;
+	width: 195px;
+}
+video{
+	margin-top: 10px;
+	width: 100%;
+}
+div>h3{
+	margin: 10px 0px;
+}
+div>h4{
+	margin: 10px 1px;
+}
+div>h5{
+	margin: 10px 2px;
+}
+div>h6{
+	margin: 10px 3px;
+}
+div.imgslot{
+	position: relative;
+	width: 100%;
+	padding-top: 100%;
+	overflow: hidden;
+}
+.imgslot>img{
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	max-width: 100%;
+	height: auto;
+}
+

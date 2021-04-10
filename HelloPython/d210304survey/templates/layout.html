@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>sdetail</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            text-align: center;
+            margin: 5px;
+        }
+
+        table table th {
+            width: 100px;
+        }
+
+        label {
+            display: inline-block;
+            width: 100px;
+        }
+
+        input {
+            margin: 5px;
+        }
+    </style>
+    <script src="./js/jquery-3.5.1.js"></script>
+</head>
+<body>
+<a href="{{url_for('main')}}">메인화면</a>
+<a href="{{url_for('suser')}}">사용자관리</a>
+<a href="{{url_for('survey')}}">설문관리</a>
+<a href="{{url_for('sdetail')}}">문항관리</a>
+<br/>
+{% block content %}{% endblock %}
+<br/>
+all right reserved by aimaker.kr
+</body>
+</html>

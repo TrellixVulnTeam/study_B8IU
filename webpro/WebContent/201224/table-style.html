@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset='UTF-8'>
+		<title>테이블</title>
+		<link rel="stylesheet" href="../css/public.css">
+		<style>
+			table{
+				border-collapse: collapse;
+				margin: 20px;
+				empty-cells: hide;
+			}
+			td{
+				width: 200px;
+				height: 30px;
+				text-align: center;
+			}
+			th{
+				height: 40px;
+				background: lightblue;
+			}
+			#table2{
+				border-collapse: separate;
+				border-spacing: 10px;
+				empty-cells: hide;
+			}
+		</style>
+	</head>
+	<body>
+		<pre>
+테이블 내부의 선 합치기
+	border-collapse: collapse;
+		</pre>
+		<table id="table1" border="1">
+			<tr>
+				<th>이름</th>
+				<th>주소</th>
+			</tr>
+			<tr>
+				<td>홍길동</td>
+				<td>대전</td>
+			</tr>
+			<tr>
+				<td>개나리</td>
+				<td>서울</td>
+			</tr>
+			<tr>
+				<td>진달래</td>
+				<td>부산</td>
+			</tr>
+			<tr>
+				<td>무궁화</td>
+				<td>광주</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+			</tr>
+		</table>
+		<pre>
+border-collapse: separate;
+border-spacing: 10px;
+		</pre>
+		<table id="table2" border="1">
+			<tr>
+				<th>이름</th>
+				<th>주소</th>
+			</tr>
+			<tr>
+				<td>홍길동</td>
+				<td>대전</td>
+			</tr>
+			<tr>
+				<td>개나리</td>
+				<td>서울</td>
+			</tr>
+			<tr>
+				<td>진달래</td>
+				<td>부산</td>
+			</tr>
+			<tr>
+				<td>무궁화</td>
+				<td>광주</td>
+			</tr>
+			<tr>
+				<td>삼천리</td>
+				<td></td>
+			</tr>
+		</table>
+	</body>
+</html>

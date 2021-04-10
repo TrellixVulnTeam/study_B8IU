@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<link rel="stylesheet" href="../css/public.css">
+		<script type="text/javascript">
+//			현재 오늘 날짜
+			let now1 = new Date();
+//			ms만큼 지난 시간
+			let now2 = new Date(1223236152);
+			let now3 = new Date("1900, 10, 20");
+			let now4 = new Date(1900, 10 - 1, 20, 09, 10, 12);
+			
+			window.onload = function() {
+				let result = document.getElementById("result1");
+				
+				let res = "new Date()<br>" + now1 + "<br><br>";
+				res += "new Date(1223236152)<br>" + now2 + "<br><br>";
+				res += 'new Date("1900, 10, 20")<br>' + now3 + "<br><br>";
+				res += "new Date(1900, 10 - 1, 20, 09, 10, 12)<br>" + now4;
+				
+				result.innerHTML = res;
+				
+				let result2 = document.getElementById("result2");
+				
+				res = now1.toLocaleString() + "<br>";
+				res += now2.toLocaleDateString() + "<br>";
+				res += now3.toLocaleString() + "<br>";
+				res += now4.toLocaleString();
+				
+				result2.innerHTML = res;
+				
+				document.getElementById("out");
+				
+				setInterval(function(){
+					now1 = new Date();
+					out.innerHTML = now1.toLocaleString() + "." +now1.getMilliseconds();
+				}, 1);
+			}
+		</script>
+		<style type="text/css">
+			div{
+				height: auto;
+			}
+		</style>
+	</head>
+	<body>
+		<pre>
+
+		</pre>
+		<div id="out">
+			
+		</div>
+		<input type="button" id="btn1" value="확인" onclick="proc1()">
+		<div id="result1">
+			
+		</div>
+		<div id="result2">
+			
+		</div>
+	</body>
+</html>

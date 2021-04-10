@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<link rel="stylesheet" href="../css/public.css">
+		<style type="text/css">
+/* 			정적 */
+			h1{
+				color: blue;
+			}
+		</style>
+		<script type="text/javascript" src="../js/jquery-3.5.1.min.js"></script>
+		<script type="text/javascript">
+// 			동적
+			$(document).ready(function() {
+				let hList = $('h1');
+				hList.css('color', 'green');
+				
+				hList.eq(2).css('background', 'pink');
+				
+// 				hList = document.getElementsByTagName('h1');
+// 				for(let i = 0; i < hList.length; i++){
+// 					hList[i].style.color="red";
+// 				}
+				
+// 				hList[3].style.backgroundColor = 'yellow';
+			});
+		</script>
+	</head>
+	<body>
+		<pre>
+
+		</pre>
+		<h1>jQuery를 배웁시다.1</h1>
+		<h1>jQuery를 배웁시다.2</h1>
+		<h1>jQuery를 배웁시다.3</h1>
+		<h1>jQuery를 배웁시다.4</h1>
+		<h1>jQuery를 배웁시다.5</h1>
+		<h1>jQuery를 배웁시다.6</h1>
+		<input type="button" id="btn1" value="확인">
+		<div id="result1">
+			
+		</div>
+	</body>
+</html>

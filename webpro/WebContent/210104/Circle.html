@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<link rel="stylesheet" href="../css/public.css">
+		<script type="text/javascript">
+			circle = {
+					rad: 5,
+					name: "circle",
+					getArea: function() {
+						return Math.PI * this.rad * this.rad
+					},
+					getCircum: function() {
+						return 2 * Math.PI * this.rad
+					},
+					print: function() {
+						let res = "Circle 정보 출력하기<br>";
+						res += `이름: ${this.name}<br>`
+						res += `반지름: ${this.rad}<br>`
+						res += `면적: ${this.getArea()}<br>`
+						res += `둘레 : ${this.getCircum()}`;
+						
+						document.querySelector("#result1").innerHTML = res;
+					}
+			}
+			function proc1() {
+				circle.print();
+			}
+		</script>
+	</head>
+	<body>
+		<pre>
+
+		</pre>
+		<input type="button" id="btn1" value="확인" onclick="proc1()">
+		<div id="result1">
+			
+		</div>
+	</body>
+</html>

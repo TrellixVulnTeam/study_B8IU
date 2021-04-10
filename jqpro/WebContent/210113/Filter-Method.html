@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<link rel="stylesheet" href="../css/public.css">
+		<style type="text/css">
+			
+		</style>
+		<script type="text/javascript" src="../js/jquery-3.5.1.min.js"></script>
+		<script type="text/javascript">
+			$(function() {
+				$('#btn1').on('click', function() {
+					$('p').first().css({
+						'background-color' : 'pink'
+					});
+				});
+				
+				$('#btn2').on('click', function() {
+					$('p').last().css({
+						'color' : 'blue'
+					});
+				});
+				
+				$('#btn3').on('click', function() {
+					$('p').filter(':even').css({
+						'font-size' : '2.0em'
+					});
+				});
+				
+				$('#btn4').on('click', function() {
+					$('p').filter(':odd').css({
+						'border' : "2px inset green"
+					});
+				});
+				
+//				보슬보슬이라는 글자가 포함되어 있는 p-Tag를 선택
+				$('#btn5').on('click', function() {
+					$('p').filter(':contains(보슬보슬)').css({
+						'text-decoration' : 'underline'
+					});
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<pre>
+.first()
+.last()
+.filter(:even)
+.filter(:odd)
+.eq(2)
+.gt(2)
+.lt(2)
+		</pre>
+		<input type="button" id="btn1" value=".first()">
+		<input type="button" id="btn2" value=".last()">
+		<input type="button" id="btn3" value=".filter(:even)">
+		<input type="button" id="btn4" value=".filter(:odd)">
+		<input type="button" id="btn5" value=".filter(':contains(보슬보슬)')">
+		<div id="result1">
+			<p>흰 눈이 보슬보슬 내려옵니다.</p>
+			<p>하늘에서 낯익은 새하얀 눈이</p>
+			<p>산에도 들에도 들판위에도</p>
+			<p>소리 없이 보슬보슬 내려옵니다.</p>
+		</div>
+	</body>
+</html>

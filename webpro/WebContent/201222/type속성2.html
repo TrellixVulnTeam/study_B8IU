@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<link rel="stylesheet" href="../css/public.css" type="text/css">
+		<style>
+			select{
+				width: 100px;
+			}
+			pre{
+				background: red;
+			}
+		</style>
+	</head>
+	
+	<body>
+		<pre style="background:yellow;">
+여러 개의 파일에서 같은 Style을 지정하고자 한다.
+css 파일을 별도의 파일로 작성하고 저장한다.
+적용하고자 하는 html, jsp에서 
+&lt;link rel="stylesheet" href="../css/public.css" type="text/css">
+
+전송기능을 수행 : 
+	&lt;button type="submit">&lt;/button>
+	&lt;input type="submit">
+
+전송 기능이 없는:
+	&lt;button type="button">&lt;/button>
+	&lt;input type="button">
+
+	어떤 새로운 기능을 부여할 수 있다.
+		onclick="함수명()"
+		</pre>
+		<form action="type.jsp" method="post">
+			<p>id <input type="text" name="id"></p>
+			<p>password <input type="password" name="password"></p>
+			<p>자기소개</p>
+			<textarea name="area" rows="5" cols="30"></textarea>
+			<p>
+				취미
+				<select name="hobby1">
+					<option value="game">게임</option>
+					<option value="swim">수영</option>
+					<option value="movie" selected>영화</option>
+					<option value="trable">여행</option>
+					<option value="book">책</option>
+					<option value="run">달리기</option>
+				</select>
+			</p>
+						<p>
+				취미 ( size="5" multiple )
+				<select size="5" multiple name="hobby2">
+					<option value="game">게임</option>
+					<option value="swim">수영</option>
+					<option value="movie" selected>영화</option>
+					<option value="trable">여행</option>
+					<option value="book">책</option>
+					<option value="run">달리기</option>
+				</select>
+			</p>
+			<p>
+				<button type="button" onclick="alert('Hello~~')">확인</button>
+				<input type="button" onclick="alert('안녕하세요~~')" value="확인">
+			</p>
+			
+			<p>
+				<button type="submit">전송</button>
+				<input type="submit" value="전송">
+			</p>
+		</form>
+	</body>
+</html>

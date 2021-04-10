@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<link rel="stylesheet" href="../css/public.css">
+		<style type="text/css">
+			div {
+				background-color: yellow;
+			}
+		</style>
+		<script type="text/javascript" src="../js/jquery-3.5.1.min.js"></script>
+		<script type="text/javascript">
+			$(function() {
+				$('#btn1').on('click', function() {
+					$('#result1').empty();
+				});
+				
+				$('#btn2').on('click', function() {
+					$('#result2').remove();
+				});
+				
+				$('#btn3').on('click', function() {
+					$('p').remove('#pp');
+				});				
+			});
+		</script>
+	</head>
+	<body>
+		<pre>
+
+		</pre>
+		<input type="button" id="btn1" value="empty">
+		<input type="button" id="btn2" value="remove">
+		<input type="button" id="btn3" value="remove(Seletor)">
+		<div id="result1">
+			<p> hello jQuery~~
+		</div>
+		<div id="result2">
+			<p> hello jQuery~~
+		</div>
+		
+		<p>안녕하세요</p>
+		<p id="pp">졸린 오후 수업입니다.</p>
+	</body>
+</html>

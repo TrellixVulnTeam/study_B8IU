@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<style type="text/css">
+			
+		</style>
+		<script type="text/javascript" src="../js/jquery-3.5.1.min.js"></script>
+		<script type="text/javascript">
+			$(function() {
+				$('input[type=button]').css({
+					"background-color" : "yellow"
+				})
+				$('a[href^=mailto]').css({
+					"background-color" : "yellow"
+				})
+				$('img[id!=img1]').css({
+					"border" : "3px solid blue"
+				})
+				$("img[src$=png]").css({
+					"border" : "3px solid cyan"
+				})
+				$("input[type=text]").css({
+					"border" : "1px solid black"
+				})
+				$("img[title~=named]").css({
+					"border" : "1px solid blue"
+				})
+				$("a[href*=power2c]").css({
+					"text-decoration" : "none"
+				})
+				$("img[id|=little]").css({
+					"border" : "1px solid yellow"
+				})
+				$("img[alt]").css({
+					"border" : "2px solid red"
+				})
+			})
+		</script>
+	</head>
+	<body>
+		<a href="http://www.ddit.or.kr">(재)대덕 인재 개발원 </a>
+		<br><br>
+		<a href="mailto:power2c@ddit.or.kr">빠워에게 메일보내기 </a>
+		<br><br>
+		<div>
+			<label>Some images:</label>
+		</div>
+		<div>
+			<img src="../images/image.1.jpg" id="img1" alt="Hibiscus">
+			<img src="../images/image.2.jpg" id="little-Bear" title="A dog named little Bear">
+			<img src="../images/image.3.jpg" id="verbena" alt="Verbena">
+			<img src="../images/image.4.jpg" id="cozmo" title="A puppy named Cozmo">
+			<img src="../images/image.5.jpg" id="tigerLily" alt="Tiger Lily">
+			<img src="../images/image.6.jpg" id="little" title="coffeePot">
+			<img src="../images/산.png">
+		</div>
+		<div id="someDiv">
+			이곳은 ID 속성이
+			<tt>someDiv</tt>
+			인 &lt;div> 태그 입니다 .
+		</div>
+		<form>
+			<div>
+				<label>Text:</label>
+				<input type="text" id="aTextField" name="someTextField"/>
+			</div>
+			<button type="submit" id="submitButton">Submit</button>
+			<input type="button" value="클릭~~">
+		</form>
+	</body>
+</html>

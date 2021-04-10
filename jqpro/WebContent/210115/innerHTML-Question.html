@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<style type="text/css">
+			#main {
+				width: 400px;
+				margin-left: auto;
+				margin-right: auto;
+				text-align: center;
+			}
+		</style>
+		<script type="text/javascript" src="../js/jquery-3.5.1.min.js"></script>
+		<script type="text/javascript">
+			$(function() {
+				$('select').on('change', function() {
+					let dan = $(this).val();
+					
+					let res = dan + " * 1 = " + dan;
+					
+					for (let i = 2; i < 10; i++) {
+						res += "<br>" + dan + " * " + i + " = " + (dan * i);
+					}
+					
+					$('div>div').html(res);
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<pre>
+select에서 change Event.
+선택한 option 값을 script에서 사용하기 위해 val() 사용
+		</pre>
+		<div id="main">
+			<select>
+				<option value="1">1 단</option>
+				<option value="2">2 단</option>
+				<option value="3">3 단</option>
+				<option value="4">4 단</option>
+				<option value="5">5 단</option>
+				<option value="6">6 단</option>
+				<option value="7">7 단</option>
+				<option value="8">8 단</option>
+				<option value="9">9 단</option>
+			</select>
+			<h1>결과 출력</h1>
+			<div></div>
+		</div>
+	</body>
+</html>

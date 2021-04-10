@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<link rel="stylesheet" href="../css/public.css">
+		<style type="text/css">
+			span{
+				color : red;
+				font-size : 1.5em;
+			}
+		</style>
+		<script type="text/javascript" src="../js/jquery-3.5.1.min.js"></script>
+		<script type="text/javascript">
+			function proc1(){
+				document.getElementById('result1').innerHTML = "script 방식으로 기능 수행";
+			}
+			
+			$(document).ready(function(){
+//			windows.onload = function(){
+//				document.getElementById('btn1')
+//				btn2 클릭
+				$('#btn2').on('click', function(){
+//					alert("Hi jQuery!");
+					$('#result2').html("Hi jQuery!");
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<pre>
+script 방식
+	
+&lt;input type="button" value="확인" <span>onclick="proc1()"</span>>
+		</pre>
+		<input type="button" value="확인" onclick="proc1()">
+		<div id="result1">
+			
+		</div>
+		<pre>
+jQuery 방식
+	- 버튼에 onclick=""을 직접 기술하지 않음.
+	- id를 이용한다.
+	
+&lt;input type="button" <span>id="btn2"</span> value="확인">
+		</pre>
+		<input type="button" id="btn2" value="확인">
+		<div id="result2">
+			
+		</div>
+	</body>
+</html>

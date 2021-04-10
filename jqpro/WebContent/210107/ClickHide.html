@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<link rel="stylesheet" href="../css/public.css">
+		<style type="text/css">
+			input{
+				display: none;
+			}
+			div{
+				height: auto;
+			}
+		</style>
+		<script type="text/javascript" src="../js/jquery-3.5.1.min.js"></script>
+		<script type="text/javascript">
+//			모든 페이지가 로드되면 실행
+			$(document).ready(function(){
+//				h2를 클릭하면 실행
+				$('h2').on('click', function(){
+//					$(this).css('display', 'none');
+					$(this).hide();
+					if($('h2:visible').length == 0){
+//						$('#btn1').css('display', 'inline');
+						$('#btn1').show();
+					}
+				});
+				
+//				btn1을 클릭하면
+				$('#btn1').on('click', function(){
+//					$('h2').css('display', 'block');
+					$('h2').show();
+					$(this).hide();
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<pre>
+
+		</pre>
+		<input type="button" id="btn1" value="보이기">
+		<div id="result1">
+			<h2>클릭하면 사라집니다 1.</h2>
+			<h2>클릭하면 사라집니다 2.</h2>
+			<h2>클릭하면 사라집니다 3.</h2>
+			<h2>클릭하면 사라집니다 4.</h2>
+			<h2>클릭하면 사라집니다 5.</h2>
+			<h2>클릭하면 사라집니다 6.</h2>
+			<h2>클릭하면 사라집니다 7.</h2>
+			<h2>클릭하면 사라집니다 8.</h2>
+			<h2>클릭하면 사라집니다 9.</h2>
+			<h2>클릭하면 사라집니다 10.</h2>
+		</div>
+	</body>
+</html>

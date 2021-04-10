@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset='UTF-8'>
+		<title>my홈페이지</title>
+		<style>
+			#tbl1{
+				border: 3px solid blue;
+			}
+			#tbl1 caption{
+				font-size: 30px;
+				margin: 10px;
+			}
+			#tbl1 th{
+				width: 100px;
+				height: 40px;
+			}
+			#tbl1 td{
+				height: 40px;
+				text-align: center;
+			}
+			#img1{
+				width: 512px;
+				height: 326px;
+			}
+		</style>
+	</head>
+	<body>
+		<pre>
+			html 요소에는 block 요소와 inline 요소가 있다.
+			block 요소는 한 줄 전체를 차지하고 자동으로 줄이 바뀐다.
+				h1 ~ h6, p, ul, li, ol, table
+			inline 요소는 지정한 크기만큼만 영역을 차지한다.
+			inline 요소는 가로*세로 크기를 지정할 수 없다. ( img 제외 )
+				a, img, span
+		</pre>
+		<h1>나의 홈페이지</h1>
+		<img id="img1" src="../images/shutterstock_231062611.jpg" alt="Kinderpunsch">
+		<h2>컴퓨터 프로그래머를 꿈꾸며 열심히 대덕인재개발원에서 공부하고 있습니다.</h2>
+		<p>현재 학습하고 있는 과목</p>
+		<ul>
+			<li>HTML5 & Script <a href="https://www.w3.org/" target="_blank">W3C사이트</a></li>
+			<li>JAVA</li>
+			<li>데이터베이스</li>
+			<li>JSP</li>
+		</ul>
+		<table id="tbl1" border="1">
+			<caption>시간표</caption>
+			<tr>
+				<th></th>
+				<th>3월</th>
+				<th>4월</th>
+				<th>5월</th>
+				<th>6월</th>
+				<th>7월</th>
+				<th>8월</th>
+				<th>9월</th>
+			</tr>
+			<tr>
+				<td>오전</td>
+				<td>HTML5 &<br>Script</td>
+				<td>jQuery</td>
+				<td>고급자바</td>
+				<td>JSP</td>
+				<td>Framework</td>
+				<td>프로젝트</td>
+				<td>프로젝트</td>
+			</tr>
+			<tr>
+				<td>오후</td>
+				<td>기초자바</td>
+				<td>Oracle</td>
+				<td>고급자바</td>
+				<td>JSP</td>
+				<td>Framework</td>
+				<td>프로젝트</td>
+				<td>프로젝트</td>
+			</tr>
+		</table>
+	</body>
+</html>

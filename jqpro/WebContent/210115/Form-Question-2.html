@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<style type="text/css">
+			
+		</style>
+		<script type="text/javascript" src="../js/jquery-3.5.1.min.js"></script>
+		<script type="text/javascript">
+			$(function() {
+				$('#result').on('click', function() {
+					let result = $('input:text').val() +"씨!\n";
+					
+					result += "당신은 " + $('#gender').val() + "이고,\n";
+					
+					let hobbyCheck = $('#hobby:checked');
+					if (hobbyCheck.length == 0) {
+						result += "취미가 없군요.";
+					} else {
+						result += "취미는 " + hobbyCheck.eq(0).val();
+						hobbyCheck.each(function(i, a) {
+							if(i==0) {
+								return;
+							}
+							result += ", " + $(this).val()
+						});
+						result += "(이)군요!"
+					}
+					$('textarea').val(result);
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<h1>form 문제2</h1>
+		<pre>
+다음과 같은 입력 양식을 만들고 결과를 출력하는 프로그램을 작성하시오.(취미가 없을 경우는 "취미가 없군요"를 출력)
+38_checked_radio
+		</pre>
+		이름 : <input type="text">
+		<br>
+		<br>
+		
+		성별 : <input type="radio" name="gender" id="gender" value="남자" checked> 남 <input type="radio" name="gender" id="gender" value="여자"> 여
+		<br>
+		<br>
+		
+		취미 : 
+		<input type="checkbox" name="hobby" id="hobby" value="여행" checked> 여행
+		<input type="checkbox" name="hobby" id="hobby" value="독서"> 독서
+		<input type="checkbox" name="hobby" id="hobby" value="영화감상" checked> 영화감상
+		<input type="checkbox" name="hobby" id="hobby" value="바둑"> 바둑
+		<input type="checkbox" name="hobby" id="hobby" value="장기"> 장기
+		<input type="checkbox" name="hobby" id="hobby" value="등산" checked> 등산
+		<input type="checkbox" name="hobby" id="hobby" value="낚시"> 낚시
+		<br>
+		<br>
+		
+		<input type="button" id="result" value="결과출력">
+		<br>
+		<br>
+		
+		<textarea rows="10" cols="50"></textarea>
+	</body>
+</html>

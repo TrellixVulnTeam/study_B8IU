@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<style>
+			img{
+				display: none;
+			}
+			ul{
+				border-top: 3px solid red;
+				border-bottom: 3px solid red;
+				padding: 20px;
+			}
+			li{
+				display: inline; 
+				margin: 20px;
+				border: 1px solid black;
+			}
+			a{
+				letter-spacing: 5px;
+				text-decoration: none;
+			}
+			iframe{
+				width: auto;
+				height: auto;
+			}
+		</style>
+		<script>
+			function show(a){
+				ss = document.getElementsByTagName('img');
+				if(ss != null){
+					for(k = 0; k < ss.length; k++){
+						ss[k].style.display = "none";
+					}
+				}
+				if(a == 1){
+					a = document.getElementById('img1')
+				} else if(a == 2){
+					a = document.getElementById('img2')
+				} else if(a == 3){
+					a = document.getElementById('img3')
+				} else {
+					a = document.getElementById('img4')
+				}
+
+				a.style.display="inline";
+				
+			}
+		</script>
+	</head>
+	<body>
+		<pre>
+script에서 html 요소 검색하기
+
+a.style.display = "block";
+
+img 태그이름으로 검색
+document.getElementsByTagName('img');
+id로 검색
+document.getElementById('img1');
+
+		</pre>
+		<ul>
+			<li><a href="#" onclick="show(1)">아메리카노</a></li>
+			<li><a href="#" onclick="show(2)">카푸치노</a></li>
+			<li><a href="#" onclick="show(3)">카페라떼</a></li>
+			<li><a href="#" onclick="show(4)">에스프레소</a></li>
+		</ul>
+		<div>
+			<img id="img1" src="../images/아메리카노.jpg">
+			<img id="img2" src="../images/카푸치노.jpg">
+			<img id="img3" src="../images/카페라떼.jpg">
+			<img id="img4" src="../images/에스프레소.jpg">
+		</div>
+	</body>
+</html>

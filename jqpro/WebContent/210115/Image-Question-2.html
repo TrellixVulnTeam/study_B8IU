@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<style type="text/css">
+			table {
+				text-align: center;
+				margin-left: auto;
+				margin-right: auto;
+			}
+			#human {
+				background-color: yellow;
+			}
+			#computer {
+				background-color: magenta; 
+			}
+			img {
+				width: 400px;
+			}
+		</style>
+		<script type="text/javascript" src="../js/jquery-3.5.1.min.js"></script>
+		<script type="text/javascript">
+			$(function() {
+				$('#startGame').on('click', function() {
+					let humanInput = prompt("가위 바위 보를 입력하세요.");
+					
+					if (humanInput == "가위" || humanInput == "바위" || humanInput == "보") {
+						let choice = ["가위", "바위", "보"];
+						let pcChoice = choice[parseInt(Math.random() * 3)];
+						let humanSrc = $("#userInput").attr('src');
+						let humanLeft = humanSrc.slice(0, humanSrc.lastIndexOf('/') + 1);
+						let humanRight = humanSrc.slice(humanSrc.lastIndexOf('_'));
+						$("#userInput").attr('src', humanLeft + humanInput + humanRight);
+						
+						let computerSrc = $("#computerInput").attr('src');
+						let computerLeft = computerSrc.slice(0, computerSrc.lastIndexOf('/') + 1);
+						let computerRight = computerSrc.slice(computerSrc.lastIndexOf('_'));
+						$("#computerInput").attr('src', computerLeft + pcChoice + computerRight);
+						
+						if (humanInput == pcChoice) {
+							$("#result").text("결과 : 비겼습니다.");
+						} else if (humanInput == "가위" && pcChoice == "바위" || humanInput == "바위" && pcChoice == "보" || humanInput == "보" && pcChoice == "가위") {
+							$("#result").text("결과 : 졌습니다.");
+						} else {
+							$("#result").text("결과 : 이겼습니다.");
+						}
+					} else {
+						$('#result').text("올바른 값을 입력하세요.");
+					}
+				});
+				
+/*
+				$('input:button').on('click', function() {
+					arr = ["가위", "바위", "보"];
+					
+					rnd = Math.floor(Math.random() * 3);
+					
+					com = arr[rnd];
+					user = prompt("가위 바위 보 입력");
+					
+//					이미지 변경
+					$('#uimg').attr('src', '../images/' + user + '_좌.PNG');
+					$('#cimg').attr('src', '../images/' + com + '_우.PNG');
+					
+					if (com == user) {
+						res = "비김";
+					} else if (humanInput == "가위" && pcChoice == "보"
+							|| humanInput == "바위" && pcChoice == "가위"
+							|| humanInput == "보" && pcChoice == "바위") {
+						res = "사람이 이김";
+					} else {
+						res = "컴퓨터가  이김"
+					}
+					
+					$('#result').html(res);
+				});*/
+			});
+		</script>
+	</head>
+	<body>
+		<pre>
+컴퓨터는 랜덤한 숫자를 0 ~ 2까지 발생하여 가위바위보를 결정.
+사람은 prompt를 통해 입력.
+		</pre>
+		<table>
+			<tr>
+				<td colspan="2"><input type="button" value="게임시작" id="startGame"></td>
+			</tr>
+			<tr>
+				<td id="human">사 람</td>
+				<td id="computer">컴 퓨 터</td>
+			</tr>
+			<tr>
+				<td class="image"><img id="userInput" src="../images/바위_좌.PNG"></td>
+				<td class="image"><img id="computerInput" src="../images/바위_우.PNG"></td>
+			</tr>
+			<tr>
+				<td colspan="2" id="result"></td>
+			</tr>
+		</table>
+	</body>
+</html>

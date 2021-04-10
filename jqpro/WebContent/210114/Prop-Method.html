@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<link rel="stylesheet" href="../css/public.css">
+		<style type="text/css">
+			
+		</style>
+		<script type="text/javascript" src="../js/jquery-3.5.1.min.js"></script>
+		<script type="text/javascript">
+			$(function() {
+				$('#btn1').on('click', function() {
+//					각 항목의 상태값 얻어오기.
+					let chk = $('#checkTest').prop('checked');
+					
+					let opt0 = $('#selTest option').eq(0).prop('selected');
+					let opt1 = $('#selTest option').eq(1).prop('selected');
+					let opt2 = $('#selTest option').eq(2).prop('selected');
+					let opt3 = $('#selTest option').eq(3).prop('selected');
+					
+					let txt = $('#txtTest').prop('readonly');
+					
+					let btn = $('#runBtn').prop('disabled');
+					
+//					let chka = $('#checkTest').attr('checked');
+
+//					console.log(chk, chka);
+					let res = `checkbox : ${chk}\n`;
+					res += `select option1 : ${opt0}\n`;
+					res += `select option2 : ${opt1}\n`;
+					res += `select option3 : ${opt2}\n`;
+					res += `select option4 : ${opt3}\n`;
+					res += `text ( readonly ) : ${txt}\n`;
+					res += `button ( disabled ) : ${btn}`;
+					
+					alert(res);
+				});
+				
+				$('#btn2').on('click', function() {
+//					클릭할 때 마다 상태값을 변경한다.
+					$('#checkTest').prop('checked', !$('#checkTest').prop('checked'));
+					
+					$('#selTest option').eq(2).prop('selected', !$('#selTest option').eq(2).prop('selected'));
+					
+					$('#txtTest').prop('readonly', !$('#txtTest').prop('readonly'));
+					
+					$('#runBtn').prop('disabled', !$('#runBtn').prop('disabled'));
+				});
+				
+				$('#checkAll').on('change', function() {
+					let checkAllStatus = $(this).prop("checked");
+					$(".check").prop("checked", checkAllStatus);
+				});
+				
+				$('.check').on('change', function() {
+					$('#checkAll').prop("checked", true);
+					
+					/*
+					$('.check').each(function() {
+						console.log(this);
+						if(!$(this).prop("checked")){
+							$('#checkAll').prop('checked', false);
+							return false;
+						}
+					});
+					*/
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<pre>
+ 
+		</pre>
+		<input type="button" id="btn1" value="확인">
+		<input type="button" id="btn2" value="변경">
+		<div id="result1">
+			<form>
+				체크박스(라디오버튼) :
+				<input type="checkbox" id="checkTest" checked>
+				<br>
+				<br>
+				
+				리스트박스(select객체) :
+				<select id="selTest">
+					<option value="1">하나</option>
+					<option value="2">둘</option>
+					<option value="3" selected>셋</option>
+					<option value="4">넷</option>
+				</select>
+				<br>
+				<br>
+				
+				text객체	(readonly) :
+				<input type="text" value="가나다" id="txtTest" readonly>
+				<br>
+				<br>
+				
+				button객체(disabled) :
+				<input type="button" value="실행" id="runBtn" disabled>
+				<br>
+				<br>
+				
+				<input type="checkbox" id="checkAll">전체선택
+				<br>
+				<input type="checkbox" class="check">1
+				<br>
+				<input type="checkbox" class="check">2
+				<br>
+				<input type="checkbox" class="check">3
+				<br>
+				<input type="checkbox" class="check">4
+				<br>
+				<input type="checkbox" class="check">5
+				<br>
+				<input type="checkbox" class="check">6
+			</form>
+		</div>
+	</body>
+</html>

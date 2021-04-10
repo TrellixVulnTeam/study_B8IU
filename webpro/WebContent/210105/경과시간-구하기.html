@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<link rel="stylesheet" href="../css/public.css">
+		<script type="text/javascript">
+			function proc1(){
+				let now = new Date();
+				let myBirthDay = new Date("1997, 09, 05");
+				let res = "오늘 : " + now.toLocaleString() + "<br>";
+				res += "생일 : " + myBirthDay.toLocaleString() + "<br>";
+				let nTime = now.getTime();
+				let mTime = myBirthDay.getTime();
+				
+				let times = nTime - mTime;
+				
+				res += "태어난 날로부터 " + parseInt(times / 1000) + "초 지났습니다.<br>";
+				res += "태어난 날로부터 " + parseInt(times / 1000 / 60) + "분 지났습니다.<br>";
+				res += "태어난 날로부터 " + parseInt(times / 1000 / 60 / 60) + "시간 지났습니다.<br>";
+				res += "태어난 날로부터 " + parseInt(times / 1000 / 60 / 60 / 24) + "일 지났습니다.<br>";
+				res += "태어난 날로부터 " + parseInt(times / 1000 / 60 / 60 / 24 / 365.24) + "일 지났습니다.<br>";
+				document.querySelector("#result1").innerHTML = res;
+			}
+			
+			function proc2(){
+				/*
+				let now = new Date();
+				time100 = 100 * 24 * 60 * 60 * 1000;
+				
+				nowtime = now.getTime();
+				
+				times = time100 + nowtime;
+				
+				now2 = new Date(times);
+				let res = "오늘 : " + now.toLocaleString() + "<br>";
+				res += "100일 후 : " + now2.toLocaleString();
+				document.querySelector("#result2").innerHTML = res;
+				*/
+				
+				let nowdate = new Date();
+				let hldate = new Date(nowdate.getTime() + 100 * 24 * 60 * 60 * 1000);
+				let res = "오늘 : " + nowdate.toLocaleString() + "<br>";
+				res += "100일 후 : " + hldate.toLocaleString();
+
+				document.querySelector("#result2").innerHTML = res;
+				
+			}
+		</script>
+		<style type="text/css">
+			div{
+				height: auto;
+			}
+		</style>
+	</head>
+	<body>
+		<pre>
+태어난 날로부터 현재까지 경과시간 구하기.
+	- getTime();
+		: millisec 값을 구한다.
+		</pre>
+		<input type="button" id="btn1" value="확인" onclick="proc1()">
+		<div id="result1">
+			
+		</div>
+		<pre>
+100일 후의 날짜 구하기.
+		</pre>
+		<input type="button" id="btn2" value="확인" onclick="proc2()">
+		<div id="result2">
+			
+		</div>
+	</body>
+</html>

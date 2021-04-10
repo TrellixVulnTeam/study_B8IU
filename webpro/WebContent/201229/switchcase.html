@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<link rel="stylesheet" href="../css/public.css">
+		<script>
+			window.onload =  function(){
+				
+				var input1 = parseInt(prompt("첫 번째 숫자를 입력하세요."));
+				var input2 = parseInt(prompt("두 번째 숫자를 입력하세요."));
+				
+				var op = prompt("연산자를 입력하세요.", "+, -, *, /");
+				
+				var res = document.getElementById("result");
+				
+				var str = "입력 1 : " + input1 + "<br>";
+				str += "입력 2 : " + input2 + "<br>";
+				str += "연산자 : " + op + "<br>";
+				
+				var res;
+				
+				switch(op){
+					case "+" :
+						res = input1 + input2
+						break;
+					case "-" :
+						res = input1 - input2
+						break;
+					case "*" :
+						res = input1 * input2
+						break;
+					case "/" :
+						if(input2 != 0){
+							res = input1 / input2
+						}else{
+							res = "0으로 나눌 수 없습니다.";
+						}
+						break;
+					default:
+						res = "올바르지 않은 연산자입니다.";
+				}
+				str += "결과 : " + res;
+				
+				var result = document.getElementById("result");
+				result.innerHTML = str;
+			}
+			
+			function grade(){
+				var score = parseInt(prompt("점수를 입력하세요.","0 ~ 100"));
+				res = "올바른 점수를 입력하세요."
+				if(score <= 100 && score >= 0){
+					switch(parseInt(score / 10)){
+						case 10: case 9:
+							res = "A 학점";
+							break;
+						case 8:
+							res = "B 학점";
+							break;
+						case 7:
+							res = "C 학점";
+							break;
+						case 6:
+							res = "D 학점";
+							break;
+						default :
+							res = "F 학점";
+					}
+				}
+//				출력
+				var result2 = document.getElementById("result2");
+				str = "입력한 값 : " + score + "<br>";
+				str += "결과 : " + res;
+				result2.innerHTML = str;
+			}
+		</script>
+		<style>
+			div{
+				height: 100px;
+				border: 1px solid blue;
+				margin: 20px;
+				padding: 20px;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>연산자 비교</h1>
+		<p>두 개의 정수와 한 개의 연산자 입력</p>
+		<p>연산자 비교 후 연산한다</p>
+		<div id="result">
+			
+		</div>
+		<hr>
+		<h1>점수를 입력 ( 0 ~ 100 )</h1>
+		<p>점수에 따라 학점 ( A, B, C, D, F ) 을 구한다.</p>
+		<input type="button" id="btn1" value="확인" onclick="grade()">
+		<div id="result2">
+			
+		</div>
+	</body>
+</html>

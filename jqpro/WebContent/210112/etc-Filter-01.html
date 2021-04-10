@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<link rel="stylesheet" href="../css/public.css">
+		<style type="text/css">
+			
+		</style>
+		<script type="text/javascript" src="../js/jquery-3.5.1.min.js"></script>
+		<script type="text/javascript">
+			$(function(){
+				$('#btn1').on('click', function() {
+					let str = "<h2>p:hidden</h2>";
+					$('#result1 p:hidden').each(function() {
+						str += $(this).text() + " ";
+					});
+					$('#hidden').html(str);
+				});
+				
+				$('#btn2').on('click', function() {
+					let str = "<h2>p:visible</h2>";
+					$('#result1 p:visible').each(function() {
+						str += $(this).text() + " ";
+					});
+					$('#visible').html(str);
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<pre>
+$(function(){
+	$('#btn1').on('click', function() {
+		let str = "<h2>p:hidden</h2>";
+		$('#result1 p:hidden').each(function() {
+			str += $(this).text() + " ";
+		});
+		$('#hidden').html(str);
+	});
+	
+	$('#btn2').on('click', function() {
+		let str = "<h2>p:visible</h2>";
+		$('#result1 p:visible').each(function() {
+			str += $(this).text() + " ";
+		});
+		$('#visible').html(str);
+	});
+});
+		</pre>
+		<input type="button" id="btn1" value="hidden">
+		<input type="button" id="btn2" value="visible">
+		<div id="result1">
+			<p> 보이는 문단</p>
+			<p style="visibility:hidden;">숨겨진 문단</p>
+			<p style="display:none;"> 자리를 차지 하지 못한 문단 </p>
+			<p style="opacity:0;"> 투명한 문단</p>
+			<hr/>
+		</div>
+		<div id="hidden"></div> 
+		<div id="visible"></div>
+	</body>
+</html>

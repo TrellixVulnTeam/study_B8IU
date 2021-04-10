@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Test">
+    <select id="select">
+        SELECT SURVEY_ID,
+                S_SEQ,
+                QUESTION,
+                A1,
+                A2,
+                A3,
+                A4,
+                IN_DATE,
+                IN_USER_ID,
+                UP_DATE,
+                UP_USER_ID
+            FROM SDETAIL
+            ORDER BY SURVEY_ID, S_SEQ
+    </select>
+    <insert id="insert">
+        INSERT INTO SDETAIL(
+            SURVEY_ID,
+            S_SEQ,
+            QUESTION,
+            A1,
+            A2,
+            A3,
+            A4,
+            IN_DATE,
+            IN_USER_ID,
+            UP_DATE,
+            UP_USER_ID
+        ) VALUES (
+            :V_SURVEY_ID,
+            :V_S_SEQ,
+            :V_QUESTION,
+            :V_A1,
+            :V_A2,
+            :V_A3,
+            :V_A4,
+            TO_CHAR(SYSDATE, 'YYYYMMDD.HH24MISS'),
+            :V_IN_USER_ID,
+            TO_CHAR(SYSDATE, 'YYYYMMDD.HH24MISS'),
+            :V_UP_USER_ID
+        )
+    </insert>
+    <update id="update">
+        UPDATE SDETAIL
+        SET
+            QUESTION =      :V_QUESTION,
+            A1 =            :V_A1,
+            A2 =            :V_A2,
+            A3 =            :V_A3,
+            A4 =            :V_A4,
+            UP_DATE =       TO_CHAR(SYSDATE, 'YYYYMMDD.HH24MISS'),
+            UP_USER_ID =    :V_UP_USER_ID
+        WHERE SURVEY_ID =   :V_SURVEY_ID
+            AND S_SEQ =     :V_S_SEQ
+    </update>
+    <delete id="delete">
+        DELETE
+            FROM SDETAIL
+            WHERE SURVEY_ID =   :V_SURVEY_ID
+                AND S_SEQ =     :V_S_SEQ
+    </delete>
+</mapper>

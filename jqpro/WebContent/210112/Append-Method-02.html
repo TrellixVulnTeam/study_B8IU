@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<link rel="stylesheet" href="../css/public.css">
+		<style type="text/css">
+			p {
+				border: 2px inset green;
+			}
+		</style>
+		<script type="text/javascript" src="../js/jquery-3.5.1.min.js"></script>
+		<script type="text/javascript">
+			$(function() {
+				$('#result1 p').on('click', function() {
+					let imgTitle = $(this).attr('title');
+					let imgText = $(this).text();
+					
+//					이미지 만들기
+					$('<img>', {
+						'src' : '../images/' + imgTitle,
+						"width" : "100px",
+						"height" : "100px",
+						"alt" : imgText
+					})
+//					해당 범위 안, 뒤에
+//					.appendTo($(this));
+//					해당 범위 안, 앞에
+//					.prependTo($(this));
+//					해당 범위 밖, 뒤에
+//					.insertAfter($(this));
+//					해당 범위 밖, 앞에
+					.insertBefore($(this));
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<pre>
+$(function() {
+	$('#result1 p').on('click', function() {
+		let imgTitle = $(this).attr('title');
+		let imgText = $(this).text();
+
+//		이미지 만들기
+		$('&lt;img>', {
+			'src' : '../images/' + imgTitle,
+			"width" : "100px",
+			"height" : "100px",
+			"alt" : imgText
+		})
+//		해당 범위 안, 뒤에
+//		.appendTo($(this));
+//		해당 범위 안, 앞에
+//		.prependTo($(this));
+//		해당 범위 밖, 뒤에
+//		.insertAfter($(this));
+//		해당 범위 밖, 앞에
+		.insertBefore($(this));
+	});
+});
+		</pre>
+		<input type="button" id="btn1" value="확인">
+		<div id="result1">
+			<p title="Koala.jpg">코알라</p>
+			<p title="딸기스무디.jpg">딸기스무디</p>
+			<p title="수국3.jpg">수국</p>
+			<p title="펭귄.jpg">펭귄</p>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<link rel="stylesheet" href="../css/public.css">
+		<style type="text/css">
+			label {
+				display: inline-block;
+				width: 100px;
+				text-align: center;
+				margin: 10px;
+			}
+		</style>
+		<script type="text/javascript" src="../js/jquery-3.5.1.min.js"></script>
+		<script type="text/javascript">
+			$(function() {
+				let count = 0;
+				$('#add').on('click', function() {
+					count++;
+					
+					let addFile = `<p id=${count}> 파일 : <input type="file"> <input type="button" value="삭제" class="del"></p>`;
+					
+					$(addFile).appendTo('body');
+				});
+				
+				$('body').on('click', 'input.del', function() {
+					$(this).parent().remove();
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<pre>
+
+		</pre>
+		<label>이름</label><input type="text" id="name">
+		<br>
+		<label>파일</label><input type="file">
+		<br>
+		<button type="button" id="add">추가</button>
+		<hr>
+	</body>
+</html>

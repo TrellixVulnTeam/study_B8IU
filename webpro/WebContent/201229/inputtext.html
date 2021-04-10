@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<link rel="stylesheet" href="../css/public.css">
+		<style>
+			label{
+				width: 100px;
+				display: inline-block;
+			}
+			div{
+				height: 100px;
+				border: 1px solid blue;
+				padding: 10px;
+				margin: 20px;
+			}
+		</style>
+		<script>
+			function calc(){
+//				id로 접근한다.
+				var invalue1 = document.getElementById("in1");
+				var invalue2 = document.getElementById("in2");
+				
+//				접근한 id에서 입력한 값을 가져온다.
+//				문자열 ( String ) 을 return한다.
+				var v1 = parseInt(invalue1.value);
+				var v2 = parseInt(invalue2.value);
+				
+				var calcvalue = v1 + v2;
+				
+//				출력
+				var res1 = document.getElementById("res1");
+				var res2 = document.getElementById("res2");
+				
+				res1.value = calcvalue;
+				res2.innerHTML = calcvalue;
+			}
+		</script>
+	</head>
+	<body>
+		<pre>
+input tag에 id를 기반으로 접근
+	id가 in1인 요소에 접근
+		var invalue1 = document.getElementById("in1");
+	id가 in2인 요소에 접근
+		var invalue2 = document.getElementById("in2");
+값 가져오기
+	: value를 이용
+	: 문자열 ( String ) 을 return.
+	: parseInt()를 이용하여 정수로 변환
+	in1의 값 가져와 v1에 저장
+		var v1 = parseInt(invalue1.value);
+	in2의 값 가져와 v2에 저장
+		var v2 = parseInt(invalue2.value);
+input 요소에 결과값 출력
+	id가 res1인 요소에 접근
+		var res1 = document.getElementById("res1");
+	res1의 값을 calcvalue로 변경
+		res1.value = calcvalue;
+div 요소에 결과값 출력
+	id가 res2인 요소에 접근
+		var res2 = document.getElementById("res2");
+	res2의 텍스트를 calcvalue로 변경
+		res2.innerHTML = calcvalue;
+		</pre>
+		<p><label>입력 1</label><input id="in1" type="text"></p>
+		<p><label>입력 2</label><input id="in2" type="text"></p>
+		<hr>
+		<p><label>결과</label><input id="res1" type="text"></p>
+		<div id="res2">
+			
+		</div>
+		<input id="btn" type="button" value="확인" onclick="calc();">
+	</body>
+</html>

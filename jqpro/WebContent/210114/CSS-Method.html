@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<link rel="stylesheet" href="../css/public.css">
+		<style type="text/css">
+			.pcolor {
+				color: red;
+			}
+			
+			.backcolor {
+				background-color: lime;
+			}
+			
+			.borderblue {
+				border: 2px inset blue;
+				border-radius : 50%;
+			}
+		</style>
+		<script type="text/javascript" src="../js/jquery-3.5.1.min.js"></script>
+		<script type="text/javascript">
+			$(function(){
+				$('#btn1').on('click', function() {
+//					$('p').css({
+//						'color' : 'blue'
+//					});
+					$('p').addClass('pcolor');
+				});
+				
+				$('p').on('click', function() {
+//					$(this).addClass('backcolor');
+//					$(this).toggleClass('backcolor');
+					if($(this).hasClass('backcolor')) {
+						$(this).removeClass('backcolor');
+					} else {
+						$(this).addClass('backcolor');
+					}
+				});
+				
+				$('div').on('mouseover', function() {
+					$(this).addClass('backcolor');
+				});
+				
+				$('div').on('mouseout', function() {
+					$(this).removeClass('backcolor');
+				});
+				
+				/*
+				$('img').on('mouseover', function() {
+					$(this).addClass('borderblue');
+				});
+				
+				$('img').on('mouseout', function() {
+					$(this).removeClass('borderblue');
+				});
+				*/
+				
+				$('img').hover(function() {
+					$(this).addClass('borderblue');
+				}, function() {
+					$(this).removeClass('borderblue');
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<pre>
+
+		</pre>
+		<input type="button" id="btn1" value="확인">
+		<br>
+		<p>무궁화 꽃이 피었습니다.</p>
+		<p>진달래도 피었습니다.</p>
+		<p>나리나리 개나리 입에 따다 물고요</p>
+		<p>병아리떼 뽕뽕뽕 봄나들이 갑니다</p>
+		<div id="result1">
+			
+		</div>
+		<img src="../images/image.1.jpg" alt="image.1.jpg">
+		<img src="../images/image.2.jpg" alt="image.2.jpg">
+		<img src="../images/image.3.jpg" alt="image.3.jpg">
+	</body>
+</html>
