@@ -1,0 +1,25 @@
+<%@ page contentType="text/html;charset=UTF-8" %>
+<html>
+<head><title>pageContext 기본 객체</title></head>
+<body>
+
+<%
+	//pageContext.getRequest()의 리턴 타입은 ServletRequest인데,
+	//JSP 페이지가 HTTP 요청을 처리하므로 HttpServletRequest로 타입 변환함
+	HttpServletRequest httpRequest = (HttpServletRequest)pageContext.getRequest();
+%>
+
+request 기본 객체와 pageContext.getRequest()의 동일여부 :
+
+<!-- request 기본 객체와 pageContext.getRequest() 메서드로 구한 객체가 같은 객체인지 검사(같음) -->
+<%=request==httpRequest %>
+
+<br />
+
+pageContext.getOut() 메서드를 사용한 데이터 출력 :
+
+<!-- pageContext.getOut().println()은 out.println()과 동일함 -->
+<%pageContext.getOut().println("안녕하세요!"); %>
+
+</body>
+</html>

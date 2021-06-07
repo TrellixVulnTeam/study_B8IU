@@ -1,0 +1,23 @@
+<%@page import="java.util.Arrays"%>
+<%@page import="java.util.List"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<title>Insert title here</title>
+</head>
+<body>
+
+<%
+List<Long> values = Arrays.asList(1L,2L,5L,10L);
+request.setAttribute("vals", values);
+
+for(int i=0;i<values.size();i++){
+	request.setAttribute("i", values.get(i));
+%>
+${i}
+<%
+}
+%>
+</body>
+</html>

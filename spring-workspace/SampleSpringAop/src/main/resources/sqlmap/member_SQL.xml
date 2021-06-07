@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="member">
+	<resultMap id="listEtcVo" type="hashMap">
+		<result column="MEMBERID" property="memberid" />
+		<result column="PASSWORD" property="password" />
+		<result column="NAME" property="name" />
+		<result column="EMAIL" property="email" />
+		<result column="REGDATE" property="regdate" />
+		<result column="BIRTHDAY" property="birthday" />
+	</resultMap>
+	<insert id="insert" parameterType="hashMap">
+		<selectKey order="BEFORE" keyProperty="memberId" resultType="int">
+			SELECT NVL(MAX(MEMBERID),0)+1 FROM MEMBER
+		</selectKey>
+ 	<![CDATA[
+ 	INSERT INTO MEMBER(MEMBERID, PASSWORD, NAME,EMAIL,REGDATE) VALUES(#{"memberId"}, #{password},#{name},#{email},SYSDATE)
+ 	]]>
+	</insert>
+
+	<select id="select_detail" parameterType="String" resultType="kr.or.ddit.member.vo.MemberVO">
+		select memberid memberid,password password, name name, email email ,regdate regdate from member where memberid=#{id}
+	</select>
+	<select id="select_list" parameterType="hashMap" resultType="kr.or.ddit.member.vo.MemberVO">
+		select MEMBERID as memberid ,PASSWORD as password ,NAME as name , EMAIL email, REGDATE regdate
+		from member
+		where 1 = 1
+		order by memberid desc
+	</select>
+	<update id="update" parameterType="hashMap">
+		UPDATE member
+		SET MEMBERID = #{memberid}, PASSWORD = #{password},
+		, NAME = #{name},EMAIL = #{email},
+		REGDATE = sysdate
+		WHERE memberid = #{memberid}
+	</update>
+
+	<delete id="delete" parameterType="String">
+		delete from member
+		where MEMBERID = #{memberid}
+	</delete>
+
+	<select id="select_list_etc" parameterType="hashMap" resultType="hashMap">
+		select a.MEMBERID as memberid ,a.PASSWORD as password ,a.NAME as name , a.EMAIL email, a.REGDATE regdate, b.BIRTHDAY birthday
+		from member a, member_etc b
+		where a.memberid = b.memberid
+	</select>
+</mapper>

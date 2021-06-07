@@ -1,0 +1,9 @@
+eclipse.preferences.version=1
+encoding//src/guestbook/dao/MessageDao.java=UTF-8
+encoding//src/guestbook/model/Message.java=UTF-8
+encoding//src/guestbook/service/DeleteMessageService.java=UTF-8
+encoding//src/guestbook/service/GetMessageListService.java=UTF-8
+encoding//src/guestbook/service/InvalidPasswordException.java=UTF-8
+encoding//src/guestbook/service/MessageListView.java=UTF-8
+encoding//src/guestbook/service/ServiceException.java=UTF-8
+encoding//src/guestbook/service/WriteMessageService.java=UTF-8

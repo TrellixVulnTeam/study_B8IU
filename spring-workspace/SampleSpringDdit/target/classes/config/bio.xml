@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+
+	<context:property-placeholder location="classpath:config/bio.properties" file-encoding="UTF-8" />
+
+	<bean id="bioVo" class="kr.or.bio.BioVo">
+		<property name="receiptNo" value="${receiptNo}" />
+		<property name="receiptName" value="${receiptName}" />
+		<property name="bioService" ref="bioServiceImpl" />
+		<property name="bioList">
+			<list>
+				<value>${value1}</value>
+				<value>${value2}</value>
+				<value>${value3}</value>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="bioServiceImpl" class="kr.or.bio.BioServiceImpl" />
+	<bean id="consolePrinter" class="kr.or.bio.ConsolePrinter" />
+</beans>

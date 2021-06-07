@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE  mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="book">
+	<insert id="insert" parameterType="hashMap" useGeneratedKeys="true" keyProperty="book_id">
+		<selectKey order="BEFORE" keyProperty="book_id" resultType="int">
+			SELECT NVL(MAX(BOOK_ID) + 1, 1) FROM BOOK
+		</selectKey>
+		<![CDATA[
+			INSERT INTO BOOK(BOOK_ID, TITLE, CATEGORY, PRICE, INSERT_DATE) VALUES(#{book_id}, #{title}, #{category}, #{price}, SYSDATE)
+		]]>
+	</insert>
+
+	<select id="select_list" parameterType="hashMap" resultType="hashMap">
+		<![CDATA[
+			SELECT BOOK_ID, TITLE, CATEGORY, PRICE, INSERT_DATE FROM BOOK
+		]]>
+		<if test="keyword != null and keyword != ''">
+			<![CDATA[
+				WHERE TITLE LIKE '%' || #{keyword} || '%' or CATEGORY LIKE '%' || #{keyword} || '%'
+			]]>
+		</if>
+		<![CDATA[
+			ORDER BY INSERT_DATE DESC
+		]]>
+	</select>
+
+	<select id="select_detail" parameterType="hashMap" resultType="hashMap">
+		<![CDATA[
+			SELECT BOOK_ID, TITLE, CATEGORY, PRICE, INSERT_DATE FROM BOOK WHERE BOOK_ID = #{bookId}
+		]]>
+	</select>
+
+	<update id="update" parameterType="hashMap">
+		<![CDATA[
+			UPDATE BOOK SET TITLE = #{title}, CATEGORY = #{category}, PRICE = #{price} WHERE BOOK_ID = #{bookId}
+		]]>
+	</update>
+
+	<delete id="delete" parameterType="hashMap">
+		<![CDATA[
+			DELETE FROM BOOK WHERE BOOK_ID = #{bookId}
+		]]>
+	</delete>
+</mapper>
