@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html>
+<style>
+    canvas {
+        margin-left: auto;
+        margin-right: auto;
+    }
+</style>
+<head>
+    <meta charset="utf-8"/>
+    <style>
+        .other_user {
+            height: 25px;
+            width: 50px;
+            text-align: center;
+        }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.0/socket.io.js"></script>
+    <script type="application/javascript">
+        let socket;
+        let flag_ing = false;
+        let screen2D = [
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0,],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0,],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0,],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0,],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0,],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0,],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0,],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0,],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0,],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0,],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0,],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0,],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0,],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0,],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0,],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0,],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0,],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0,],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0,],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0,],
+        ];
+
+        let stack2D = [
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0,],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0,],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0,],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0,],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0,],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0,],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0,],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0,],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0,],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0,],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0,],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0,],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0,],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0,],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0,],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0,],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0,],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0,],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0,],
+            [3, 3, 0, 0, 3, 3, 3, 3, 3, 3,],
+        ];
+
+        let block2D = [
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0,],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0,],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0,],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0,],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0,],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0,],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0,],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0,],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0,],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0,],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0,],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0,],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0,],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0,],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0,],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0,],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0,],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0,],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0,],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0,],
+        ];
+
+        let block = {
+            'type': parseInt(Math.random() * 7) + 1,
+            'status': 2,
+            'i': 2,
+            'j': 4,
+        };
+
+        window.addEventListener("keydown", (e) => {
+            if (flag_ing) {
+
+                const bak_block = {
+                    'type': block.type,
+                    'status': block.status,
+                    'i': block.i,
+                    'j': block.j,
+                };
+
+                let flag_down = false;
+
+                if (e.key === ' ') {
+                    console.log('Space');
+                }
+                if (e.key === 'ArrowUp') {
+                    changeStatus();
+                }
+                if (e.key === 'ArrowDown') {
+                    block.i++;
+                    flag_down = true;
+                }
+                if (e.key === 'ArrowLeft') {
+                    block.j--;
+                }
+                if (e.key === 'ArrowRight') {
+                    block.j++;
+                }
+                let flag_collision;
+                let flag_collision_bottom = false;
+                try {
+                    setBlock2D();
+                    flag_collision = isCollision();
+                } catch (e) {
+                    flag_collision_bottom = true;
+                }
+                if (flag_collision || flag_collision_bottom) {
+                    block.type = bak_block.type;
+                    block.status = bak_block.status;
+                    block.i = bak_block.i;
+                    block.j = bak_block.j;
+                    setBlock2D();
+                    if (flag_down) {
+                        moveBlock2D();
+                        clear10();
+                        checkLose();
+                        block = {
+                            'type': parseInt(Math.random() * 7) + 1,
+                            'status': 2,
+                            'i': 1,
+                            'j': 4,
+                        };
+                    }
+                    setBlock2D();
+                }
+                setSreen2DFromSB();
+                myrender();
+                fn_start_display();
+            }
+        });
+
+        function checkLose() {
+            if (stack2D[4].join(',') !== '0,0,0,0,0,0,0,0,0,0') {
+                alert('you lose');
+                flag_ing = false;
+            }
+        }
+
+        function clear10() {
+            let tempArr = [];
+            let count = 0;
+            for (let i = 0; i < 20; i++) {
+                if (stack2D[i].includes(0)) {
+                    tempArr.push(stack2D[i]);
+                } else {
+                    tempArr.unshift([0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
+                    count++;
+                }
+            }
+            stack2D = tempArr;
+            if (document.getElementById("div_score").innerHTML - count <= 0) {
+                document.getElementById("div_score").innerHTML = '0';
+                fn_start_win();
+            } else {
+                document.getElementById("div_score").innerHTML = document.getElementById("div_score").innerHTML - count;
+            }
+        }
+
+        function moveBlock2D() {
+            for (let i = 0; i < 20; i++) {
+                for (let j = 0; j < 10; j++) {
+                    if (block2D[i][j] > 0) {
+                        stack2D[i][j] = block2D[i][j];
+                    }
+                }
+            }
+        }
+
+        function isCollision() {
+            let count = 0;
+            for (let i = 0; i < 20; i++) {
+                for (let j = 0; j < 10; j++) {
+                    if (block2D[i][j] !== 0) {
+                        count++;
+                    }
+                    if (block2D[i][j] !== 0 && stack2D[i][j] !== 0) {
+                        return true;
+                    }
+                }
+            }
+            return count !== 4;
+        }
+
+        function changeStatus() {
+            if (block.status === 4) {
+                block.status = 0;
+            }
+            block.status++;
+        }
+
+        function setBlock2D() {
+            for (let i = 0; i < 20; i++) {
+                for (let j = 0; j < 10; j++) {
+                    block2D[i][j] = 0;
+                }
+            }
+            if (block.type === 1) {
+                block2D[block.i][block.j] = block.type;
+                block2D[block.i][block.j + 1] = block.type;
+                block2D[block.i + 1][block.j + 1] = block.type;
+                block2D[block.i + 1][block.j] = block.type;
+            }
+            if (block.type === 2) {
+                if (block.status === 1 || block.status === 3) {
+                    block2D[block.i - 1][block.j] = block.type;
+                    block2D[block.i][block.j] = block.type;
+                    block2D[block.i + 1][block.j] = block.type;
+                    block2D[block.i + 2][block.j] = block.type;
+                } else if (block.status === 2 || block.status === 4) {
+                    block2D[block.i][block.j - 1] = block.type;
+                    block2D[block.i][block.j] = block.type;
+                    block2D[block.i][block.j + 1] = block.type;
+                    block2D[block.i][block.j + 2] = block.type;
+                }
+            }
+            if (block.type === 3) {
+                if (block.status === 1 || block.status === 3) {
+                    block2D[block.i - 1][block.j] = block.type;
+                    block2D[block.i][block.j] = block.type;
+                    block2D[block.i][block.j + 1] = block.type;
+                    block2D[block.i + 1][block.j + 1] = block.type;
+                } else if (block.status === 2 || block.status === 4) {
+                    block2D[block.i][block.j + 1] = block.type;
+                    block2D[block.i][block.j] = block.type;
+                    block2D[block.i + 1][block.j] = block.type;
+                    block2D[block.i + 1][block.j - 1] = block.type;
+                }
+            }
+            if (block.type === 4) {
+                if (block.status === 1 || block.status === 3) {
+                    block2D[block.i - 1][block.j + 1] = block.type;
+                    block2D[block.i][block.j + 1] = block.type;
+                    block2D[block.i][block.j] = block.type;
+                    block2D[block.i + 1][block.j] = block.type;
+                } else if (block.status === 2 || block.status === 4) {
+                    block2D[block.i - 1][block.j - 1] = block.type;
+                    block2D[block.i - 1][block.j] = block.type;
+                    block2D[block.i][block.j] = block.type;
+                    block2D[block.i][block.j + 1] = block.type;
+                }
+            }
+            if (block.type === 5) {
+                if (block.status === 1) {
+                    block2D[block.i - 1][block.j - 1] = block.type;
+                    block2D[block.i][block.j - 1] = block.type;
+                    block2D[block.i][block.j] = block.type;
+                    block2D[block.i][block.j + 1] = block.type;
+                } else if (block.status === 2) {
+                    block2D[block.i - 1][block.j + 1] = block.type;
+                    block2D[block.i - 1][block.j] = block.type;
+                    block2D[block.i][block.j] = block.type;
+                    block2D[block.i + 1][block.j] = block.type;
+                } else if (block.status === 3) {
+                    block2D[block.i][block.j - 1] = block.type;
+                    block2D[block.i][block.j] = block.type;
+                    block2D[block.i][block.j + 1] = block.type;
+                    block2D[block.i + 1][block.j + 1] = block.type;
+                } else if (block.status === 4) {
+                    block2D[block.i - 1][block.j] = block.type;
+                    block2D[block.i][block.j] = block.type;
+                    block2D[block.i + 1][block.j] = block.type;
+                    block2D[block.i + 1][block.j - 1] = block.type;
+                }
+            }
+            if (block.type === 6) {
+                if (block.status === 1) {
+                    block2D[block.i][block.j - 1] = block.type;
+                    block2D[block.i][block.j] = block.type;
+                    block2D[block.i][block.j + 1] = block.type;
+                    block2D[block.i - 1][block.j + 1] = block.type;
+                } else if (block.status === 2) {
+                    block2D[block.i - 1][block.j] = block.type;
+                    block2D[block.i][block.j] = block.type;
+                    block2D[block.i + 1][block.j] = block.type;
+                    block2D[block.i + 1][block.j + 1] = block.type;
+                } else if (block.status === 3) {
+                    block2D[block.i + 1][block.j - 1] = block.type;
+                    block2D[block.i][block.j - 1] = block.type;
+                    block2D[block.i][block.j] = block.type;
+                    block2D[block.i][block.j + 1] = block.type;
+                } else if (block.status === 4) {
+                    block2D[block.i - 1][block.j - 1] = block.type;
+                    block2D[block.i - 1][block.j] = block.type;
+                    block2D[block.i][block.j] = block.type;
+                    block2D[block.i + 1][block.j] = block.type;
+                }
+            }
+            if (block.type === 7) {
+                if (block.status === 1) {
+                    block2D[block.i - 1][block.j] = block.type;
+                    block2D[block.i][block.j - 1] = block.type;
+                    block2D[block.i][block.j] = block.type;
+                    block2D[block.i][block.j + 1] = block.type;
+                } else if (block.status === 2) {
+                    block2D[block.i - 1][block.j] = block.type;
+                    block2D[block.i][block.j] = block.type;
+                    block2D[block.i + 1][block.j] = block.type;
+                    block2D[block.i][block.j + 1] = block.type;
+                } else if (block.status === 3) {
+                    block2D[block.i][block.j - 1] = block.type;
+                    block2D[block.i][block.j] = block.type;
+                    block2D[block.i][block.j + 1] = block.type;
+                    block2D[block.i + 1][block.j] = block.type;
+                } else if (block.status === 4) {
+                    block2D[block.i][block.j - 1] = block.type;
+                    block2D[block.i - 1][block.j] = block.type;
+                    block2D[block.i][block.j] = block.type;
+                    block2D[block.i + 1][block.j] = block.type;
+                }
+            }
+        }
+
+        function setSreen2DFromSB() {
+            for (let i = 0; i < 20; i++) {
+                for (let j = 0; j < 10; j++) {
+                    if (stack2D[i][j] !== 0) {
+                        screen2D[i][j] = 0 - stack2D[i][j];
+                    } else if (block2D[i][j] !== 0) {
+                        screen2D[i][j] = block2D[i][j];
+                    } else {
+                        screen2D[i][j] = 0;
+                    }
+                }
+            }
+        }
+
+        function myrender() {
+            const canvas = document.getElementById("canvas");
+            if (canvas.getContext) {
+                const ctx = canvas.getContext("2d");
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                for (let i = 0; i < 20; i++) {
+                    for (let j = 0; j < 10; j++) {
+                        if (screen2D[i][j] === 0) {
+                            ctx.fillStyle = "rgba(0, 0, 0, 0.1)";
+                            ctx.fillRect(20 * j, 20 * i, 19, 19);
+                        }
+                        if (screen2D[i][j] === 1) {
+                            ctx.fillStyle = "rgb(237, 26, 61)";
+                            ctx.fillRect(20 * j, 20 * i, 19, 19);
+                        }
+                        if (screen2D[i][j] === 2) {
+                            ctx.fillStyle = "rgba(243, 152, 0, 1)";
+                            ctx.fillRect(20 * j, 20 * i, 19, 19);
+                        }
+                        if (screen2D[i][j] === 3) {
+                            ctx.fillStyle = "rgba(255, 255, 0, 1)";
+                            ctx.fillRect(20 * j, 20 * i, 19, 19);
+                        }
+                        if (screen2D[i][j] === 4) {
+                            ctx.fillStyle = "rgba(0, 153, 0, 1)";
+                            ctx.fillRect(20 * j, 20 * i, 19, 19);
+                        }
+                        if (screen2D[i][j] === 5) {
+                            ctx.fillStyle = "rgba(0, 153, 255, 1)";
+                            ctx.fillRect(20 * j, 20 * i, 19, 19);
+                        }
+                        if (screen2D[i][j] === 6) {
+                            ctx.fillStyle = "rgba(35, 71, 148, 1)";
+                            ctx.fillRect(20 * j, 20 * i, 19, 19);
+                        }
+                        if (screen2D[i][j] === 7) {
+                            ctx.fillStyle = "rgba(112, 93, 168, 1)";
+                            ctx.fillRect(20 * j, 20 * i, 19, 19);
+                        }
+                        if (screen2D[i][j] === -1) {
+                            ctx.fillStyle = "rgb(237, 26, 61)";
+                            ctx.fillRect(20 * j, 20 * i, 19, 19);
+                            ctx.fillStyle = "rgba(0, 0, 0, 0.15)";
+                            ctx.fillRect(20 * j, 20 * i, 19, 19);
+                        }
+                        if (screen2D[i][j] === -2) {
+                            ctx.fillStyle = "rgba(243, 152, 0, 1)";
+                            ctx.fillRect(20 * j, 20 * i, 19, 19);
+                            ctx.fillStyle = "rgba(0, 0, 0, 0.15)";
+                            ctx.fillRect(20 * j, 20 * i, 19, 19);
+                        }
+                        if (screen2D[i][j] === -3) {
+                            ctx.fillStyle = "rgba(255, 255, 0, 1)";
+                            ctx.fillRect(20 * j, 20 * i, 19, 19);
+                            ctx.fillStyle = "rgba(0, 0, 0, 0.15)";
+                            ctx.fillRect(20 * j, 20 * i, 19, 19);
+                        }
+                        if (screen2D[i][j] === -4) {
+                            ctx.fillStyle = "rgba(0, 153, 0, 1)";
+                            ctx.fillRect(20 * j, 20 * i, 19, 19);
+                            ctx.fillStyle = "rgba(0, 0, 0, 0.15)";
+                            ctx.fillRect(20 * j, 20 * i, 19, 19);
+                        }
+                        if (screen2D[i][j] === -5) {
+                            ctx.fillStyle = "rgba(0, 153, 255, 1)";
+                            ctx.fillRect(20 * j, 20 * i, 19, 19);
+                            ctx.fillStyle = "rgba(0, 0, 0, 0.15)";
+                            ctx.fillRect(20 * j, 20 * i, 19, 19);
+                        }
+                        if (screen2D[i][j] === -6) {
+                            ctx.fillStyle = "rgba(35, 71, 148, 1)";
+                            ctx.fillRect(20 * j, 20 * i, 19, 19);
+                            ctx.fillStyle = "rgba(0, 0, 0, 0.15)";
+                            ctx.fillRect(20 * j, 20 * i, 19, 19);
+                        }
+                        if (screen2D[i][j] === -7) {
+                            ctx.fillStyle = "rgba(112, 93, 168, 1)";
+                            ctx.fillRect(20 * j, 20 * i, 19, 19);
+                            ctx.fillStyle = "rgba(0, 0, 0, 0.15)";
+                            ctx.fillRect(20 * j, 20 * i, 19, 19);
+                        }
+                    }
+                }
+            }
+        }
+
+        function other_render(other_name, txt200) {
+            $.each($(".other_user"), function (index) {
+                if ($(this).html() === other_name) {
+                    let canvas = document.getElementsByClassName("other_canvas")[index];
+                    if (canvas.getContext) {
+                        const ctx = canvas.getContext("2d");
+                        ctx.clearRect(0, 0, canvas.width, canvas.height);
+                        for (let i = 0; i < 20; i++) {
+                            for (let j = 0; j < 10; j++) {
+                                if (txt200[i * 10 + j] === "0") {
+                                    ctx.fillStyle = "rgb(255, 255, 255)";
+                                    ctx.fillRect(2 * j, 2 * i, 2, 2);
+                                } else {
+                                    ctx.fillStyle = "rgb(0, 0, 0)";
+                                    ctx.fillRect(2 * j, 2 * i, 2, 2);
+                                }
+                            }
+                        }
+                    }
+                    return false;
+                }
+                if ($(this).html() === '') {
+                    return false;
+                }
+            });
+
+
+        }
+
+        $(function () {
+            socket = io.connect('http://' + document.domain + ':' + location.port);
+            socket.on('connect', function () {
+                socket.emit('to_server', {
+                    data: 'User Connected'
+                });
+                $('div#div_con').append('<p><b>on</b></p>');
+            });
+            socket.on('to_client', function (msg) {
+                let command = msg.command;
+                let myname = msg.myname;
+                let data = msg.data;
+                if (command === 'start') {
+                    flag_ing = true;
+                } else if (command === 'ready') {
+                    $.each($(".other_user"), function () {
+                        if ($(this).html() === myname) {
+                            return false;
+                        }
+                        if ($(this).html() === '') {
+                            $(this).html(myname);
+                            return false;
+                        }
+                    });
+                } else if (command === 'display') {
+                    other_render(myname, data);
+                } else if (command === 'win') {
+                    alert(myname + " ( 이 ) 가 이겼습니다.");
+                }
+            });
+            $("input#mymsg").keyup(function (e) {
+                if (e.keyCode === 13) {
+                    fn_send();
+                }
+            });
+        });
+
+        function fn_startnetwork() {
+            socket.emit('to_server', {
+                command: 'start'
+            });
+        }
+
+        function fn_start_ready() {
+            let myname = $('input#myname').val().trim();
+            if (myname === '') {
+                alert('이름을 넣으세요.');
+                $('input#myname').focus();
+                return;
+            }
+            socket.emit('to_server', {
+                command: 'ready',
+                myname: myname,
+                data: ''
+            });
+
+            $('#myname').attr('disabled', true);
+        }
+
+        function fn_start_win() {
+            let myname = $('input#myname').val().trim();
+            if (myname === '') {
+                alert('이름을 넣으세요.');
+                $('input#myname').focus();
+                return;
+            }
+            socket.emit('to_server', {
+                command: 'win',
+                myname: myname,
+                data: ''
+            });
+            flag_ing = false;
+        }
+
+        function fn_start_display() {
+            let myname = $('input#myname').val().trim();
+            let text200 = '';
+            for (let i = 0; i < 20; i++) {
+                for (let j = 0; j < 10; j++) {
+                    if (screen2D[i][j] === 0) {
+                        text200 += 0;
+                    } else {
+                        text200 += 1;
+                    }
+                }
+            }
+            socket.emit('to_server', {
+                command: 'display',
+                myname: myname,
+                data: text200
+            });
+        }
+    </script>
+</head>
+<body onload="myrender();">
+<table border="1" style="border-collapse: collapse;">
+    <tr>
+        <td colspan="6">
+            <input type="button" value="start" onclick="fn_startnetwork()">
+            클리어갯수
+            <div id="div_score">10</div>
+            연결 상태
+            <div id="div_con"></div>
+            <label for="myname"></label><input type="text" id="myname">
+            <input type="button" value="ready" onclick="fn_start_ready()">
+        </td>
+    </tr>
+    <tr>
+        <td rowspan="10">
+            <canvas id="canvas" width="200px" height="400px"></canvas>
+        </td>
+        <td class="other_user"></td>
+        <td class="other_user"></td>
+        <td class="other_user"></td>
+        <td class="other_user"></td>
+        <td class="other_user"></td>
+    </tr>
+    <tr>
+        <td>
+            <canvas class="other_canvas" width="20px" height="40px"></canvas>
+        </td>
+        <td>
+            <canvas class="other_canvas" width="20px" height="40px"></canvas>
+        </td>
+        <td>
+            <canvas class="other_canvas" width="20px" height="40px"></canvas>
+        </td>
+        <td>
+            <canvas class="other_canvas" width="20px" height="40px"></canvas>
+        </td>
+        <td>
+            <canvas class="other_canvas" width="20px" height="40px"></canvas>
+        </td>
+    </tr>
+    <tr>
+        <td class="other_user"></td>
+        <td class="other_user"></td>
+        <td class="other_user"></td>
+        <td class="other_user"></td>
+        <td class="other_user"></td>
+    </tr>
+    <tr>
+        <td>
+            <canvas class="other_canvas" width="20px" height="40px"></canvas>
+        </td>
+        <td>
+            <canvas class="other_canvas" width="20px" height="40px"></canvas>
+        </td>
+        <td>
+            <canvas class="other_canvas" width="20px" height="40px"></canvas>
+        </td>
+        <td>
+            <canvas class="other_canvas" width="20px" height="40px"></canvas>
+        </td>
+        <td>
+            <canvas class="other_canvas" width="20px" height="40px"></canvas>
+        </td>
+    </tr>
+    <tr>
+        <td class="other_user"></td>
+        <td class="other_user"></td>
+        <td class="other_user"></td>
+        <td class="other_user"></td>
+        <td class="other_user"></td>
+    </tr>
+    <tr>
+        <td>
+            <canvas class="other_canvas" width="20px" height="40px"></canvas>
+        </td>
+        <td>
+            <canvas class="other_canvas" width="20px" height="40px"></canvas>
+        </td>
+        <td>
+            <canvas class="other_canvas" width="20px" height="40px"></canvas>
+        </td>
+        <td>
+            <canvas class="other_canvas" width="20px" height="40px"></canvas>
+        </td>
+        <td>
+            <canvas class="other_canvas" width="20px" height="40px"></canvas>
+        </td>
+    </tr>
+    <tr>
+        <td class="other_user"></td>
+        <td class="other_user"></td>
+        <td class="other_user"></td>
+        <td class="other_user"></td>
+        <td class="other_user"></td>
+    </tr>
+    <tr>
+        <td>
+            <canvas class="other_canvas" width="20px" height="40px"></canvas>
+        </td>
+        <td>
+            <canvas class="other_canvas" width="20px" height="40px"></canvas>
+        </td>
+        <td>
+            <canvas class="other_canvas" width="20px" height="40px"></canvas>
+        </td>
+        <td>
+            <canvas class="other_canvas" width="20px" height="40px"></canvas>
+        </td>
+        <td>
+            <canvas class="other_canvas" width="20px" height="40px"></canvas>
+        </td>
+    </tr>
+    <tr>
+        <td class="other_user"></td>
+        <td class="other_user"></td>
+        <td class="other_user"></td>
+        <td class="other_user"></td>
+        <td class="other_user"></td>
+    </tr>
+    <tr>
+        <td>
+            <canvas class="other_canvas" width="20px" height="40px"></canvas>
+        </td>
+        <td>
+            <canvas class="other_canvas" width="20px" height="40px"></canvas>
+        </td>
+        <td>
+            <canvas class="other_canvas" width="20px" height="40px"></canvas>
+        </td>
+        <td>
+            <canvas class="other_canvas" width="20px" height="40px"></canvas>
+        </td>
+        <td>
+            <canvas class="other_canvas" width="20px" height="40px"></canvas>
+        </td>
+    </tr>
+</table>
+
+</body>
+</html>

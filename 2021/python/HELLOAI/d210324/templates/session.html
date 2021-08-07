@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Flask_Chatting_Application</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.0/socket.io.js"></script>
+    <script type="text/javascript">
+        let socket;
+        $(function () {
+            socket = io.connect('http://' + document.domain + ':' + location.port);
+            socket.on('connect', function () {
+                socket.emit('to_server', {
+                    data: 'User Connected'
+                });
+                $('div#div_con').append('<p><b>on</b></p>');
+            });
+            socket.on('to_client', function (msg) {
+                if (typeof msg.myname !== 'undefined') {
+                    $('div#div_chat').append('<p><b>' + msg.myname + '</b> ' + msg.mymsg + '</p>')
+                    $('div#div_chat').scrollTop($('div#div_chat').prop('scrollHeight'));
+                }
+            });
+            $("input#mymsg").keyup(function (e) {
+                if (e.keyCode === 13) {
+                    fn_send();
+                }
+            });
+        });
+
+        function fn_send() {
+            let myname = $('input#myname').val();
+            let mymsg = $('input#mymsg').val();
+            if (mymsg !== '') {
+                socket.emit('to_server', {
+                    myname: myname,
+                    mymsg: mymsg
+                });
+            }
+            $('input#mymsg').val('').focus();
+        }
+
+    </script>
+</head>
+<body>
+커넥션 :
+<div id="div_con"></div>
+<br>
+<label for="myname">이름</label><input id="myname" type="text"><br>
+<label for="mymsg">메세지</label><input id="mymsg" type="text"><br>
+<a href="javascript:fn_send()">send</a><br>
+<div id="div_chat" style="height: 300px; overflow: auto;"></div>
+</body>
+</html>

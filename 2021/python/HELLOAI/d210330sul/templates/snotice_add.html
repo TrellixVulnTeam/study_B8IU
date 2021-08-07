@@ -1,0 +1,47 @@
+{% extends '../../d210308/templates/layout.html' %}
+<meta charset="UTF-8">
+{% block content %}
+<script>
+    window.onload = function () {
+        document.querySelector("input[value='Y']").checked = true;
+    }
+</script>
+<div style="display: inline-block">
+    <form action="snotice_add_form" method="post" enctype="multipart/form-data">
+        <table border="1" width="800px">
+            <thead>
+            <tr>
+                <th><label>제목 :
+                    <input type="text" name="title" value="" required>
+                </label></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>
+                    <label>글 보이기 :
+                        <label><input type="radio" value="Y" name="display_yn" required>Y</label>
+                        <label><input type="radio" value="N" name="display_yn" required>N</label>
+                    </label>
+                </td>
+            </tr>
+            <tr>
+                <td height="400px">
+                    <label>내용 :
+                        <textarea cols="100" rows="25" name="content" required></textarea>
+                    </label>
+                </td>
+            </tr>
+            <tr>
+                <td>첨부파일 : <input type="file" name="file"/></td>
+            </tr>
+            </tbody>
+        </table>
+        <div style="text-align: right">
+            <input type="hidden" name="b_seq" value="">
+            <input type="submit" value="작성">
+        </div>
+    </form>
+</div>
+{% endblock %}
+

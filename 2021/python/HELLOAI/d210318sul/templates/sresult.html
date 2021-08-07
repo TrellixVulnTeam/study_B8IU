@@ -1,0 +1,45 @@
+{% extends '../../d210308/templates/layout.html' %} {% block content %}
+<h1>{{survey_title}}</h1>
+
+{% for sresult in sresults %}
+
+<div>
+	<h3>{{sresult.s_seq}}. {{sresult.question}}</h3>
+	<div id="{{sresult.s_seq}}"></div>
+</div>
+
+{% endfor %}
+
+<script>
+{% for sresult in sresults %}
+	$(document).ready(
+			function() {
+				$.jqplot.config.enablePlugins = true;
+				var s1 = [ {{sresult.a1_count}}, {{sresult.a2_count}}, {{sresult.a3_count}}, {{sresult.a4_count}} ];
+				var ticks = [ '{{sresult.a1}}', '{{sresult.a2}}', '{{sresult.a3}}', '{{sresult.a4}}' ];
+
+				plot1 = $.jqplot('{{sresult.s_seq}}', [ s1 ], {
+					// Only animate if we're not using excanvas (not in IE 7 or IE 8)..
+					animate : !$.jqplot.use_excanvas,
+					seriesDefaults : {
+						renderer : $.jqplot.BarRenderer,
+						pointLabels : {
+							show : true
+						}
+					},
+					axes : {
+						xaxis : {
+							renderer : $.jqplot.CategoryAxisRenderer,
+							ticks : ticks
+						}
+					},
+					highlighter : {
+						show : false
+					}
+				});
+			});
+{% endfor %}
+</script>
+
+
+{% endblock %}

@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Test">
+	<select id="select">
+		SELECT 
+			B_SEQ,
+			DISPLAY_YN,
+			TITLE,
+			CONTENT,
+			ATTACH_PASS,
+			ATTACH_FILE,
+			HIT,
+			IN_DATE,
+			IN_USER_ID,
+			UP_DATE,
+			UP_USER_ID,
+			(select user_name from suser u where u.user_id = n.in_user_id) in_user_name
+		FROM
+ 			SNOTICE n
+		WHERE
+			(DISPLAY_YN = 'Y'
+			OR DISPLAY_YN = 'y'
+			OR :1 IS NOT NULL
+			AND IN_USER_ID = :2)
+			AND TITLE LIKE '%'||:3||'%'
+		ORDER BY
+			B_SEQ DESC
+	</select>
+	<select id="detail">
+		SELECT
+			B_SEQ,
+			DISPLAY_YN,
+			TITLE,
+			CONTENT,
+			ATTACH_PASS,
+			ATTACH_FILE,
+			HIT,
+			IN_DATE,
+			IN_USER_ID,
+			UP_DATE,
+			UP_USER_ID,
+			(select user_name from suser u where u.user_id = n.in_user_id) in_user_name
+		FROM
+ 			SNOTICE n
+		WHERE
+			B_SEQ = :1
+			AND (DISPLAY_YN = 'Y'
+			OR :2 IS NOT NULL
+			AND IN_USER_ID = :3)
+	</select>
+	<update id="insert">
+		INSERT INTO SNOTICE
+		(
+			B_SEQ,
+			DISPLAY_YN,
+			TITLE,
+			CONTENT,
+			ATTACH_PASS,
+			ATTACH_FILE,
+			HIT,
+			IN_DATE,
+			IN_USER_ID,
+			UP_DATE,
+			UP_USER_ID
+		) 
+		VALUES
+		(
+			(SELECT NVL(MAX(B_SEQ + 1), 1) FROM SNOTICE),
+			:1,
+			:2,
+			:3,
+			:4,
+			:5,
+			0,
+			to_char(sysdate, 'YYYYMMDD.HH24MISS'), 
+			:7,
+			to_char(sysdate, 'YYYYMMDD.HH24MISS'), 
+			:8
+		)
+	</update>
+	<update id="update">
+		UPDATE
+			SNOTICE
+		SET
+			DISPLAY_YN = :1,
+			TITLE = :2,
+			CONTENT = :3,
+			ATTACH_PASS = :4,
+			ATTACH_FILE = :5,
+			UP_DATE = to_char(sysdate, 'YYYYMMDD.HH24MISS'),
+			UP_USER_ID =:6
+		WHERE
+			B_SEQ=:7
+			AND :8 IS NOT NULL
+			AND IN_USER_ID = :9
+	</update>
+	<update id="hit">
+		UPDATE
+			SNOTICE
+		set
+			hit = hit + 1
+		WHERE
+			B_SEQ = :1
+			AND (DISPLAY_YN = 'Y'
+			OR :2 IS NOT NULL
+			AND IN_USER_ID = :3)
+	</update>
+	<update id="delete">
+		DELETE
+			FROM SNOTICE
+			WHERE B_SEQ = :1
+				AND :2 IS NOT NULL
+				AND IN_USER_ID = :3
+	</update>
+</mapper>

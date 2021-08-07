@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="sresult">
+    <select id="select">
+        SELECT SURVEY_ID,
+                S_SEQ,
+                ST_MOBILE,
+                ANSWER,
+                IN_DATE,
+                IN_USER_ID,
+                UP_DATE,
+                UP_USER_ID
+            FROM SRESULT
+            WHERE survey_id=:1
+            ORDER BY SURVEY_ID, S_SEQ, ST_MOBILE
+    </select>
+    <insert id="insert">
+        INSERT INTO SRESULT(
+            SURVEY_ID,
+            S_SEQ,
+            ST_MOBILE,
+            ANSWER,
+            IN_DATE,
+            IN_USER_ID,
+            UP_DATE,
+            UP_USER_ID
+        ) VALUES (
+            :V_SURVEY_ID,
+            :V_S_SEQ,
+            :V_ST_MOBILE,
+            :V_ANSWER,
+            TO_CHAR(SYSDATE, 'YYYYMMDD.HH24MISS'),
+            :V_IN_USER_ID,
+            TO_CHAR(SYSDATE, 'YYYYMMDD.HH24MISS'),
+            :V_UP_USER_ID
+        )
+    </insert>
+    <update id="update">
+        UPDATE SRESULT
+            SET ANSWER = :V_ANSWER,
+                UP_DATE = TO_CHAR(SYSDATE, 'YYYYMMDD.HH24MISS'),
+                UP_USER_ID = :V_UP_USER_ID
+            WHERE SURVEY_ID = :V_SURVEY_ID
+                AND S_SEQ = :V_S_SEQ
+                AND ST_MOBILE = :V_ST_MOBILE
+    </update>
+    <insert id="merge">
+        MERGE INTO SRESULT
+            USING DUAL
+                ON (
+                        SURVEY_ID = :V_SURVEY_ID
+                            AND S_SEQ = :V_S_SEQ
+                            AND ST_MOBILE = :V_ST_MOBILE
+                    )
+            WHEN MATCHED THEN
+                UPDATE
+                    SET ANSWER = :V_ANSWER,
+                        UP_DATE = TO_CHAR(SYSDATE, 'YYYYMMDD.HH24MISS'),
+                        UP_USER_ID = :V_ST_MOBILE
+            WHEN NOT MATCHED THEN
+                INSERT (
+                    SURVEY_ID,
+                    S_SEQ,
+                    ST_MOBILE,
+                    ANSWER,
+                    IN_DATE,
+                    IN_USER_ID,
+                    UP_DATE,
+                    UP_USER_ID
+                ) VALUES (
+                    :V_SURVEY_ID,
+                    :V_S_SEQ,
+                    :V_ST_MOBILE,
+                    :V_ANSWER,
+                    TO_CHAR(SYSDATE, 'YYYYMMDD.HH24MISS'),
+                    :V_IN_USER_ID,
+                    TO_CHAR(SYSDATE, 'YYYYMMDD.HH24MISS'),
+                    :V_UP_USER_ID
+                )
+    </insert>
+    <delete id="delete">
+        DELETE
+            FROM SRESULT
+            WHERE SURVEY_ID = :V_SURVEY_ID
+                AND S_SEQ = :V_S_SEQ
+                AND ST_MOBILE = :V_ST_MOBILE
+    </delete>
+</mapper>

@@ -1,0 +1,23 @@
+.uupp {
+    vertical-align: top;
+}
+
+.scrolltbody thead, .scrolltbody tbody {
+    display: block;
+}
+
+.scrolltbody thead th:first-child, .scrolltbody thead td:first-child, .scrolltbody tbody td:first-child { width: 100px; }
+.scrolltbody thead th:nth-child(2), .scrolltbody thead td:nth-child(2), .scrolltbody tbody td:nth-child(2) { width: 100px; }
+.scrolltbody thead th:nth-child(3), .scrolltbody thead td:nth-child(3), .scrolltbody tbody td:nth-child(3) { width: 100px; }
+.scrolltbody thead th:nth-child(4), .scrolltbody thead td:nth-child(4), .scrolltbody tbody td:nth-child(4) { width: 150px; }
+.scrolltbody thead th:nth-child(5), .scrolltbody thead td:nth-child(5), .scrolltbody tbody td:nth-child(5) { width: 50px; }
+.scrolltbody thead th:nth-child(6), .scrolltbody thead td:nth-child(6), .scrolltbody tbody td:nth-child(6) { width: 75px; }
+.scrolltbody thead th:nth-child(7), .scrolltbody thead td:nth-child(7), .scrolltbody tbody td:nth-child(7) { width: 150px; }
+.scrolltbody thead th:nth-child(8), .scrolltbody thead td:nth-child(8), .scrolltbody tbody td:nth-child(8) { width: 75px; }
+.scrolltbody thead th:nth-child(9), .scrolltbody thead td:nth-child(9), .scrolltbody tbody td:nth-child(9) { width: 50px; }
+
+.scrolltbody tbody {
+    height: 300px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}

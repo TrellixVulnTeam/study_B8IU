@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>Title</title>
+<style>
+</style>
+<script type="text/javascript" src="./js/jquery-3.5.1.js"></script>
+<script type="text/javascript" src="./js/jquery.jqplot.js"></script>
+<script type="text/javascript" src="./plugins/jqplot.barRenderer.js"></script>
+<script type="text/javascript" src="./plugins/jqplot.pieRenderer.js"></script>
+<script type="text/javascript"
+	src="./plugins/jqplot.categoryAxisRenderer.js"></script>
+<script type="text/javascript" src="./plugins/jqplot.pointLabels.js"></script>
+<link rel="stylesheet" type="text/css" href="../css/jquery.jqplot.css" />
+<script>
+	$(document).ready(function() {
+		$.jqplot.config.enablePlugins = true;
+		var s1 = [ 2, 6, 7, 10 ];
+		var ticks = [ 'a', 'b', 'c', 'd' ];
+
+		plot1 = $.jqplot('chart1', [ s1 ], {
+			// Only animate if we're not using excanvas (not in IE 7 or IE 8)..
+			animate : !$.jqplot.use_excanvas,
+			seriesDefaults : {
+				renderer : $.jqplot.BarRenderer,
+				pointLabels : {
+					show : true
+				}
+			},
+			axes : {
+				xaxis : {
+					renderer : $.jqplot.CategoryAxisRenderer,
+					ticks : ticks
+				}
+			},
+			highlighter : {
+				show : false
+			}
+		});
+	});
+</script>
+</head>
+<body>
+	<div id='chart1' style="width: 500px; height: 300px;"></div>
+	<h6 id='info1'></h6>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Test">
+	<select id="select">
+		SELECT 
+			R_SEQ,
+			B_SEQ,
+			CMT,
+			GOOD,
+			BAD,
+			in_date, 
+			in_user_id, 
+			up_date, 
+			up_user_id,
+			(select user_name from suser u where u.user_id = r.in_user_id) in_user_name
+ 		from 
+ 			sreply r
+ 		where 
+ 			b_seq = :1
+		ORDER BY
+			R_SEQ DESC
+	</select>
+	<update id="insert">
+		insert into sreply
+		(
+			R_SEQ,
+			B_SEQ,
+			CMT,
+			in_date,
+			in_user_id,
+			up_date,
+			up_user_id
+		) 
+		values
+		(
+			(select nvl(max(r_seq) + 1, 1) from sreply),
+			:1,
+			:2,
+			to_char(sysdate, 'YYYYMMDD.HH24MISS'), 
+			:3,
+			to_char(sysdate, 'YYYYMMDD.HH24MISS'), 
+			:4
+		)
+	</update>
+	<update id="update">
+		update 
+			sreply
+		set
+			CMT = :1,
+			up_date	= to_char(sysdate, 'YYYYMMDD.HH24MISS'),
+			up_user_id = :2
+		where 
+			R_SEQ = :3
+	</update>
+	<update id="good">
+		update
+			sreply
+		set
+			GOOD = GOOD + 1
+		where
+			R_SEQ = :1
+	</update>
+	<update id="bad">
+		update
+			sreply
+		set
+			BAD = BAD + 1
+		where
+			R_SEQ = :1
+	</update>
+	<update id="delete">
+		delete from sreply where in_user_id = :1 and r_seq = :2
+	</update>
+</mapper>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Test">
+    <select id="select">
+        SELECT S_ID,
+                TITLE,
+                CONTENT,
+                INTERVIEW_CNT,
+                DEADLINE,
+                IN_DATE,
+                IN_USER_ID,
+                UP_DATE,
+                UP_USER_ID
+            FROM SURVEY
+            ORDER BY S_ID
+    </select>
+    <insert id="insert">
+        INSERT INTO SURVEY(
+            S_ID,
+            TITLE,
+            CONTENT,
+            INTERVIEW_CNT,
+            DEADLINE,
+            IN_DATE,
+            IN_USER_ID,
+            UP_DATE,
+            UP_USER_ID
+        ) VALUES (
+            :V_S_ID,
+            :V_TITLE,
+            :V_CONTENT,
+            :V_INTERVIEW_CNT,
+            :V_DEADLINE,
+            TO_CHAR(SYSDATE, 'YYYYMMDD.HH24MISS'),
+            :V_IN_USER_ID,
+            TO_CHAR(SYSDATE, 'YYYYMMDD.HH24MISS'),
+            :V_UP_USER_ID
+        )
+    </insert>
+    <update id="update">
+        UPDATE SURVEY
+            SET TITLE           = :V_TITLE,
+                CONTENT         = :V_CONTENT,
+                INTERVIEW_CNT   = :V_INTERVIEW_CNT,
+                DEADLINE        = :V_DEADLINE,
+                UP_DATE         = TO_CHAR(SYSDATE, 'YYYYMMDD.HH24MISS'),
+                UP_USER_ID      = :V_UP_USER_ID
+            WHERE S_ID          = :V_S_ID
+    </update>
+    <delete id="delete">
+        DELETE
+            FROM SURVEY
+            WHERE S_ID          = :V_S_ID
+    </delete>
+</mapper>

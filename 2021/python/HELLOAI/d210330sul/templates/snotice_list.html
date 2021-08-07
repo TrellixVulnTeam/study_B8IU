@@ -1,0 +1,57 @@
+{% extends '../../d210308/templates/layout.html' %}
+<meta charset="UTF-8">
+{% block content %}
+<script>
+    let newWindow;
+
+    function fn_add() {
+        newWindow = window.open("snotice_add", "글 쓰기", "width=900, height=700 , resizable=yes");
+    }
+
+    function fn_search() {
+        location.href = 'snotice_list?search=' + $('#search').val();
+    }
+
+    function fn_enter_check() {
+        if(event.keyCode === 13) {
+            fn_search();
+        }
+    }
+</script>
+<div style="display: inline-block">
+    <input type="text" id="search" value="{{search}}" onkeydown="fn_enter_check()"/><input type="button" value="검색" onclick="fn_search()"/>
+    <div style="text-align: right">
+        <input type="button" value="글쓰기" onclick="fn_add()">
+    </div>
+    <table border="1" style="text-align: center">
+        <thead>
+        <tr>
+            <th width="50px">번호</th>
+            <th width="500px">제목</th>
+            <th width="100px">작성일</th>
+            <th width="100px">작성자</th>
+            <th width="100px">첨부파일</th>
+            <th width="100px">표시여부</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for s in list %}
+        <tr>
+            <td>{{s.b_seq}}</td>
+            <td><a href="snotice_detail?b_seq={{s.b_seq}}">{{s.title}}</a></td>
+            <td>{{s.in_date}}</td>
+            <td>{{s.in_user_name}}</td>
+            <td>
+                {% if s.attach_file %}
+                O
+                {% else %}
+                X
+                {% endif %}
+            </td>
+            <td>{{s.display_yn}}</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

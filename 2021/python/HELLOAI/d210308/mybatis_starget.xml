@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="starget">
+    <select id="select">
+        SELECT SURVEY_ID,
+                ST_MOBILE,
+                COMPLETE_YN,
+                IN_DATE,
+                IN_USER_ID,
+                UP_DATE,
+                UP_USER_ID
+            FROM starget
+            ORDER BY SURVEY_ID, ST_MOBILE
+    </select>
+    <insert id="insert">
+        INSERT INTO STARGET(
+            SURVEY_ID,
+            ST_MOBILE,
+            COMPLETE_YN,
+            IN_DATE,
+            IN_USER_ID,
+            UP_DATE,
+            UP_USER_ID
+        ) VALUES (
+            :V_SURVEY_ID,
+            :V_ST_MOBILE,
+            :V_COMPLETE_YN,
+            TO_CHAR(SYSDATE, 'YYYYMMDD.HH24MISS'),
+            :V_IN_USER_ID,
+            TO_CHAR(SYSDATE, 'YYYYMMDD.HH24MISS'),
+            :V_UP_USER_ID
+        )
+    </insert>
+    <update id="update">
+        UPDATE STARGET
+            SET COMPLETE_YN = :V_COMPLETE_YN,
+                UP_DATE = TO_CHAR(SYSDATE, 'YYYYMMDD.HH24MISS'),
+                UP_USER_ID = :V_UP_USER_ID
+            WHERE SURVEY_ID = :V_SURVEY_ID
+                AND ST_MOBILE = :V_ST_MOBILE
+    </update>
+    <delete id="delete">
+        DELETE
+            FROM STARGET
+            WHERE SURVEY_ID = :V_SURVEY_ID
+                AND ST_MOBILE = :V_ST_MOBILE
+    </delete>
+</mapper>

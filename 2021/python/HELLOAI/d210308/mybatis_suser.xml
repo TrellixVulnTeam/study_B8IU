@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Test">
+    <select id="select">
+        SELECT USER_ID,
+                PWD,
+                USER_NAME,
+                MOBILE,
+                EMAIL,
+                BIRTH,
+                IN_DATE,
+                IN_USER_ID,
+                UP_DATE,
+                UP_USER_ID
+            FROM SUSER
+            ORDER BY USER_ID
+    </select>
+    <select id="select_login">
+        SELECT USER_ID,
+                PWD,
+                USER_NAME,
+                MOBILE,
+                EMAIL,
+                BIRTH,
+                IN_DATE,
+                IN_USER_ID,
+                UP_DATE,
+                UP_USER_ID
+            FROM SUSER
+            WHERE USER_ID = :V_USER_ID
+                AND PWD = :V_PWD
+            ORDER BY USER_ID
+    </select>
+    <select id="select_dupl">
+        SELECT USER_ID,
+                PWD,
+                USER_NAME,
+                MOBILE,
+                EMAIL,
+                BIRTH,
+                IN_DATE,
+                IN_USER_ID,
+                UP_DATE,
+                UP_USER_ID
+            FROM SUSER
+            WHERE USER_ID = :V_USER_ID
+            ORDER BY USER_ID
+    </select>
+    <insert id="insert">
+        INSERT INTO SUSER(
+            USER_ID,
+            PWD,
+            USER_NAME,
+            MOBILE,
+            EMAIL,
+            BIRTH,
+            IN_DATE,
+            IN_USER_ID,
+            UP_DATE,
+            UP_USER_ID
+        ) VALUES (
+            :V_USER_ID,
+            :V_PWD,
+            :V_USER_NAME,
+            :V_MOBILE,
+            :V_EMAIL,
+            :V_BIRTH,
+            TO_CHAR(SYSDATE, 'YYYYMMDD.HH24MISS'),
+            :V_IN_USER_ID,
+            TO_CHAR(SYSDATE, 'YYYYMMDD.HH24MISS'),
+            :V_UP_USER_ID
+        )
+    </insert>
+    <update id="update">
+        UPDATE SUSER
+            SET PWD         = :V_PWD,
+                USER_NAME   = :V_USER_NAME,
+                MOBILE      = :V_MOBILE,
+                EMAIL       = :V_EMAIL,
+                BIRTH       = :V_BIRTH,
+                UP_DATE     = TO_CHAR(SYSDATE, 'YYYYMMDD.HH24MISS'),
+                UP_USER_ID  = :V_UP_USER_ID
+            WHERE USER_ID   = :V_USER_ID
+    </update>
+    <delete id="delete">
+        DELETE
+            FROM SUSER
+            WHERE USER_ID   = :V_USER_ID
+    </delete>
+</mapper>

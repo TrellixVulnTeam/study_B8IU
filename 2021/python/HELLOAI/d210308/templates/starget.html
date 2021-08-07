@@ -1,0 +1,158 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+    <script>
+        function setData(survey_id, st_mobile, complete_yn) {
+            $('#survey_id').val(survey_id);
+            $('#st_mobile').val(st_mobile);
+            $('#complete_yn').val(complete_yn);
+        }
+
+        function fn_add() {
+            let survey_id = $('#survey_id').val();
+            let st_mobile = $('#st_mobile').val();
+            let complete_yn = $('#complete_yn').val();
+
+            let param = "";
+            param += "dummy=" + Math.random();
+            param += '&survey_id=' + survey_id;
+            param += '&st_mobile=' + st_mobile;
+            param += '&complete_yn=' + complete_yn;
+            console.log(param)
+
+            $.ajax({
+                url: 'starget_ins.ajax',
+                data: param,
+                dataType: "json",
+                type: "post",
+                async: false,
+                statusCode: {
+                    404: function () {
+                        alert("네트워크가 불안정합니다. 다시 시도부탁드립니다.");
+                    }
+                },
+                success: function (data) {
+                    if (data["msg"] === "ok") {
+                        location.reload()
+                    } else {
+                        alert("추가 도중 문제가 발생하였습니다.");
+                    }
+                }
+            });
+        }
+
+        function fn_upd() {
+            let survey_id = $('#survey_id').val();
+            let st_mobile = $('#st_mobile').val();
+            let complete_yn = $('#complete_yn').val();
+
+            let param = "";
+            param += "dummy=" + Math.random();
+            param += '&survey_id=' + survey_id;
+            param += '&st_mobile=' + st_mobile;
+            param += '&complete_yn=' + complete_yn;
+            console.log(param)
+
+            $.ajax({
+                url: 'starget_upd.ajax',
+                data: param,
+                dataType: "json",
+                type: "post",
+                async: false,
+                statusCode: {
+                    404: function () {
+                        alert("네트워크가 불안정합니다. 다시 시도부탁드립니다.");
+                    }
+                },
+                success: function (data) {
+                    if (data["msg"] === "ok") {
+                        location.reload()
+                    } else {
+                        alert("수정 중 문제가 발생하였습니다.");
+                    }
+                }
+            });
+        }
+
+        function fn_del() {
+            let survey_id = $('#survey_id').val();
+            let st_mobile = $('#st_mobile').val();
+            let complete_yn = $('#complete_yn').val();
+
+            let param = "";
+            param += "dummy=" + Math.random();
+            param += '&survey_id=' + survey_id;
+            param += '&st_mobile=' + st_mobile;
+            param += '&complete_yn=' + complete_yn;
+            console.log(param)
+
+            $.ajax({
+                url: 'starget_del.ajax',
+                data: param,
+                dataType: "json",
+                type: "post",
+                async: false,
+                statusCode: {
+                    404: function () {
+                        alert("네트워크가 불안정합니다. 다시 시도부탁드립니다.");
+                    }
+                },
+                success: function (data) {
+                    if (data["msg"] === "ok") {
+                        location.reload()
+                    } else {
+                        alert("삭제 중 문제가 발생하였습니다.");
+                    }
+                }
+            });
+        }
+    </script>
+<table border="1">
+    <tr>
+        <td>
+            <table border="1">
+                <tr>
+                    <th>survey_id</th>
+                    <th>st_mobile</th>
+                    <th>complete_yn</th>
+                    <th>in_date</th>
+                    <th>in_user_id</th>
+                    <th>up_date</th>
+                    <th>up_user_id</th>
+                </tr>
+                {% for starget in stargets %}
+                <tr>
+                    <td><a href="javascript:setData('{{starget.get('survey_id')}}', '{{starget.get('st_mobile')}}', '{{starget.get('complete_yn')}}')">{{starget.get('survey_id')}}</a></td>
+                    <td>{{starget.get('st_mobile')}}</td>
+                    <td>{{starget.get('complete_yn')}}</td>
+                    <td>{{starget.get('in_date')}}</td>
+                    <td>{{starget.get('in_user_id')}}</td>
+                    <td>{{starget.get('up_date')}}</td>
+                    <td>{{starget.get('up_user_id')}}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </td>
+        <td>
+            <table>
+                <tr>
+                    <td><label>survey_id</label><input type="text" name="survey_id" id="survey_id"></td>
+                </tr>
+                <tr>
+                    <td><label>st_mobile</label><input type="text" name="st_mobile" id="st_mobile"></td>
+                </tr>
+                <tr>
+                    <td><label>complete_yn</label><input type="text" name="complete_yn" id="complete_yn"></td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="button" value="추가" onclick="fn_add()">
+                        <input type="button" value="수정" onclick="fn_upd()">
+                        <input type="button" value="삭제" onclick="fn_del()">
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+</table>
+{% endblock %}

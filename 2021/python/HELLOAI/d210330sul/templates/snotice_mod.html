@@ -1,0 +1,67 @@
+{% extends '../../d210308/templates/layout.html' %}
+<meta charset="UTF-8">
+{% block content %}
+<script>
+    window.onload = function () {
+        if ('{{data.display_yn}}' === 'N') {
+            document.querySelector("input[value=N]").checked = true;
+        }
+    }
+
+    function fn_del() {
+        if (confirm('정말 삭제하시겠습니까?')) {
+            $('input[name=old_attach_file]').val('');
+            $('.attachment').remove();
+            $('input[name=file]').removeAttr('hidden')
+        }
+    }
+</script>
+<div style="display: inline-block">
+    <form action="snotice_mod_form" method="post" enctype="multipart/form-data">
+        {% if data.attach_file %}
+        <input type="hidden" name="old_attach_file" value="{{data.attach_file}}">
+        {% else %}
+        <input type="hidden" name="old_attach_file" value="">
+        {% endif %}
+        <table border="1" width="800px">
+            <thead>
+            <tr>
+                <th><label>제목 :
+                    <input type="text" name="title" value="{{data.title}}" required>
+                </label></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>
+                    <label>글 보이기 :
+                        {% if data.display_yn == 'N' or data.display_yn == 'n' %}
+                        <label><input type="radio" value="y" name="display_yn" required>Y</label>
+                        <label><input type="radio" value="n" name="display_yn" required checked>N</label>
+                        {% else %}
+                        <label><input type="radio" value="y" name="display_yn" required checked>Y</label>
+                        <label><input type="radio" value="n" name="display_yn" required>N</label>
+                        {% endif %}
+                    </label>
+                </td>
+            </tr>
+            <tr>
+                <td height="400px">
+                    <label>내용 :
+                        <textarea cols="100" rows="25" name="content" required>{{data.content}}</textarea>
+                    </label>
+                </td>
+            </tr>
+            <tr>
+                <td>첨부파일 : {% if data.attach_file %}<a class="attachment" href="download?file={{data.attach_file}}">{{data.attach_file}}</a> <a class='attachment' href="javascript:fn_del()">X</a><input type="file" name="file" hidden/>{% else %}<input type="file" name="file"/>{% endif %}</td>
+            </tr>
+            </tbody>
+        </table>
+        <div style="text-align: right">
+            <input type="hidden" name="b_seq" value="{{data.b_seq}}">
+            <input type="submit" value="수정">
+        </div>
+    </form>
+</div>
+{% endblock %}
+

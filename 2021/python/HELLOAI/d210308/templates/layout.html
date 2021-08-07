@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>sdetail</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            text-align: center;
+            margin: 5px;
+        }
+
+        table table th {
+            width: 100px;
+        }
+
+        label {
+            display: inline-block;
+            width: 100px;
+        }
+
+        input {
+            margin: 5px;
+        }
+    </style>
+    <script>
+        function logout() {
+            if (confirm("로그아웃하시겠습니까?")) {
+                location.href = 'logout'
+            }
+        }
+    </script>
+    <script src="./js/jquery-3.5.1.js"></script>
+</head>
+<body>
+<a href="{{url_for('main')}}">메인화면</a>
+<a href="{{url_for('suser')}}">사용자관리</a>
+<a href="{{url_for('survey')}}">설문관리</a>
+<a href="{{url_for('sdetail')}}">문항관리</a>
+<a href="{{url_for('starget')}}">설문대상관리</a>
+<a href="{{url_for('sresult')}}">응답관리</a>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+{% if "user_id" in session %}
+{{session.get('user_name')}}님 환영합니다.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="javascript:logout()">로그아웃</a>
+{% else %}
+<a href="login.html">로그인</a>
+{% endif %}
+<br/>
+{% block content %}{% endblock %}
+<br/>
+all right reserved by aimaker.kr
+</body>
+</html>

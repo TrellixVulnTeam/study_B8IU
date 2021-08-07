@@ -1,0 +1,220 @@
+{% extends '../../d210308/templates/layout.html' %}
+<meta charset="UTF-8">
+{% block content %}
+
+<script>
+    let newWindow;
+
+    function fn_mod() {
+        newWindow = window.open("snotice_mod?b_seq=" + '{{data.b_seq}}', "글 수정", "width=900, height=700 , resizable=yes");
+    }
+
+    function fn_del() {
+        let flag_del = confirm("정말로 삭제하시겠습니까?");
+        if (flag_del) {
+            newWindow = window.open("snotice_del?b_seq=" + '{{data.b_seq}}', "글 수정", "width=500, height=200 , resizable=yes");
+        }
+    }
+
+    function fn_reply_add() {
+        let replytextarea = $("#replytextarea").val();
+
+        var param = "";
+        param += "dummy=" + Math.random();
+        param += "&b_seq=" + "{{data.b_seq}}";
+        param += "&replytextarea=" + replytextarea;
+
+        $.ajax({
+            url: "reply_add.ajax",
+            data: param,
+            dataType: "json",
+            type: "post",
+            async: false,
+            statusCode: {
+                404: function () {
+                    alert("네트워크가 불안정합니다. 다시 시도부탁드립니다.");
+                }
+            },
+            success: function (data) {
+                if (data.msg === "ok") {
+                    show_reply(data["reply"]);
+                } else {
+                    alert("추가 도중 문제가 생겼습니다");
+                }
+            }
+        });
+    }
+
+    function show_reply(reply) {
+        txt = '';
+        for (let i = 0; i < reply.length; i++) {
+            txt += '            <tr>' + '\n';
+            txt += '                <td>' + '\n';
+            txt += '                    <pre>' + reply[i].cmt + '</pre>' + '\n';
+            txt += '                    <div style="float: left">' + '\n';
+            txt += '                        ' + reply[i].in_date + '\n';
+            txt += '                    </div>' + '\n';
+            txt += '                    <div style="text-align: right">' + '\n';
+            if (reply[i].in_user_id === "{{session.get('user_id', '')}}") {
+                txt += '                        <input type="button" value="삭제" onClick="fn_reply_del(' + reply[i].r_seq + ')">' + '\n';
+            }
+            txt += '                            ' + reply[i].in_user_name + '\n';
+            txt += '                        <img src="image/good.png" onclick="fn_reply_good('+reply[i].r_seq+')"><span className="good">'+reply[i].good+'</span>' + '\n';
+            txt += '                        <img src="image/bad.png" onclick="fn_reply_bad('+reply[i].r_seq+')"><span className="BAD">'+reply[i].bad+'</span>' + '\n';
+            txt += '                    </div>' + '\n';
+            txt += '                </td>' + '\n';
+            txt += '            </tr>' + '\n';
+        }
+
+        $('#my_tbody').html(txt);
+        $("#replytextarea").val('');
+    }
+
+    function fn_reply_del(r_seq) {
+        var param = "";
+        param += "dummy=" + Math.random();
+        param += "&r_seq=" + r_seq;
+        param += "&b_seq=" + "{{data.b_seq}}";
+
+        $.ajax({
+            url: "reply_del.ajax",
+            data: param,
+            dataType: "json",
+            type: "post",
+            async: false,
+            statusCode: {
+                404: function () {
+                    alert("네트워크가 불안정합니다. 다시 시도부탁드립니다.");
+                }
+            },
+            success: function (data) {
+                if (data.msg === "ok") {
+                    show_reply(data["reply"]);
+                } else {
+                    alert("삭제 도중 문제가 생겼습니다");
+                }
+            }
+        });
+    }
+
+    function fn_reply_good(r_seq) {
+        var param = "";
+        param += "dummy=" + Math.random();
+        param += "&r_seq=" + r_seq;
+        param += "&b_seq=" + "{{data.b_seq}}";
+
+        $.ajax({
+            url: "reply_good.ajax",
+            data: param,
+            dataType: "json",
+            type: "post",
+            async: false,
+            statusCode: {
+                404: function () {
+                    alert("네트워크가 불안정합니다. 다시 시도부탁드립니다.");
+                }
+            },
+            success: function (data) {
+                if (data.msg === "ok") {
+                    show_reply(data["reply"]);
+                } else {
+                    alert("삭제 도중 문제가 생겼습니다");
+                }
+            }
+        });
+    }
+
+    function fn_reply_bad(r_seq) {
+        var param = "";
+        param += "dummy=" + Math.random();
+        param += "&r_seq=" + r_seq;
+        param += "&b_seq=" + "{{data.b_seq}}";
+
+        $.ajax({
+            url: "reply_bad.ajax",
+            data: param,
+            dataType: "json",
+            type: "post",
+            async: false,
+            statusCode: {
+                404: function () {
+                    alert("네트워크가 불안정합니다. 다시 시도부탁드립니다.");
+                }
+            },
+            success: function (data) {
+                if (data.msg === "ok") {
+                    show_reply(data["reply"]);
+                } else {
+                    alert("삭제 도중 문제가 생겼습니다");
+                }
+            }
+        });
+    }
+
+    document.onload = function() {
+        document.getElementById('cmt').innerHTML = document.getElementById('cmt').innerHTML.replaceAll('\n', '<br>').replaceAll('\r', '');
+    }
+
+</script>
+<div style="display: inline-block">
+    <div style="text-align: right">
+        작성일 : {{data.in_date}} | 작성자 : {{data.in_user_name}} | 조회수 : {{data.hit}}
+    </div>
+    <table border="1" width="800px">
+        <thead>
+        <tr>
+            <th><h3>{{data.title}}</h3></th>
+        </tr>
+        </thead>
+        <tr>
+            <td height="400px">
+                <pre>{{data.content}}</pre>
+            </td>
+        </tr>
+        {% if data.attach_file %}
+        <tr>
+            <td>첨부파일 : <a href="download?file={{data.attach_file}}">{{data.attach_file}}</a></td>
+        </tr>
+        {% endif %}
+        <tr>
+            <td>
+                <div style="text-align: right">
+                    <input type="button" value="목록" onclick="location.href = 'snotice_list'">
+                    {% if session.get('user_id', '') == data.in_user_id %}
+                    <input type="button" value="수정" onclick="fn_mod()">
+                    <input type="button" value="삭제" onclick="fn_del()">
+                    {% endif %}
+                </div>
+            </td>
+        </tr>
+        {% if 'user_id' in session %}
+        <tr>
+            <td>
+                <textarea rows="5" cols="80" id="replytextarea" maxlength="200"></textarea>
+                <input type="button" value="댓글달기" onclick="fn_reply_add()">
+            </td>
+        </tr>
+        {% endif %}
+        <tbody id="my_tbody">
+        {% for r in reply %}
+        <tr>
+            <td>
+                <p id="cmt">{{r.cmt}}</p>
+                <div style="float: left">
+                    {{r.in_date}}
+                </div>
+                <div style="text-align: right">
+                    {% if session.get('user_id', '') == r.in_user_id %}
+                    <input type="button" value="삭제" onclick="fn_reply_del('{{r.r_seq}}')">
+                    {% endif %}
+                    {{r.in_user_name}}
+                    <img src="image/good.png" onclick="fn_reply_good('{{r.r_seq}}')"><span class="good">{{r.good}}</span>
+                    <img src="image/bad.png" onclick="fn_reply_bad('{{r.r_seq}}')"><span class="bad">{{r.bad}}</span>
+                </div>
+            </td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
